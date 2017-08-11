@@ -1,6 +1,5 @@
 package com.guohe.onegame.view.base;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -13,6 +12,7 @@ import com.guohe.onegame.MvpView;
 import com.guohe.onegame.manage.rxbus.RxBus;
 import com.guohe.onegame.manage.rxbus.bean.BaseBusEvent;
 import com.guohe.onegame.util.LogUtil;
+import com.jaeger.library.StatusBarUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,8 +39,8 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initWindow();
         setContentView(getContentView());
+        setStatuBar();
         initView();
         initPresenter(mPresenters);
         for(MvpPresenter presenter : mPresenters){
@@ -51,20 +51,8 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
         mBaseView.onCreate(this);
     }
 
-    /**
-     * 初始化window窗口
-     */
-    protected void initWindow(){
-        //设置状态栏颜色
-       /* try {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                Window window = getWindow();
-                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                window.setStatusBarColor(setStatuBarColor());
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
+    protected void setStatuBar(){
+        StatusBarUtil.setTranslucent(this, 0);
     }
 
     protected boolean youMenResume(){

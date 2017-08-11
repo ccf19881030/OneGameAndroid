@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@mipmap/test_mine_notchoose_icon"
+    <item android:drawable="@mipmap/main_menu3_nomal_icon"
         android:state_checked="false" />
-    <item android:drawable="@mipmap/test_mine_choosed_icon"
+    <item android:drawable="@mipmap/main_menu3_choosed_icon"
         android:state_checked="true" />
 </selector>

@@ -1,5 +1,7 @@
 package com.guohe.onegame.view;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
@@ -140,5 +142,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
             } else
                 mNavButton[i].setChecked(false);
         }
+    }
+
+    public static void startActivity(Context context){
+        Intent intent = new Intent(context, MainActivity.class);
+        context.startActivity(intent);
     }
 }

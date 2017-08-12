@@ -17,6 +17,11 @@ import com.guohe.onegame.util.FrescoUtils;
 
 public class MineDynamicGridAdapter extends RecyclerView.Adapter<MineDynamicGridAdapter.MineDynamicViewHolder>{
 
+    private int[] testImgs = {R.mipmap.test_img1, R.mipmap.test_img2,
+        R.mipmap.test_img3, R.mipmap.test_img4,
+        R.mipmap.test_img5, R.mipmap.test_img6,
+        R.mipmap.test_img7, R.mipmap.test_img8};
+
     private Context mContext;
     private int mDiment;
 
@@ -33,13 +38,13 @@ public class MineDynamicGridAdapter extends RecyclerView.Adapter<MineDynamicGrid
 
     @Override
     public void onBindViewHolder(MineDynamicViewHolder holder, int position) {
-        String url = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1502521143936&di=7db5d885c7ded66b3731339391e3c17a&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F015734571993136ac7254fbc8f63eb.jpg%40900w_1l_2o_100sh.jpg";
-        FrescoUtils.loadUrl(holder.mDrawView, url, mDiment, mDiment);
+        FrescoUtils.loadRes(holder.mDrawView, testImgs[position % testImgs.length],
+                null, mDiment, mDiment, null);
     }
 
     @Override
     public int getItemCount() {
-        return 20;
+        return 200;
     }
 
     public class MineDynamicViewHolder extends RecyclerView.ViewHolder{

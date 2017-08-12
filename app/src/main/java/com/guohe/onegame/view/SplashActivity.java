@@ -81,6 +81,11 @@ public class SplashActivity extends BaseActivity{
     }
 
     @Override
+    protected boolean canSlidr() {
+        return false;
+    }
+
+    @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         if(hasFocus){

@@ -1,5 +1,6 @@
 package com.guohe.onegame.view.base;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,9 @@ import com.guohe.onegame.manage.rxbus.bean.BaseBusEvent;
 import com.guohe.onegame.util.LogUtil;
 import com.guohe.onegame.util.RefreshUtil;
 import com.jaeger.library.StatusBarUtil;
+import com.r0adkll.slidr.Slidr;
+import com.r0adkll.slidr.model.SlidrConfig;
+import com.r0adkll.slidr.model.SlidrPosition;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,10 +47,35 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
             presenter.attachView(this);
         }
         initData();
+        if(canSlidr()){
+            setSlidr();
+        }
+    }
+
+    protected boolean canSlidr(){
+        return true;
     }
 
     protected void setStatuBar(){
         StatusBarUtil.setTranslucent(this, 0);
+    }
+
+    private void setSlidr() {
+        SlidrConfig config = new SlidrConfig.Builder()
+                //.primaryColor(getResources().getColor(R.color.colorPrimary))
+                //.secondaryColor(getResources().getColor(R.color.colorSecondary))
+                .position(SlidrPosition.LEFT)
+                .sensitivity(1f)
+                .scrimColor(Color.BLACK)
+                //.scrimStartAlpha(0.8f)
+                //.scrimEndAlpha(0f)
+                .velocityThreshold(2400)
+                .distanceThreshold(0.25f)
+                .edge(true)
+                .edgeSize(0.18f) // The % of the screen that counts as the edge, default 18%
+                .listener(null)
+                .build();
+        Slidr.attach(this, config);
     }
 
     protected boolean youMenResume(){

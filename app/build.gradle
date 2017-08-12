@@ -58,4 +58,6 @@ dependencies {
     compile project(':ptr-lib')
     //图片轮播器
     compile 'com.jude:rollviewpager:1.4.5'
+    //滑动返回
+    compile 'com.r0adkll:slidableactivity:2.0.5'
 }

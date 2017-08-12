@@ -80,8 +80,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     }
 
     @Override
+    protected boolean canSlidr() {
+        return false;
+    }
+
+    @Override
     protected void setStatuBar() {
-        StatusBarUtil.setTranslucentForImageView(this, 30, mFragmentContainer);
+        StatusBarUtil.setTranslucentForImageView(this, 30, null);
     }
 
     @Override

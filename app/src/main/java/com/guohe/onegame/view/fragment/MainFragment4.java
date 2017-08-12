@@ -1,9 +1,12 @@
 package com.guohe.onegame.view.fragment;
 
 import android.graphics.Rect;
+import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageButton;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.guohe.onegame.MvpPresenter;
@@ -24,6 +27,9 @@ public class MainFragment4 extends BaseMainFragment {
     private RecyclerView mRecyclerView;
     private MineDynamicGridAdapter mAdapter;
     private SimpleDraweeView mHeaderDraw;
+    private PtrFrameLayout mPtrFrameLayout;
+    private int mUserId;
+    private boolean mIsMine;
 
     @Override
     public void initPresenter(List<MvpPresenter> presenters) {
@@ -47,13 +53,38 @@ public class MainFragment4 extends BaseMainFragment {
 
     @Override
     protected void initView(View view) {
+        Bundle bundle = getArguments();
+        if(bundle != null){
+            mUserId = bundle.getInt("userid");
+            mIsMine = mUserId == 1;
+        }else{
+            mIsMine = true;
+            mUserId = 1;
+        }
         mHeaderDraw = getView(R.id.header_icon);
+        ImageButton attentionButton = getView(R.id.attention_icon);
+        if(mIsMine){
+            attentionButton.setImageResource(R.mipmap.icon_setting);
+        }else{
+            attentionButton.setImageResource(R.mipmap.icon_not_followed);
+        }
         mRecyclerView = getView(R.id.personal_recyclerview);
         bindRecyclerView();
-        refreshView(R.id.main_mine_refreshview, new RefreshUtil.OnRefresh() {
+        mPtrFrameLayout = refreshView(R.id.main_mine_refreshview, new RefreshUtil.OnRefresh() {
             @Override
             public void refreshBegin(PtrFrameLayout frame) {
 
+            }
+        });
+        AppBarLayout appBarLayout = getView(R.id.app_bar);
+        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                if (verticalOffset >= 0) {
+                    mPtrFrameLayout.setEnabled(true);
+                } else {
+                    mPtrFrameLayout.setEnabled(false);
+                }
             }
         });
     }

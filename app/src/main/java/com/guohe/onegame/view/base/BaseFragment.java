@@ -1,10 +1,8 @@
 package com.guohe.onegame.view.base;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +12,12 @@ import com.guohe.onegame.MvpView;
 import com.guohe.onegame.manage.rxbus.RxBus;
 import com.guohe.onegame.manage.rxbus.bean.BaseBusEvent;
 import com.guohe.onegame.util.LogUtil;
+import com.guohe.onegame.util.RefreshUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import in.srain.cube.views.ptr.PtrFrameLayout;
 import rx.Subscription;
 import rx.functions.Action1;
 
@@ -27,15 +27,10 @@ import rx.functions.Action1;
 
 public abstract class BaseFragment extends Fragment implements MvpView {
 
-    private BaseView mBaseView;
     private View mView;
     private List<Subscription> mSubscriptions = new ArrayList<>();
     private List<MvpPresenter> mPresenters = new ArrayList<>();
-    private SwipeRefreshLayout mRefreshView;
-
-    public BaseFragment(){
-        mBaseView = new BaseView();
-    }
+    private PtrFrameLayout mRefreshView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -65,22 +60,15 @@ public abstract class BaseFragment extends Fragment implements MvpView {
         mPresenters.clear();
     }
 
-
-    public SwipeRefreshLayout getRefreshView(){
-        return mRefreshView;
-    }
-
     @Override
     public void onResume() {
         super.onResume();
-        mBaseView.onResume(this.getActivity());
         //MobclickAgent.onPageStart(this.getClass().getName());
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        mBaseView.onPause(this.getActivity());
         //MobclickAgent.onPageEnd(this.getClass().getName());
     }
 
@@ -105,15 +93,8 @@ public abstract class BaseFragment extends Fragment implements MvpView {
     protected abstract void initView(View view);
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mBaseView.onCreate(this.getActivity());
-    }
-
-    @Override
     public void onDestroy() {
         super.onDestroy();
-        mBaseView.onDestroy(this.getActivity());
         for(Subscription subscription : mSubscriptions){
             if(subscription == null) continue;
             if(subscription.isUnsubscribed()) continue;
@@ -138,23 +119,16 @@ public abstract class BaseFragment extends Fragment implements MvpView {
      * @param id
      * @param onRefresh
      */
-    public SwipeRefreshLayout refreshView(int id, final SwipeRefreshLayout.OnRefreshListener onRefresh) {
-        SwipeRefreshLayout refreshView = getView(id);
+    protected PtrFrameLayout refreshView(int id, RefreshUtil.OnRefresh onRefresh) {
+        final PtrFrameLayout refreshView = getView(id);
         if (refreshView == null) return null;
         mRefreshView = refreshView;
-        if(mRefreshView.isRefreshing()) return mRefreshView;
-        mBaseView.refreshView(refreshView, new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                onRefresh.onRefresh();
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        mRefreshView.setRefreshing(false);
-                    }
-                }, 2000);
-            }
-        });
+        RefreshUtil.refreshView(this.getContext(), refreshView, onRefresh);
         return refreshView;
+    }
+
+    public void refreshStop() {
+        if(mRefreshView == null) return;
+        mRefreshView.refreshComplete();
     }
 }

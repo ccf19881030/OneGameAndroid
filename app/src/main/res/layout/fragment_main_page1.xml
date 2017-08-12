@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="@color/app_background"
     android:layout_width="match_parent"
-    android:gravity="center"
     android:layout_height="match_parent">
+    <com.jude.rollviewpager.RollPagerView
+        android:id="@+id/main_one_rollpagerview"
+        android:layout_width="match_parent"
+        android:layout_height="200dip"
+        app:rollviewpager_hint_color="@color/colorPrimary"
+        app:rollviewpager_hint_gravity="right"
+        app:rollviewpager_hint_paddingRight="15dp"
+        app:rollviewpager_hint_paddingBottom="5dp"
+        app:rollviewpager_hint_paddingTop="5dp"
+        app:rollviewpager_hint_alpha="0"
+        app:rollviewpager_play_delay="3000" />
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30dip"
-        android:text="Fragment1"/>
 </LinearLayout>

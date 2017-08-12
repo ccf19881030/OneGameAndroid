@@ -1,9 +1,7 @@
 package com.guohe.onegame.view.base;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
@@ -12,11 +10,13 @@ import com.guohe.onegame.MvpView;
 import com.guohe.onegame.manage.rxbus.RxBus;
 import com.guohe.onegame.manage.rxbus.bean.BaseBusEvent;
 import com.guohe.onegame.util.LogUtil;
+import com.guohe.onegame.util.RefreshUtil;
 import com.jaeger.library.StatusBarUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import in.srain.cube.views.ptr.PtrFrameLayout;
 import rx.Subscription;
 import rx.functions.Action1;
 
@@ -26,15 +26,10 @@ import rx.functions.Action1;
 
 public abstract class BaseActivity extends AppCompatActivity implements MvpView {
 
-    private BaseView mBaseView;
     private List<Subscription> mSubscriptions = new ArrayList<>();
 
-    public BaseActivity(){
-        mBaseView = new BaseView();
-    }
-
     private List<MvpPresenter> mPresenters = new ArrayList<>();
-    private SwipeRefreshLayout mRefreshView;
+    private PtrFrameLayout mRefreshView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,7 +43,6 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
             presenter.attachView(this);
         }
         initData();
-        mBaseView.onCreate(this);
     }
 
     protected void setStatuBar(){
@@ -82,7 +76,6 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
     @Override
     protected void onPause() {
         super.onPause();
-        mBaseView.onPause(this);
         if(!youMenPause()){
             //MobclickAgent.onPause(this);
            // MobclickAgent.onPageEnd(this.getClass().getName());
@@ -92,7 +85,6 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
     @Override
     protected void onResume() {
         super.onResume();
-        mBaseView.onResume(this);
         if(!youMenResume()) {
             //MobclickAgent.onResume(this);
             //MobclickAgent.onPageStart(this.getClass().getName());
@@ -102,7 +94,6 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mBaseView.onDestroy(this);
         for(MvpPresenter presenter : mPresenters){
             if(presenter == null) continue;
             presenter.dettachView();
@@ -141,23 +132,15 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
      * @param id
      * @param onRefresh
      */
-    public SwipeRefreshLayout refreshView(int id, final SwipeRefreshLayout.OnRefreshListener onRefresh) {
-        SwipeRefreshLayout refreshView = getView(id);
-        if (refreshView == null) return null;
+    protected void refreshView(int id, RefreshUtil.OnRefresh onRefresh) {
+        final PtrFrameLayout refreshView = getView(id);
+        if (refreshView == null) return;
         mRefreshView = refreshView;
-        if(mRefreshView.isRefreshing()) return mRefreshView;
-        mBaseView.refreshView(refreshView, new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                onRefresh.onRefresh();
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        mRefreshView.setRefreshing(false);
-                    }
-                }, 2000);
-            }
-        });
-        return refreshView;
+        RefreshUtil.refreshView(this, refreshView, onRefresh);
+    }
+
+    public void refreshStop() {
+        if(mRefreshView == null) return;
+        mRefreshView.refreshComplete();
     }
 }

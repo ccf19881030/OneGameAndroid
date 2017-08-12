@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="200dip">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/item_rollview_image"
+        android:layout_width="match_parent"
+        android:layout_height="200dip"
+        fresco:actualImageScaleType="centerCrop"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="22dip"
+        android:textSize="12sp"
+        android:textColor="#ffffff"
+        android:background="#bd000000"
+        android:gravity="center_vertical"
+        android:layout_alignParentBottom="true"
+        android:paddingLeft="11dip"
+        android:paddingRight="11dip"
+        android:lines="1"
+        android:ellipsize="end"
+        android:visibility="gone"
+        android:text="这里是图片描述"/>
+</RelativeLayout>

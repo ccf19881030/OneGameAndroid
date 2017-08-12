@@ -4,17 +4,21 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.RadioButton;
 
 import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
+import com.guohe.onegame.util.ToastUtil;
 import com.guohe.onegame.view.base.BaseActivity;
 import com.guohe.onegame.view.fragment.BaseMainFragment;
 import com.guohe.onegame.view.fragment.MainFragment1;
 import com.guohe.onegame.view.fragment.MainFragment2;
 import com.guohe.onegame.view.fragment.MainFragment3;
 import com.guohe.onegame.view.fragment.MainFragment4;
+import com.jaeger.library.StatusBarUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,10 +26,11 @@ import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener{
-
+    private static final long BACK_WAIT_TIME = 2000;
     private RadioButton[] mNavButton = new RadioButton[4];
     private int mCurrentIndex;
     private BaseMainFragment mCurrentFragment;
+    private ViewGroup mFragmentContainer;
     private List<Class<? extends BaseMainFragment>> mFragmentsClass = new ArrayList<>();
     private Map<Integer, BaseMainFragment> mFragments = new HashMap<>();
 
@@ -36,6 +41,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
     @Override
     protected void initView() {
+        mFragmentContainer = getView(R.id.fragment_container);
         mFragmentsClass.add(MainFragment1.class);
         mFragmentsClass.add(MainFragment2.class);
         mFragmentsClass.add(MainFragment3.class);
@@ -74,6 +80,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     }
 
     @Override
+    protected void setStatuBar() {
+        StatusBarUtil.setTranslucentForImageView(this, 30, mFragmentContainer);
+    }
+
+    @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.main_nav1:
@@ -89,7 +100,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 setFragment(3);
                 break;
         }
-
     }
 
     /**
@@ -147,5 +157,21 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     public static void startActivity(Context context){
         Intent intent = new Intent(context, MainActivity.class);
         context.startActivity(intent);
+    }
+
+    private long mTouchTime = 0;
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            if((System.currentTimeMillis() - mTouchTime) >= BACK_WAIT_TIME){
+                mTouchTime = System.currentTimeMillis();
+                ToastUtil.showToast("再按一次退出");
+            }else{
+                mTouchTime = 0;
+                MainActivity.this.finish();
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

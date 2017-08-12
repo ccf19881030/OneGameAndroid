@@ -6,8 +6,10 @@ import android.os.SystemClock;
 import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
 import com.guohe.onegame.custome.WeakRefrenceHandler;
+import com.guohe.onegame.manage.config.GlobalConfigManage;
 import com.guohe.onegame.view.base.BaseActivity;
 import com.jaeger.library.StatusBarUtil;
+import com.wou.commonutils.ScreenSizeUtil;
 
 import java.util.List;
 
@@ -59,7 +61,8 @@ public class SplashActivity extends BaseActivity{
      * 做一些初始化操作
      */
     private void doInit(){
-
+        GlobalConfigManage.getInstance().setScreenWidth(ScreenSizeUtil.getScreenWidth(this));
+        GlobalConfigManage.getInstance().setScreenHeight(ScreenSizeUtil.getScreenHeight(this));
     }
 
     @Override

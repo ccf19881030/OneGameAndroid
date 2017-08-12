@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#dbdbdb</color>
+    <color name="colorPrimaryDark">#dbdbdb</color>
+    <color name="colorAccent">#13b5b1</color>
+
+    <color name="app_background">#ffffff</color>  <!--通用背景-->
+    <color name="app_splite_line">#dbdbdb</color> <!--通用分割线-->
+    <color name="app_textcolor">#262626</color>
+    <color name="app_second_textcolor">#8f9296</color>
 </resources>

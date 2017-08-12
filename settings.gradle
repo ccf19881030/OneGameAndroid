@@ -1,1 +1,1 @@
-include ':app', ':takephoto_library', ':commonutils', ':HeaderAndFooterRecyclerView'
+include ':app', ':takephoto_library', ':commonutils', ':HeaderAndFooterRecyclerView', ':ptr-lib'

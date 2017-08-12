@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorAccent"
     tools:context="com.guohe.onegame.view.MainActivity">
 
     <FrameLayout
@@ -15,9 +14,13 @@
         android:layout_weight="1">
     </FrameLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/app_splite_line"/>
     <RadioGroup
         android:layout_width="match_parent"
-        android:layout_height="40dip"
+        android:layout_height="47dip"
         android:background="@android:color/white"
         android:orientation="horizontal">
         <RelativeLayout

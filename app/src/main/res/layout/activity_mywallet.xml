@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/app_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/toolbar_common"
+        android:layout_width="match_parent"
+        android:layout_height="44dip"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:background="#313d4e"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/wallet_total_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="70dip"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="120dip"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:text="12.5"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:layout_below="@id/wallet_total_money"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dip"
+            android:textSize="13sp"
+            android:text="钱包余额（元）"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="44dip"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="50dip"
+            android:layout_marginLeft="20dip"
+            android:layout_marginRight="20dip"
+            android:text="充值"
+            android:textSize="14sp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:background="@color/colorAccent"/>
+    </RelativeLayout>
+
+</LinearLayout>

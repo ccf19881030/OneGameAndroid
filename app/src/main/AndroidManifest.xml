@@ -35,6 +35,9 @@
         <activity android:name=".view.GuideActivity"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".view.mine.MyWalletActivity"
+            android:screenOrientation="portrait"/>
+
         <activity android:name=".view.DebugActivity"
             android:screenOrientation="portrait"/>
 

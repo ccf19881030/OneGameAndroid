@@ -1,190 +1,201 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:background="@color/app_background"
+    android:orientation="vertical"
     android:layout_height="wrap_content">
 
-    <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/header_icon"
-        android:layout_width="57dip"
-        android:layout_height="57dip"
-        android:layout_marginTop="45dip"
-        android:layout_marginLeft="33dip"
-        app:actualImageScaleType="fitXY"
-        app:placeholderImage="@mipmap/default_header"/>
-
-    <TextView
-        android:id="@+id/mine_role"
-        android:layout_width="42dip"
-        android:layout_height="21dip"
-        android:layout_alignBottom="@id/header_icon"
-        android:layout_toRightOf="@id/header_icon"
-        android:layout_marginLeft="19dip"
-        android:text="球员"
-        android:gravity="center"
-        android:textColor="@android:color/white"
-        android:background="@mipmap/tag_blue_bg"
-        android:textSize="12sp"/>
-
-    <TextView
-        android:id="@+id/mine_credit_score"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/mine_role"
-        android:layout_toRightOf="@id/mine_role"
-        android:layout_marginLeft="10dip"
-        android:text="信用积分152"
-        android:textSize="12sp"
-        android:gravity="center"
-        android:background="@mipmap/mine_jifen_bg"
-        android:textColor="@color/app_textcolor"/>
-
-    <LinearLayout
+    <android.support.v4.widget.Space
+        android:id="@+id/mine_dynamic_top_space"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_toRightOf="@id/header_icon"
-        android:layout_marginLeft="19sp"
-        android:gravity="center_vertical"
-        android:layout_marginTop="46dip">
+        android:layout_height="30dip" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/header_icon"
+            android:layout_width="57dip"
+            android:layout_height="57dip"
+            android:layout_marginTop="15dip"
+            android:layout_marginLeft="33dip"
+            app:actualImageScaleType="fitXY"
+            app:placeholderImage="@mipmap/default_header"/>
+
         <TextView
-            android:id="@+id/mine_nickname"
+            android:id="@+id/mine_role"
+            android:layout_width="42dip"
+            android:layout_height="21dip"
+            android:layout_alignBottom="@id/header_icon"
+            android:layout_toRightOf="@id/header_icon"
+            android:layout_marginLeft="19dip"
+            android:text="球员"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:background="@mipmap/tag_blue_bg"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/mine_credit_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="星期天的午餐"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:textColor="@color/app_textcolor" />
-        <android.support.v4.widget.Space
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-        <ImageButton
-            android:id="@+id/attention_icon"
-            android:layout_alignTop="@id/mine_nickname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="34dip"
-            android:background="@null"
-            android:src="@mipmap/icon_setting"/>
-    </LinearLayout>
+            android:layout_alignBottom="@id/mine_role"
+            android:layout_toRightOf="@id/mine_role"
+            android:layout_marginLeft="10dip"
+            android:text="信用积分152"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:background="@mipmap/mine_jifen_bg"
+            android:textColor="@color/app_textcolor"/>
 
-    <LinearLayout
-        android:id="@+id/number_area"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/header_icon"
-        android:layout_marginTop="27dip"
-        android:orientation="horizontal">
-
-        <Space
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
         <LinearLayout
-            android:id="@+id/mine_menu_dynamic"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
+            android:orientation="horizontal"
+            android:layout_toRightOf="@id/header_icon"
+            android:layout_marginLeft="19sp"
+            android:gravity="center_vertical"
+            android:layout_marginTop="16dip">
             <TextView
+                android:id="@+id/mine_nickname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorAccent"
-                android:text="23"
-                android:textSize="20sp" />
-
-            <TextView
+                android:text="星期天的午餐"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/app_textcolor" />
+            <android.support.v4.widget.Space
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+            <ImageButton
+                android:id="@+id/attention_icon"
+                android:layout_alignTop="@id/mine_nickname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:layout_marginTop="3dip"
-                android:textColor="@color/app_second_textcolor"
-                android:text="照片"/>
+                android:layout_marginRight="34dip"
+                android:background="@null"
+                android:src="@mipmap/icon_setting"/>
         </LinearLayout>
-        <Space
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"/>
+
         <LinearLayout
-            android:id="@+id/mine_menu_myfollowed"
+            android:id="@+id/number_area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/header_icon"
+            android:layout_marginTop="27dip"
+            android:orientation="horizontal">
+
+            <Space
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+            <LinearLayout
+                android:id="@+id/mine_menu_dynamic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorAccent"
+                    android:text="23"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:layout_marginTop="3dip"
+                    android:textColor="@color/app_second_textcolor"
+                    android:text="照片"/>
+            </LinearLayout>
+            <Space
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"/>
+            <LinearLayout
+                android:id="@+id/mine_menu_myfollowed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorAccent"
+                    android:text="234"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:layout_marginTop="3dip"
+                    android:textColor="@color/app_second_textcolor"
+                    android:text="关注"/>
+            </LinearLayout>
+            <Space
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"/>
+            <LinearLayout
+                android:id="@+id/mine_menu_followme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorAccent"
+                    android:text="356"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_marginTop="3dip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="@color/app_second_textcolor"
+                    android:text="粉丝"/>
+            </LinearLayout>
+            <Space
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/mine_wallet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:textSize="12sp"
+            android:text="我的钱包"
+            android:layout_marginTop="27dip"
+            android:drawableLeft="@mipmap/icon_qianbao"
+            android:drawablePadding="17dp"
+            android:layout_marginLeft="40dip"
+            android:layout_marginBottom="27dip"
+            android:layout_below="@id/number_area"
+            android:textColor="@color/app_textcolor"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorAccent"
-                android:text="234"
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:layout_marginTop="3dip"
-                android:textColor="@color/app_second_textcolor"
-                android:text="关注"/>
-        </LinearLayout>
-        <Space
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"/>
-        <LinearLayout
-            android:id="@+id/mine_menu_followme"
+        <TextView
+            android:id="@+id/mine_progress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorAccent"
-                android:text="356"
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_marginTop="3dip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:textColor="@color/app_second_textcolor"
-                android:text="粉丝"/>
-        </LinearLayout>
-        <Space
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/mine_wallet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:text="我的钱包"
-        android:layout_marginTop="27dip"
-        android:drawableLeft="@mipmap/icon_qianbao"
-        android:drawablePadding="17dp"
-        android:layout_marginLeft="40dip"
-        android:layout_marginBottom="27dip"
-        android:layout_below="@id/number_area"
-        android:textColor="@color/app_textcolor"/>
-
-    <TextView
-        android:id="@+id/mine_progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:text="我的生涯"
-        android:layout_marginTop="27dip"
-        android:drawableLeft="@mipmap/icon_shengya"
-        android:drawablePadding="17dp"
-        android:layout_toRightOf="@id/mine_wallet"
-        android:layout_marginLeft="55dip"
-        android:layout_marginBottom="27dip"
-        android:layout_below="@id/number_area"
-        android:textColor="@color/app_textcolor"/>
-</RelativeLayout>
+            android:textSize="12sp"
+            android:text="我的生涯"
+            android:layout_marginTop="27dip"
+            android:drawableLeft="@mipmap/icon_shengya"
+            android:drawablePadding="17dp"
+            android:layout_toRightOf="@id/mine_wallet"
+            android:layout_marginLeft="55dip"
+            android:layout_marginBottom="27dip"
+            android:layout_below="@id/number_area"
+            android:textColor="@color/app_textcolor"/>
+    </RelativeLayout>
+</LinearLayout>

@@ -4,10 +4,14 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.MvpView;
+import com.guohe.onegame.R;
 import com.guohe.onegame.manage.rxbus.RxBus;
 import com.guohe.onegame.manage.rxbus.bean.BaseBusEvent;
 import com.guohe.onegame.util.LogUtil;
@@ -34,11 +38,13 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
 
     private List<MvpPresenter> mPresenters = new ArrayList<>();
     private PtrFrameLayout mRefreshView;
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getContentView());
+        initToolbar();
         setStatuBar();
         initView();
         initPresenter(mPresenters);
@@ -57,7 +63,7 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
     }
 
     protected void setStatuBar(){
-        StatusBarUtil.setTranslucent(this, 0);
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.app_background));
     }
 
     private void setSlidr() {
@@ -76,6 +82,35 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
                 .listener(null)
                 .build();
         Slidr.attach(this, config);
+    }
+
+    private void initToolbar(){
+        mToolbar = getView(R.id.toolbar);
+        if(mToolbar == null) return;
+        setSupportActionBar(mToolbar);
+        /*ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null) {
+            actionBar.setDisplayShowTitleEnabled(false);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }*/
+        mToolbar.findViewById(R.id.toolbar_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BaseActivity.this.finish();
+            }
+        });
+        TextView toolbarTitle = (TextView) mToolbar.findViewById(R.id.toolbar_title);
+        ImageButton moreButton = (ImageButton) mToolbar.findViewById(R.id.toolbar_more);
+        TextView toolbarMenu = (TextView) mToolbar.findViewById(R.id.toolbar_menu);
+        customeToolbar(toolbarTitle, toolbarMenu, moreButton);
+    }
+
+    public Toolbar getToolbar(){
+        return mToolbar;
+    }
+
+    protected void customeToolbar(TextView titleText, TextView toolbarMenu, ImageButton moreButton) {
+
     }
 
     protected boolean youMenResume(){

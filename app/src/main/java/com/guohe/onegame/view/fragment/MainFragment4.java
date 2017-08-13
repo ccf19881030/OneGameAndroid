@@ -3,6 +3,7 @@ package com.guohe.onegame.view.fragment;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
+import android.support.v4.widget.Space;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -13,6 +14,7 @@ import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
 import com.guohe.onegame.util.RefreshUtil;
 import com.guohe.onegame.view.adapter.MineDynamicGridAdapter;
+import com.guohe.onegame.view.mine.MyWalletActivity;
 import com.guohe.onegame.view.mine.SettingActivity;
 
 import java.util.List;
@@ -70,6 +72,12 @@ public class MainFragment4 extends BaseMainFragment implements View.OnClickListe
         }else{
             attentionButton.setImageResource(R.mipmap.icon_not_followed);
         }
+        Space space = getView(R.id.mine_dynamic_top_space);
+        if(mIsMine){
+            space.setVisibility(View.VISIBLE);
+        }else{
+            space.setVisibility(View.GONE);
+        }
         getView(R.id.header_icon).setOnClickListener(this);
         getView(R.id.mine_role).setOnClickListener(this);
         getView(R.id.mine_credit_score).setOnClickListener(this);
@@ -95,8 +103,29 @@ public class MainFragment4 extends BaseMainFragment implements View.OnClickListe
                 } else {
                     mPtrFrameLayout.setEnabled(false);
                 }
+                if(verticalOffset <= -125){
+                    if(mNickNameHideListener != null){
+                        mNickNameHideListener.changed(true, "星期天的午餐");
+                    }
+                }else{
+                    if(mNickNameHideListener != null){
+                        mNickNameHideListener.changed(false, "星期天的午餐");
+                    }
+                }
             }
         });
+    }
+
+    private NickNameHideListener mNickNameHideListener;
+    /**
+     * 监听昵称显示和隐藏
+     */
+    public void setOnNickNameHideListener(NickNameHideListener listener){
+        mNickNameHideListener = listener;
+    }
+
+    public interface NickNameHideListener{
+        public void changed(boolean hide, String nickname);
     }
 
     private void bindRecyclerView(){
@@ -154,7 +183,7 @@ public class MainFragment4 extends BaseMainFragment implements View.OnClickListe
 
                 break;
             case R.id.mine_wallet:
-
+                MyWalletActivity.startActivity(MainFragment4.this.getContext());
                 break;
             case R.id.mine_progress:
 

@@ -95,7 +95,11 @@ public class SplashActivity extends BaseActivity{
 
     @Override
     public void turnToOtherView() {
-        MainActivity.startActivity(SplashActivity.this);
+        if(GlobalConfigManage.getInstance().getHasGuide()) {
+            MainActivity.startActivity(SplashActivity.this);
+        }else{
+            GuideActivity.startActivity(SplashActivity.this);
+        }
         SplashActivity.this.finish();
     }
 }

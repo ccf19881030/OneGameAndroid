@@ -29,6 +29,12 @@
         <activity android:name=".view.mine.PersonalPageActivity"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".view.mine.SettingActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".view.GuideActivity"
+            android:screenOrientation="portrait"/>
+
         <activity android:name=".view.DebugActivity"
             android:screenOrientation="portrait"/>
 

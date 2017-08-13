@@ -11,12 +11,15 @@ import com.guohe.onegame.R;
 import com.guohe.onegame.model.entry.ScrollBanner;
 import com.guohe.onegame.util.DimenUtil;
 import com.guohe.onegame.util.FrescoUtils;
+import com.guohe.onegame.util.RefreshUtil;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 import com.jude.rollviewpager.hintview.ColorPointHintView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import in.srain.cube.views.ptr.PtrFrameLayout;
 
 /**
  * Created by 水寒 on 2017/8/7.
@@ -55,6 +58,12 @@ public class MainFragment1 extends BaseMainFragment {
     protected void initView(View view) {
 
         bindRollpagerView();
+        refreshView(R.id.main_home_refreshview, new RefreshUtil.OnRefresh() {
+            @Override
+            public void refreshBegin(PtrFrameLayout frame) {
+
+            }
+        });
     }
 
     /**

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="60dip"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:text="this is Title"/>
+
+    <ImageView
+        android:id="@+id/item_guide_page_image"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:scaleType="centerInside"/>
+
+    <Button
+        android:id="@+id/guide_come_in"
+        android:visibility="gone"
+        android:layout_width="60dip"
+        android:layout_height="30dip"
+        android:text="进入"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="80dip"
+        android:gravity="center"
+        android:textSize="14sp"
+        android:paddingLeft="20dip"
+        android:paddingRight="20dip"
+        android:text="这时一段描述啊这时一段描述啊这时一段描述啊这时一段描述啊这时一段描述啊这时一段描述啊"/>
+
+
+</LinearLayout>

@@ -20,6 +20,7 @@ public class GlobalConfigManage extends BaseConfigManage{
     private int mScreenWidth;       //屏幕宽
     private int mScreenHeight;      //屏幕高
     private boolean mRandomTheme;   //是否随机主题
+    private boolean mHasGuide;      //是否引导过了
 
     /**
      * 配置相关的key
@@ -31,6 +32,7 @@ public class GlobalConfigManage extends BaseConfigManage{
         String KEY_SCREEN_WIDTH = "screen_width";
         String KEY_SCREEN_HEIGHT = "screen_height";
         String KEY_RANDOM_THEME = "random_theme";
+        String KEY_HAS_GUIDE = "has_guide";
     }
 
     private GlobalConfigManage(String shareName) {
@@ -43,6 +45,7 @@ public class GlobalConfigManage extends BaseConfigManage{
         mScreenWidth = mSharePreference.getInt(configKeys.KEY_SCREEN_WIDTH, 0);
         mScreenHeight = mSharePreference.getInt(configKeys.KEY_SCREEN_HEIGHT, 0);
         mRandomTheme = mSharePreference.getBoolean(configKeys.KEY_RANDOM_THEME, false);
+        mHasGuide = mSharePreference.getBoolean(configKeys.KEY_HAS_GUIDE, false);
     }
 
     public static GlobalConfigManage getInstance(){
@@ -50,6 +53,15 @@ public class GlobalConfigManage extends BaseConfigManage{
             mInstance = new GlobalConfigManage(SHARE_NAME);
         }
         return mInstance;
+    }
+
+    public void setHasGuide(boolean hasGuide){
+        mHasGuide = hasGuide;
+        setConfig(configKeys.KEY_HAS_GUIDE, mHasGuide);
+    }
+
+    public boolean getHasGuide(){
+        return mHasGuide;
     }
 
     /**

@@ -13,6 +13,7 @@ import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
 import com.guohe.onegame.util.RefreshUtil;
 import com.guohe.onegame.view.adapter.MineDynamicGridAdapter;
+import com.guohe.onegame.view.mine.SettingActivity;
 
 import java.util.List;
 
@@ -22,7 +23,7 @@ import in.srain.cube.views.ptr.PtrFrameLayout;
  * Created by 水寒 on 2017/8/7.
  */
 
-public class MainFragment4 extends BaseMainFragment {
+public class MainFragment4 extends BaseMainFragment implements View.OnClickListener{
 
     private RecyclerView mRecyclerView;
     private MineDynamicGridAdapter mAdapter;
@@ -63,11 +64,20 @@ public class MainFragment4 extends BaseMainFragment {
         }
         mHeaderDraw = getView(R.id.header_icon);
         ImageButton attentionButton = getView(R.id.attention_icon);
+        attentionButton.setOnClickListener(this);
         if(mIsMine){
             attentionButton.setImageResource(R.mipmap.icon_setting);
         }else{
             attentionButton.setImageResource(R.mipmap.icon_not_followed);
         }
+        getView(R.id.header_icon).setOnClickListener(this);
+        getView(R.id.mine_role).setOnClickListener(this);
+        getView(R.id.mine_credit_score).setOnClickListener(this);
+        getView(R.id.mine_menu_dynamic).setOnClickListener(this);
+        getView(R.id.mine_menu_myfollowed).setOnClickListener(this);
+        getView(R.id.mine_menu_followme).setOnClickListener(this);
+        getView(R.id.mine_wallet).setOnClickListener(this);
+        getView(R.id.mine_progress).setOnClickListener(this);
         mRecyclerView = getView(R.id.personal_recyclerview);
         bindRecyclerView();
         mPtrFrameLayout = refreshView(R.id.main_mine_refreshview, new RefreshUtil.OnRefresh() {
@@ -110,5 +120,45 @@ public class MainFragment4 extends BaseMainFragment {
        /* View headerView = LayoutInflater.from(
                 this.getContext()).inflate(R.layout.header_mine_dynamic_list, null);
         RecyclerViewUtils.setHeaderView(mRecyclerView, headerView);*/
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.attention_icon:
+                if(mIsMine){
+                    SettingActivity.startActivity(MainFragment4.this.getContext());
+                }else{
+                    //TODO 判断是否关注了
+
+                }
+                break;
+            case R.id.header_icon:
+                if(mIsMine){  //设置头像
+
+                }
+                break;
+            case R.id.mine_role:
+
+                break;
+            case R.id.mine_credit_score:
+
+                break;
+            case R.id.mine_menu_dynamic:
+
+                break;
+            case R.id.mine_menu_myfollowed:
+
+                break;
+            case R.id.mine_menu_followme:
+
+                break;
+            case R.id.mine_wallet:
+
+                break;
+            case R.id.mine_progress:
+
+                break;
+        }
     }
 }

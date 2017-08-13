@@ -14,6 +14,7 @@ import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
 import com.guohe.onegame.util.RefreshUtil;
 import com.guohe.onegame.view.adapter.MineDynamicGridAdapter;
+import com.guohe.onegame.view.mine.MineInfoActivity;
 import com.guohe.onegame.view.mine.MyWalletActivity;
 import com.guohe.onegame.view.mine.SettingActivity;
 
@@ -163,8 +164,8 @@ public class MainFragment4 extends BaseMainFragment implements View.OnClickListe
                 }
                 break;
             case R.id.header_icon:
-                if(mIsMine){  //设置头像
-
+                if(mIsMine){  //个人信息
+                    MineInfoActivity.startActivity(MainFragment4.this.getContext());
                 }
                 break;
             case R.id.mine_role:

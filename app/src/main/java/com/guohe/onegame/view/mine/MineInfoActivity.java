@@ -2,7 +2,6 @@ package com.guohe.onegame.view.mine;
 
 import android.content.Context;
 import android.content.Intent;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -14,10 +13,10 @@ import java.util.List;
 
 /**
  * Created by 水寒 on 2017/8/13.
- * 我的钱包
+ * 个人信息界面
  */
 
-public class MyWalletActivity extends BaseActivity {
+public class MineInfoActivity extends BaseActivity {
 
     @Override
     public void initPresenter(List<MvpPresenter> presenters) {
@@ -26,15 +25,7 @@ public class MyWalletActivity extends BaseActivity {
 
     @Override
     protected void customeToolbar(TextView titleText, TextView toolbarMenu, ImageButton moreButton) {
-        titleText.setText("我的钱包");
-        toolbarMenu.setVisibility(View.VISIBLE);
-        toolbarMenu.setText("明细");
-        toolbarMenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                WalletDetailActivity.startActivity(MyWalletActivity.this);
-            }
-        });
+        titleText.setText("个人信息");
     }
 
     @Override
@@ -44,17 +35,12 @@ public class MyWalletActivity extends BaseActivity {
 
     @Override
     protected int getContentView() {
-        return R.layout.activity_mywallet;
+        return R.layout.activity_mine_info;
     }
 
     @Override
     protected void initView() {
-        findViewById(R.id.to_recharge_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                RechargeActivity.startActivity(MyWalletActivity.this);
-            }
-        });
+
     }
 
     @Override
@@ -63,7 +49,7 @@ public class MyWalletActivity extends BaseActivity {
     }
 
     public static void startActivity(Context context){
-        Intent intent = new Intent(context, MyWalletActivity.class);
+        Intent intent = new Intent(context, MineInfoActivity.class);
         context.startActivity(intent);
     }
 }

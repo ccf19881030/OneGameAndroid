@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/app_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/toolbar_common"
+        android:layout_width="match_parent"
+        android:layout_height="44dip"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dip"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="头像"
+            android:layout_marginLeft="19dip"
+            android:layout_centerVertical="true"
+            android:textSize="14sp"
+            android:textColor="@color/app_textcolor"/>
+
+        <ImageView
+            android:id="@+id/mine_head_back_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerInside"
+            android:layout_marginLeft="12dip"
+            android:layout_marginRight="15dip"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_arrow_next"/>
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_width="57dip"
+            android:layout_height="57dip"
+            app:actualImageScaleType="fitXY"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/mine_head_back_arrow"
+            app:placeholderImage="@mipmap/default_header"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_splite_line"
+            android:layout_marginLeft="14dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dip"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="昵称"
+            android:layout_marginLeft="19dip"
+            android:layout_centerVertical="true"
+            android:textSize="14sp"
+            android:textColor="@color/app_textcolor"/>
+
+        <ImageView
+            android:id="@+id/mine_nickname_back_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerInside"
+            android:layout_marginLeft="12dip"
+            android:layout_marginRight="15dip"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_arrow_next"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="星期天的午餐"
+            android:textSize="11dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/mine_nickname_back_arrow"
+            android:textColor="@color/app_second_textcolor"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_splite_line"
+            android:layout_marginLeft="14dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dip"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="姓名"
+            android:layout_marginLeft="19dip"
+            android:layout_centerVertical="true"
+            android:textSize="14sp"
+            android:textColor="@color/app_textcolor"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="周杰伦"
+            android:textSize="11dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="21dip"
+            android:layout_centerVertical="true"
+            android:textColor="@color/app_second_textcolor"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_splite_line"
+            android:layout_marginLeft="14dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dip"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="实名认证"
+            android:layout_marginLeft="19dip"
+            android:layout_centerVertical="true"
+            android:textSize="14sp"
+            android:textColor="@color/app_textcolor"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="未认证"
+            android:textSize="11dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="21dip"
+            android:layout_centerVertical="true"
+            android:textColor="@color/app_second_textcolor"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_splite_line"
+            android:layout_marginLeft="14dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dip"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="手机号"
+            android:layout_marginLeft="19dip"
+            android:layout_centerVertical="true"
+            android:textSize="14sp"
+            android:textColor="@color/app_textcolor"/>
+
+        <ImageView
+            android:id="@+id/mine_mobile_back_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerInside"
+            android:layout_marginLeft="12dip"
+            android:layout_marginRight="15dip"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_arrow_next"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="18034123225"
+            android:textSize="11dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/mine_mobile_back_arrow"
+            android:textColor="@color/app_second_textcolor"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_splite_line"
+            android:layout_marginLeft="14dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dip"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="微信"
+            android:layout_marginLeft="19dip"
+            android:layout_centerVertical="true"
+            android:textSize="14sp"
+            android:textColor="@color/app_textcolor"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="未绑定"
+            android:textSize="11dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="21dip"
+            android:layout_centerVertical="true"
+            android:textColor="@color/app_second_textcolor"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_splite_line"
+            android:layout_marginLeft="14dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dip"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="QQ"
+            android:layout_marginLeft="19dip"
+            android:layout_centerVertical="true"
+            android:textSize="14sp"
+            android:textColor="@color/app_textcolor"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="未绑定"
+            android:textSize="11dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="21dip"
+            android:layout_centerVertical="true"
+            android:textColor="@color/app_second_textcolor"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_splite_line"
+            android:layout_marginLeft="14dp"/>
+    </RelativeLayout>
+</LinearLayout>

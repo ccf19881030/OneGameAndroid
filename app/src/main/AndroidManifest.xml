@@ -38,6 +38,15 @@
         <activity android:name=".view.mine.MyWalletActivity"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".view.mine.RechargeActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".view.mine.WalletDetailActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".view.mine.MineInfoActivity"
+            android:screenOrientation="portrait"/>
+
         <activity android:name=".view.DebugActivity"
             android:screenOrientation="portrait"/>
 

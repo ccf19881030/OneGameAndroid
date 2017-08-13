@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/app_background"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/item_wallet_detail_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="付款成功"
+        android:layout_marginLeft="19dip"
+        android:textSize="14sp"
+        android:textColor="@color/app_textcolor"
+        android:layout_marginTop="14dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="50.00元"
+        android:textSize="14sp"
+        android:layout_marginRight="15dip"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@id/item_wallet_detail_title"
+        android:textColor="@color/colorAccent" />
+
+    <TextView
+        android:id="@+id/item_wallet_detail_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:text="2017-08-12 11:22"
+        android:layout_marginLeft="19dip"
+        android:layout_below="@id/item_wallet_detail_title"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="12dp"
+        android:textColor="@color/app_second_textcolor"/>
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="支付宝支付"
+        android:textColor="@color/app_second_textcolor"
+        android:textSize="12sp"
+        android:layout_marginRight="15dip"
+        android:layout_alignBottom="@id/item_wallet_detail_time"
+        android:layout_alignParentRight="true"/>
+    
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="14dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/app_splite_line"/>
+</RelativeLayout>

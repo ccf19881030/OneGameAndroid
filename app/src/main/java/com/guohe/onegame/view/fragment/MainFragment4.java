@@ -120,6 +120,7 @@ public class MainFragment4 extends BaseMainFragment implements View.OnClickListe
                 }
             }
         });
+
     }
 
     private NickNameHideListener mNickNameHideListener;

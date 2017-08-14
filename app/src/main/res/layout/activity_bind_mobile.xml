@@ -8,4 +8,64 @@
     <include layout="@layout/toolbar_common"
         android:layout_width="match_parent"
         android:layout_height="44dip"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dip"
+        android:layout_marginTop="20dip"
+        android:orientation="horizontal">
+
+        <EditText
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="9dip"
+            android:layout_marginRight="7dip"
+            android:textColorHint="@color/app_second_textcolor"
+            android:hint="请输入您的手机号码"
+            android:maxLength="15"
+            android:inputType="numberSigned"
+            android:textColor="@color/app_textcolor"
+            android:textSize="14sp"
+            android:paddingLeft="25dip"
+            android:paddingRight="25dip"
+            android:background="@color/app_not_choosed_bg"/>
+
+        <Button
+            android:layout_width="94dip"
+            android:layout_height="match_parent"
+            android:background="@color/colorAccent"
+            android:layout_marginRight="9dip"
+            android:textSize="14sp"
+            android:textColor="@android:color/white"
+            android:text="获取验证码"/>
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="44dip"
+        android:layout_marginTop="11dip"
+        android:layout_marginLeft="9dip"
+        android:layout_marginRight="9dip"
+        android:textColorHint="@color/app_second_textcolor"
+        android:hint="请输入验证码"
+        android:maxLength="8"
+        android:inputType="numberSigned"
+        android:textColor="@color/app_textcolor"
+        android:textSize="14sp"
+        android:paddingLeft="25dip"
+        android:paddingRight="25dip"
+        android:background="@color/app_not_choosed_bg"/>
+
+    <Button
+        android:id="@+id/bind_mobile_submit"
+        android:layout_width="match_parent"
+        android:layout_height="44dip"
+        android:layout_marginLeft="9dip"
+        android:layout_marginRight="9dip"
+        android:background="@color/colorAccent"
+        android:layout_marginTop="21dip"
+        android:textColor="@android:color/white"
+        android:text="授权一场绑定手机号"
+        android:textSize="14sp"/>
 </LinearLayout>

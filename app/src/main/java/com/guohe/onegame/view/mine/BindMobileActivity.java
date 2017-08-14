@@ -2,6 +2,7 @@ package com.guohe.onegame.view.mine;
 
 import android.content.Context;
 import android.content.Intent;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -40,7 +41,12 @@ public class BindMobileActivity extends BaseActivity{
 
     @Override
     protected void initView() {
-
+        getView(R.id.bind_mobile_submit).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BindSuccessActivity.startActivity(BindMobileActivity.this);
+            }
+        });
     }
 
     @Override

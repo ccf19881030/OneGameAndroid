@@ -57,6 +57,9 @@
         <activity android:name=".view.mine.MyProcessActivity"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".view.mine.BindMobileActivity"
+            android:screenOrientation="portrait"/>
+
         <activity android:name=".view.DebugActivity"
             android:screenOrientation="portrait"/>
 

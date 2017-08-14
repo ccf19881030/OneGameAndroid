@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.InputType;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -67,6 +68,7 @@ public class MineInfoActivity extends BaseActivity implements View.OnClickListen
     protected void initView() {
         getView(R.id.mine_info_head).setOnClickListener(this);
         getView(R.id.mine_info_role).setOnClickListener(this);
+        getView(R.id.mine_info_age).setOnClickListener(this);
         getView(R.id.mine_info_nickname).setOnClickListener(this);
         getView(R.id.mine_info_name).setOnClickListener(this);
         getView(R.id.mine_info_certification).setOnClickListener(this);
@@ -112,8 +114,31 @@ public class MineInfoActivity extends BaseActivity implements View.OnClickListen
             case R.id.mine_info_role:
 
                 break;
-            case R.id.mine_info_nickname:
+            case R.id.mine_info_age:
+                new MaterialDialog.Builder(this)
+                        .title("修改年龄")
+                        .content("年龄不能小于18岁，不能大于60岁")
+                        .inputRangeRes(2, 2, R.color.app_error)
+                        .inputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_TEXT_VARIATION_NORMAL)
+                        .input("输入年龄", "", new MaterialDialog.InputCallback() {
+                            @Override
+                            public void onInput(MaterialDialog dialog, CharSequence input) {
 
+                            }
+                        }).show();
+                break;
+            case R.id.mine_info_nickname:
+                new MaterialDialog.Builder(this)
+                        .title("修改昵称")
+                        .content("昵称最长不能超过8个字，最短不能小于2个字")
+                        .inputRangeRes(2, 8, R.color.app_error)
+                        .inputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL)
+                        .input("新昵称...", "", new MaterialDialog.InputCallback() {
+                            @Override
+                            public void onInput(MaterialDialog dialog, CharSequence input) {
+
+                            }
+                        }).show();
                 break;
             case R.id.mine_info_name:
 
@@ -122,7 +147,7 @@ public class MineInfoActivity extends BaseActivity implements View.OnClickListen
 
                 break;
             case R.id.mine_info_mobile:
-
+                BindMobileActivity.startActivity(this);
                 break;
             case R.id.mine_info_weixin:
 

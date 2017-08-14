@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/app_background"
     android:layout_width="match_parent"
@@ -255,15 +256,19 @@
         android:layout_height="0dip"
         android:layout_weight="1"/>
 
-    <TextView
+    <com.guohe.onegame.custome.AutoLinkStyleTextView
+        android:id="@+id/recharge_protocl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:gravity="center_horizontal"
-        android:textSize="10sp"
-        android:textColor="#898989"
+        android:textSize="12sp"
         android:lineSpacingMultiplier="1.2"
-        android:text="点击充值，即表示已阅读并同意充值协议\n一场不会以任何形式要求您输入银行账户和密码"/>
+        android:textColor="#898989"
+        android:text="点击去充值，即表示已阅读并同意“充值协议”\n一场不会以任何形式要求您输入银行账户和密码"
+        app:AutoLinkStyleTextView_text_value="“充值协议”,"
+        app:AutoLinkStyleTextView_default_color="@color/colorAccent"
+        app:AutoLinkStyleTextView_has_under_line="false"/>
     <Button
         android:id="@+id/to_recharge_button"
         android:layout_width="match_parent"

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AutoLinkStyleTextView">
+        <attr name="AutoLinkStyleTextView_text_value" format="string|reference"/>//key word with color and underline, and split with ','(en)
+        <attr name="AutoLinkStyleTextView_default_color" format="color|reference"/>//word and underline's color
+        <attr name="AutoLinkStyleTextView_has_under_line" format="boolean"/>//underline with true and false
+    </declare-styleable>
+</resources>

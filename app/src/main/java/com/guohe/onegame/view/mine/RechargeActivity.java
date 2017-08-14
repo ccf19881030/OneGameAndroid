@@ -8,9 +8,11 @@ import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
+import com.guohe.onegame.custome.AutoLinkStyleTextView;
 import com.guohe.onegame.view.base.BaseActivity;
 
 import java.util.List;
@@ -84,6 +86,16 @@ public class RechargeActivity extends BaseActivity {
             public void onClick(View v) {
                 mWxRadioButton.setChecked(false);
                 mHongbaoRadioButton.setChecked(false);
+            }
+        });
+
+        AutoLinkStyleTextView autoLinkTextView = getView(R.id.recharge_protocl);
+        autoLinkTextView.setOnClickCallBack(new AutoLinkStyleTextView.ClickCallBack() {
+            @Override
+            public void onClick(int position) {
+                if (position == 0) {
+                    Toast.makeText(RechargeActivity.this, "充值协议", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

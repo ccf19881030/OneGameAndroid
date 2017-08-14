@@ -139,6 +139,49 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/mine_info_age"
+        android:layout_width="match_parent"
+        android:layout_height="44dip"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="年龄"
+            android:layout_marginLeft="19dip"
+            android:layout_centerVertical="true"
+            android:textSize="14sp"
+            android:textColor="@color/app_textcolor"/>
+
+        <ImageView
+            android:id="@+id/mine_age_back_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerInside"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="15dip"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_arrow_next"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="23岁"
+            android:textSize="12sp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/mine_age_back_arrow"
+            android:textColor="@color/app_second_textcolor"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_splite_line"
+            android:layout_marginLeft="14dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/mine_info_name"
         android:layout_width="match_parent"
         android:layout_height="44dip"

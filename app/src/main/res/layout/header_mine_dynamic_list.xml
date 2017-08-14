@@ -47,7 +47,7 @@
             android:text="信用积分152"
             android:textSize="12sp"
             android:gravity="center"
-            android:background="@mipmap/mine_jifen_bg"
+            android:background="@drawable/mine_tag_nomal_bg"
             android:textColor="@color/app_textcolor"/>
 
         <LinearLayout

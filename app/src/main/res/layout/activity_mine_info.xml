@@ -53,6 +53,50 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/mine_info_role"
+        android:layout_width="match_parent"
+        android:layout_height="44dip"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="身份"
+            android:layout_marginLeft="19dip"
+            android:layout_centerVertical="true"
+            android:textSize="14sp"
+            android:textColor="@color/app_textcolor"/>
+
+        <ImageView
+            android:id="@+id/mine_role_back_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerInside"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="15dip"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_arrow_next"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="球员"
+            android:textSize="12sp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/mine_role_back_arrow"
+            android:textColor="@color/app_second_textcolor"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_splite_line"
+            android:layout_marginLeft="14dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/mine_info_nickname"
         android:layout_width="match_parent"
         android:layout_height="44dip"
         android:orientation="horizontal">
@@ -71,7 +115,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:scaleType="centerInside"
-            android:layout_marginLeft="12dip"
+            android:layout_marginLeft="10dip"
             android:layout_marginRight="15dip"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
@@ -81,7 +125,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="星期天的午餐"
-            android:textSize="11dp"
+            android:textSize="12sp"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@id/mine_nickname_back_arrow"
             android:textColor="@color/app_second_textcolor"/>
@@ -95,6 +139,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/mine_info_name"
         android:layout_width="match_parent"
         android:layout_height="44dip"
         android:orientation="horizontal">
@@ -112,7 +157,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="周杰伦"
-            android:textSize="11dp"
+            android:textSize="12sp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="21dip"
             android:layout_centerVertical="true"
@@ -127,6 +172,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/mine_info_certification"
         android:layout_width="match_parent"
         android:layout_height="44dip"
         android:orientation="horizontal">
@@ -144,7 +190,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="未认证"
-            android:textSize="11dp"
+            android:textSize="12sp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="21dip"
             android:layout_centerVertical="true"
@@ -159,6 +205,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/mine_info_mobile"
         android:layout_width="match_parent"
         android:layout_height="44dip"
         android:orientation="horizontal">
@@ -177,7 +224,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:scaleType="centerInside"
-            android:layout_marginLeft="12dip"
+            android:layout_marginLeft="10dip"
             android:layout_marginRight="15dip"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
@@ -187,7 +234,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="18034123225"
-            android:textSize="11dp"
+            android:textSize="12sp"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@id/mine_mobile_back_arrow"
             android:textColor="@color/app_second_textcolor"/>
@@ -201,6 +248,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/mine_info_weixin"
         android:layout_width="match_parent"
         android:layout_height="44dip"
         android:orientation="horizontal">
@@ -218,7 +266,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="未绑定"
-            android:textSize="11dp"
+            android:textSize="12sp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="21dip"
             android:layout_centerVertical="true"
@@ -233,6 +281,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/mine_info_qq"
         android:layout_width="match_parent"
         android:layout_height="44dip"
         android:orientation="horizontal">
@@ -250,7 +299,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="未绑定"
-            android:textSize="11dp"
+            android:textSize="12sp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="21dip"
             android:layout_centerVertical="true"

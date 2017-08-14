@@ -66,6 +66,13 @@ public class MineInfoActivity extends BaseActivity implements View.OnClickListen
     @Override
     protected void initView() {
         getView(R.id.mine_info_head).setOnClickListener(this);
+        getView(R.id.mine_info_role).setOnClickListener(this);
+        getView(R.id.mine_info_nickname).setOnClickListener(this);
+        getView(R.id.mine_info_name).setOnClickListener(this);
+        getView(R.id.mine_info_certification).setOnClickListener(this);
+        getView(R.id.mine_info_mobile).setOnClickListener(this);
+        getView(R.id.mine_info_weixin).setOnClickListener(this);
+        getView(R.id.mine_info_qq).setOnClickListener(this);
     }
 
     @Override
@@ -101,6 +108,27 @@ public class MineInfoActivity extends BaseActivity implements View.OnClickListen
                             }
                         })
                         .show();
+                break;
+            case R.id.mine_info_role:
+
+                break;
+            case R.id.mine_info_nickname:
+
+                break;
+            case R.id.mine_info_name:
+
+                break;
+            case R.id.mine_info_certification:
+
+                break;
+            case R.id.mine_info_mobile:
+
+                break;
+            case R.id.mine_info_weixin:
+
+                break;
+            case R.id.mine_info_qq:
+
                 break;
         }
     }

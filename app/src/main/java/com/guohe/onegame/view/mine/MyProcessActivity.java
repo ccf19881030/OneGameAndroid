@@ -12,11 +12,11 @@ import com.guohe.onegame.view.base.BaseActivity;
 import java.util.List;
 
 /**
- * Created by 水寒 on 2017/8/13.
- * 设置界面
+ * Created by 水寒 on 2017/8/14.
+ * 我的生涯
  */
 
-public class SettingActivity extends BaseActivity{
+public class MyProcessActivity extends BaseActivity{
 
     @Override
     public void initPresenter(List<MvpPresenter> presenters) {
@@ -25,7 +25,7 @@ public class SettingActivity extends BaseActivity{
 
     @Override
     protected void customeToolbar(TextView titleText, TextView toolbarMenu, ImageButton moreButton) {
-        titleText.setText("设置");
+        titleText.setText("我的生涯");
     }
 
     @Override
@@ -35,7 +35,7 @@ public class SettingActivity extends BaseActivity{
 
     @Override
     protected int getContentView() {
-        return R.layout.activity_setting;
+        return R.layout.activity_myprocess;
     }
 
     @Override
@@ -49,7 +49,7 @@ public class SettingActivity extends BaseActivity{
     }
 
     public static void startActivity(Context context){
-        Intent intent = new Intent(context, SettingActivity.class);
+        Intent intent = new Intent(context, MyProcessActivity.class);
         context.startActivity(intent);
     }
 }

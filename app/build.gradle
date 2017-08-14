@@ -60,4 +60,6 @@ dependencies {
     compile 'com.jude:rollviewpager:1.4.5'
     //滑动返回
     compile 'com.r0adkll:slidableactivity:2.0.5'
+    //对话框
+    compile 'com.afollestad.material-dialogs:core:0.9.4.5'
 }

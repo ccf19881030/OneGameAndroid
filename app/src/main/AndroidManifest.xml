@@ -23,7 +23,8 @@
 
         <activity
             android:name=".view.MainActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask">
         </activity>
 
         <activity android:name=".view.mine.PersonalPageActivity"
@@ -45,6 +46,15 @@
             android:screenOrientation="portrait"/>
 
         <activity android:name=".view.mine.MineInfoActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".view.mine.MyFollowdActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".view.mine.MyFansActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".view.mine.MyProcessActivity"
             android:screenOrientation="portrait"/>
 
         <activity android:name=".view.DebugActivity"

@@ -15,6 +15,9 @@ import com.guohe.onegame.R;
 import com.guohe.onegame.util.RefreshUtil;
 import com.guohe.onegame.view.adapter.MineDynamicGridAdapter;
 import com.guohe.onegame.view.mine.MineInfoActivity;
+import com.guohe.onegame.view.mine.MyFansActivity;
+import com.guohe.onegame.view.mine.MyFollowdActivity;
+import com.guohe.onegame.view.mine.MyProcessActivity;
 import com.guohe.onegame.view.mine.MyWalletActivity;
 import com.guohe.onegame.view.mine.SettingActivity;
 
@@ -178,16 +181,16 @@ public class MainFragment4 extends BaseMainFragment implements View.OnClickListe
 
                 break;
             case R.id.mine_menu_myfollowed:
-
+                MyFollowdActivity.startActivity(MainFragment4.this.getContext());
                 break;
             case R.id.mine_menu_followme:
-
+                MyFansActivity.startActivity(MainFragment4.this.getContext());
                 break;
             case R.id.mine_wallet:
                 MyWalletActivity.startActivity(MainFragment4.this.getContext());
                 break;
             case R.id.mine_progress:
-
+                MyProcessActivity.startActivity(MainFragment4.this.getContext());
                 break;
         }
     }

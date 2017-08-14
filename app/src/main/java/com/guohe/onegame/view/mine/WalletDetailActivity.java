@@ -12,9 +12,12 @@ import android.widget.TextView;
 
 import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
+import com.guohe.onegame.util.RefreshUtil;
 import com.guohe.onegame.view.base.BaseActivity;
 
 import java.util.List;
+
+import in.srain.cube.views.ptr.PtrFrameLayout;
 
 /**
  * Created by 水寒 on 2017/8/13.
@@ -50,6 +53,12 @@ public class WalletDetailActivity extends BaseActivity{
     protected void initView() {
         mRecyclerView = getView(R.id.wallet_detail_recyclerview);
         bindRecyclerView();
+        refreshView(R.id.wallet_detail_refreshview, new RefreshUtil.OnRefresh() {
+            @Override
+            public void refreshBegin(PtrFrameLayout frame) {
+
+            }
+        });
     }
 
     private void bindRecyclerView(){

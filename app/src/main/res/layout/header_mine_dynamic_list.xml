@@ -73,10 +73,11 @@
             <ImageButton
                 android:id="@+id/attention_icon"
                 android:layout_alignTop="@id/mine_nickname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="34dip"
+                android:layout_width="40dip"
+                android:layout_height="20dip"
+                android:layout_marginRight="24dip"
                 android:background="@null"
+                android:scaleType="centerInside"
                 android:src="@mipmap/icon_setting"/>
         </LinearLayout>
 

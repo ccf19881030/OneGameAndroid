@@ -69,6 +69,12 @@
         <activity android:name=".view.mine.AboutUsActivity"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".view.circle.MoreMenuActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".view.circle.DynamicDetailActivity"
+            android:screenOrientation="portrait"/>
+
         <activity android:name=".view.DebugActivity"
             android:screenOrientation="portrait"/>
 

@@ -10,6 +10,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.guohe.onegame.R;
 import com.guohe.onegame.manage.config.GlobalConfigManage;
 import com.guohe.onegame.util.FrescoUtils;
+import com.guohe.onegame.view.circle.DynamicDetailActivity;
 
 /**
  * Created by 水寒 on 2017/8/12.
@@ -40,6 +41,12 @@ public class MineDynamicGridAdapter extends RecyclerView.Adapter<MineDynamicGrid
     public void onBindViewHolder(MineDynamicViewHolder holder, int position) {
         FrescoUtils.loadRes(holder.mDrawView, testImgs[position % testImgs.length],
                 null, mDiment, mDiment, null);
+        holder.mItemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DynamicDetailActivity.startActivity(mContext);
+            }
+        });
     }
 
     @Override
@@ -50,8 +57,10 @@ public class MineDynamicGridAdapter extends RecyclerView.Adapter<MineDynamicGrid
     public class MineDynamicViewHolder extends RecyclerView.ViewHolder{
 
         private SimpleDraweeView mDrawView;
+        private View mItemView;
         public MineDynamicViewHolder(View itemView) {
             super(itemView);
+            mItemView = itemView;
             mDrawView = (SimpleDraweeView) itemView.findViewById(R.id.mine_dynamic_item_drawview);
             ViewGroup.LayoutParams params = mDrawView.getLayoutParams();
             params.height = mDiment;

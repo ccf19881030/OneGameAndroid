@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
 import com.guohe.onegame.view.base.BaseActivity;
+import com.guohe.onegame.view.circle.MoreMenuActivity;
 import com.guohe.onegame.view.fragment.MainFragment4;
 import com.jaeger.library.StatusBarUtil;
 
@@ -46,7 +47,7 @@ public class PersonalPageActivity extends BaseActivity {
         moreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                MoreMenuActivity.startActivity(PersonalPageActivity.this);
             }
         });
     }

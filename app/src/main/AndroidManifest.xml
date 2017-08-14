@@ -63,6 +63,12 @@
         <activity android:name=".view.mine.BindSuccessActivity"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".view.mine.FeadbackActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".view.mine.AboutUsActivity"
+            android:screenOrientation="portrait"/>
+
         <activity android:name=".view.DebugActivity"
             android:screenOrientation="portrait"/>
 

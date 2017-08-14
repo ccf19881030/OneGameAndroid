@@ -10,5 +10,5 @@
     <color name="app_second_textcolor">#8f9296</color>
 
     <color name="app_not_choosed_bg">#f2f2f2</color>
-    <color name="app_error">#a1453d</color>
+    <color name="app_error">#ff5c1c</color>
 </resources>

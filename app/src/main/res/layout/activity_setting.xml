@@ -9,4 +9,139 @@
         android:layout_width="match_parent"
         android:layout_height="44dip"/>
 
+    <RelativeLayout
+        android:id="@+id/setting_abutus"
+        android:layout_width="match_parent"
+        android:layout_height="44dip">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/app_textcolor"
+            android:textSize="14sp"
+            android:text="关于我们"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="19dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dip"
+            android:layout_centerVertical="true"
+            android:scaleType="centerInside"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/icon_arrow_next"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_splite_line"
+            android:layout_marginLeft="14dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/setting_clearcatch"
+        android:layout_width="match_parent"
+        android:layout_height="44dip">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/app_textcolor"
+            android:textSize="14sp"
+            android:text="清理缓存"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="19dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dip"
+            android:layout_centerVertical="true"
+            android:scaleType="centerInside"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/icon_arrow_next"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_splite_line"
+            android:layout_marginLeft="14dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/setting_evaluate"
+        android:layout_width="match_parent"
+        android:layout_height="44dip">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/app_textcolor"
+            android:textSize="14sp"
+            android:text="给一场个好评吧"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="19dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dip"
+            android:layout_centerVertical="true"
+            android:scaleType="centerInside"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/icon_arrow_next"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_splite_line"
+            android:layout_marginLeft="14dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/setting_feadback"
+        android:layout_width="match_parent"
+        android:layout_height="44dip">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/app_textcolor"
+            android:textSize="14sp"
+            android:text="意见反馈"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="19dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dip"
+            android:layout_centerVertical="true"
+            android:scaleType="centerInside"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/icon_arrow_next"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_splite_line"
+            android:layout_marginLeft="14dp"/>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/setting_logout"
+        android:layout_width="match_parent"
+        android:layout_height="44dip"
+        android:textSize="14sp"
+        android:textColor="@android:color/white"
+        android:text="退出登录"
+        android:background="@color/colorAccent"
+        android:layout_marginTop="20dip"
+        android:layout_marginLeft="14dip"
+        android:layout_marginRight="14dip"/>
 </LinearLayout>

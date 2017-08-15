@@ -209,10 +209,10 @@ public class FrescoUtils {
      * @param draweeView
      * @param bgColor 圆形遮罩的颜色,应该与背景色一致
      */
-    public static void setCircle( SimpleDraweeView draweeView,int bgColor){
+    public static void setCircle( SimpleDraweeView draweeView, int bgColor){
         RoundingParams roundingParams = RoundingParams.asCircle();//这个方法在某些情况下无法成圆,比如gif
         if(bgColor > 0) {
-            roundingParams.setOverlayColor(bgColor);//加一层遮罩
+            roundingParams.setOverlayColor(bgColor);//加一层遮罩;
         }
         draweeView.getHierarchy().setRoundingParams(roundingParams);
     }

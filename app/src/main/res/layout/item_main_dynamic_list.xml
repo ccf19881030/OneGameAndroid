@@ -13,6 +13,10 @@
         app:actualImageScaleType="fitXY"
         android:layout_marginTop="17dip"
         android:layout_marginLeft="18dip"
+        app:roundedCornerRadius="15dp"
+        app:roundWithOverlayColor="@color/app_background"
+        app:roundingBorderWidth="1px"
+        app:roundingBorderColor="@color/app_splite_line"
         app:placeholderImage="@mipmap/default_header"/>
 
     <TextView

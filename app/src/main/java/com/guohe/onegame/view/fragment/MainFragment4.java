@@ -13,7 +13,10 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
+import com.guohe.onegame.util.DimenUtil;
+import com.guohe.onegame.util.FrescoUtils;
 import com.guohe.onegame.util.RefreshUtil;
+import com.guohe.onegame.util.TestImageUtil;
 import com.guohe.onegame.view.adapter.MineDynamicGridAdapter;
 import com.guohe.onegame.view.mine.MineInfoActivity;
 import com.guohe.onegame.view.mine.MyFansActivity;
@@ -56,7 +59,8 @@ public class MainFragment4 extends BaseMainFragment implements View.OnClickListe
 
     @Override
     protected void initData() {
-
+        FrescoUtils.setCircle(mHeaderDraw, getResources().getColor(R.color.app_background));
+        FrescoUtils.loadRes(mHeaderDraw, TestImageUtil.getHeadImgRes(), null, DimenUtil.dp2px(57), DimenUtil.dp2px(57), null);
     }
 
     @Override

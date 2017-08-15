@@ -10,6 +10,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.guohe.onegame.R;
 import com.guohe.onegame.manage.config.GlobalConfigManage;
 import com.guohe.onegame.util.FrescoUtils;
+import com.guohe.onegame.util.TestImageUtil;
 import com.guohe.onegame.view.circle.DynamicDetailActivity;
 
 /**
@@ -17,11 +18,6 @@ import com.guohe.onegame.view.circle.DynamicDetailActivity;
  */
 
 public class MineDynamicGridAdapter extends RecyclerView.Adapter<MineDynamicGridAdapter.MineDynamicViewHolder>{
-
-    private int[] testImgs = {R.mipmap.test_img1, R.mipmap.test_img2,
-        R.mipmap.test_img3, R.mipmap.test_img4,
-        R.mipmap.test_img5, R.mipmap.test_img6,
-        R.mipmap.test_img7, R.mipmap.test_img8};
 
     private Context mContext;
     private int mDiment;
@@ -39,7 +35,7 @@ public class MineDynamicGridAdapter extends RecyclerView.Adapter<MineDynamicGrid
 
     @Override
     public void onBindViewHolder(MineDynamicViewHolder holder, int position) {
-        FrescoUtils.loadRes(holder.mDrawView, testImgs[position % testImgs.length],
+        FrescoUtils.loadRes(holder.mDrawView, TestImageUtil.getDynamicImgRes(),
                 null, mDiment, mDiment, null);
         holder.mItemView.setOnClickListener(new View.OnClickListener() {
             @Override

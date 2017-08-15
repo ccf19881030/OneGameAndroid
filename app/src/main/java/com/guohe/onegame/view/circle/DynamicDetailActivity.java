@@ -23,6 +23,7 @@ import com.guohe.onegame.manage.config.GlobalConfigManage;
 import com.guohe.onegame.util.DimenUtil;
 import com.guohe.onegame.util.FrescoUtils;
 import com.guohe.onegame.util.LogUtil;
+import com.guohe.onegame.util.TestImageUtil;
 import com.guohe.onegame.view.base.BaseActivity;
 import com.guohe.onegame.view.mine.PersonalPageActivity;
 import com.jph.takephoto.app.TakePhoto;
@@ -148,7 +149,7 @@ public class DynamicDetailActivity extends BaseActivity implements TakePhoto.Tak
 
     @Override
     protected void initData() {
-        FrescoUtils.loadRes(mPicture, R.mipmap.test_img1, null, 0, 0, null);
+        FrescoUtils.loadRes(mPicture, TestImageUtil.getDynamicImgRes(), null, 0, 0, null);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(DimenUtil.dp2px(15), DimenUtil.dp2px(15));
         params.setMargins(0, 0, DimenUtil.dp2px(3), 0);
         mFollowdArea.removeAllViews();

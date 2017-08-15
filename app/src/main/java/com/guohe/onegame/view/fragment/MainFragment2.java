@@ -25,6 +25,7 @@ import com.guohe.onegame.util.DimenUtil;
 import com.guohe.onegame.util.FrescoUtils;
 import com.guohe.onegame.util.LogUtil;
 import com.guohe.onegame.util.RefreshUtil;
+import com.guohe.onegame.util.TestImageUtil;
 import com.guohe.onegame.view.circle.DynamicDetailActivity;
 import com.guohe.onegame.view.circle.ImageFilterActivity;
 import com.guohe.onegame.view.circle.MoreMenuActivity;
@@ -159,7 +160,8 @@ public class MainFragment2 extends BaseMainFragment implements TakePhoto.TakeRes
 
         @Override
         public void onBindViewHolder(final DynamicViewHolder holder, int position) {
-            FrescoUtils.loadRes(holder.mPicture, R.mipmap.test_img1, null, 0, 0, null);
+            FrescoUtils.loadRes(holder.mPicture, TestImageUtil.getDynamicImgRes(), null, 0, 0, null);
+            FrescoUtils.loadRes(holder.mHead, TestImageUtil.getHeadImgRes(), null, DimenUtil.dp2px(30), DimenUtil.dp2px(30), null);
             holder.mPicture.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -172,8 +174,8 @@ public class MainFragment2 extends BaseMainFragment implements TakePhoto.TakeRes
                     PersonalPageActivity.startActivity(MainFragment2.this.getContext());
                 }
             });
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(DimenUtil.dp2px(15), DimenUtil.dp2px(15));
-            params.setMargins(0, 0, DimenUtil.dp2px(3), 0);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(DimenUtil.dp2px(18), DimenUtil.dp2px(18));
+            params.setMargins(0, 0, DimenUtil.dp2px(5), 0);
             holder.mFollowdArea.removeAllViews();
             for(int i = 0 ; i < 5; i++){
                 SimpleDraweeView draweeView = new SimpleDraweeView(MainFragment2.this.getContext());
@@ -181,6 +183,8 @@ public class MainFragment2 extends BaseMainFragment implements TakePhoto.TakeRes
                 GenericDraweeHierarchy hierarchy = draweeView.getHierarchy();
                 hierarchy.setPlaceholderImage(R.mipmap.default_header);
                 hierarchy.setActualImageScaleType(ScalingUtils.ScaleType.FIT_XY);
+                FrescoUtils.setCircle(draweeView, getResources().getColor(R.color.app_background));
+                FrescoUtils.loadRes(draweeView, TestImageUtil.getHeadImgRes(), null, DimenUtil.dp2px(18), DimenUtil.dp2px(18), null);
                 holder.mFollowdArea.addView(draweeView);
                 draweeView.setOnClickListener(new View.OnClickListener() {
                     @Override

@@ -75,6 +75,9 @@
         <activity android:name=".view.circle.DynamicDetailActivity"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".view.circle.PublishDynamicActivity"
+            android:screenOrientation="portrait"/>
+
         <activity android:name=".view.DebugActivity"
             android:screenOrientation="portrait"/>
 

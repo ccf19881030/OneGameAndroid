@@ -18,6 +18,8 @@ import com.facebook.drawee.generic.GenericDraweeHierarchy;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
+import com.guohe.onegame.custome.SmallBang;
+import com.guohe.onegame.custome.SmallBangListener;
 import com.guohe.onegame.manage.config.GlobalConfigManage;
 import com.guohe.onegame.util.DimenUtil;
 import com.guohe.onegame.util.FrescoUtils;
@@ -59,6 +61,7 @@ public class MainFragment2 extends BaseMainFragment implements TakePhoto.TakeRes
     private int mScreenWidth;
     private int mRecyclerViewScrollState;
     private ViewGroup mToolbar;
+    private SmallBang mSamllBang;
 
     @Override
     public void initPresenter(List<MvpPresenter> presenters) {
@@ -82,6 +85,7 @@ public class MainFragment2 extends BaseMainFragment implements TakePhoto.TakeRes
 
     @Override
     protected void initView(View view) {
+        mSamllBang = SmallBang.attach2Window(this.getActivity());
         getView(R.id.takephoto_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -154,7 +158,7 @@ public class MainFragment2 extends BaseMainFragment implements TakePhoto.TakeRes
         }
 
         @Override
-        public void onBindViewHolder(DynamicViewHolder holder, int position) {
+        public void onBindViewHolder(final DynamicViewHolder holder, int position) {
             FrescoUtils.loadRes(holder.mPicture, R.mipmap.test_img1, null, 0, 0, null);
             holder.mPicture.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -191,6 +195,22 @@ public class MainFragment2 extends BaseMainFragment implements TakePhoto.TakeRes
                     MoreMenuActivity.startActivity(MainFragment2.this.getContext());
                 }
             });
+            holder.mFollowdButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mSamllBang.bang(view, new SmallBangListener() {
+                        @Override
+                        public void onAnimationStart() {
+                            holder.mFollowdButton.setImageResource(R.mipmap.icon_followed);
+                        }
+
+                        @Override
+                        public void onAnimationEnd() {
+
+                        }
+                    });
+                }
+            });
         }
 
         @Override
@@ -205,11 +225,13 @@ public class MainFragment2 extends BaseMainFragment implements TakePhoto.TakeRes
         private LinearLayout mFollowdArea;
         private ImageButton mMoreButton;
         private SimpleDraweeView mHead;
+        private ImageButton mFollowdButton;
         public DynamicViewHolder(View itemView) {
             super(itemView);
             mHead = (SimpleDraweeView) itemView.findViewById(R.id.item_dynamic_head);
             mMoreButton = (ImageButton) itemView.findViewById(R.id.item_dynamic_more);
             mFollowdArea = (LinearLayout) itemView.findViewById(R.id.item_dynamic_followd_head_area);
+            mFollowdButton = (ImageButton) itemView.findViewById(R.id.item_dynamic_followed_button);
             mPicture = (SimpleDraweeView) itemView.findViewById(R.id.item_dynamic_picture);
             ViewGroup.LayoutParams params = mPicture.getLayoutParams();
             params.height = mScreenWidth;

@@ -17,6 +17,8 @@ import com.facebook.drawee.generic.GenericDraweeHierarchy;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
+import com.guohe.onegame.custome.SmallBang;
+import com.guohe.onegame.custome.SmallBangListener;
 import com.guohe.onegame.manage.config.GlobalConfigManage;
 import com.guohe.onegame.util.DimenUtil;
 import com.guohe.onegame.util.FrescoUtils;
@@ -53,6 +55,8 @@ public class DynamicDetailActivity extends BaseActivity implements TakePhoto.Tak
     private LinearLayout mFollowdArea;
     private ImageButton mMoreButton;
     private SimpleDraweeView mHead;
+    private ImageButton mFollowButton;
+    private SmallBang mSamllBang;
 
     @Override
     public void initPresenter(List<MvpPresenter> presenters) {
@@ -102,6 +106,7 @@ public class DynamicDetailActivity extends BaseActivity implements TakePhoto.Tak
 
     @Override
     protected void initView() {
+        mSamllBang = SmallBang.attach2Window(this);
         mHead = getView(R.id.item_dynamic_head);
         mMoreButton = getView(R.id.item_dynamic_more);
         mFollowdArea = getView(R.id.item_dynamic_followd_head_area);
@@ -119,6 +124,24 @@ public class DynamicDetailActivity extends BaseActivity implements TakePhoto.Tak
             @Override
             public void onClick(View v) {
                 MoreMenuActivity.startActivity(DynamicDetailActivity.this);
+            }
+        });
+
+        mFollowButton = getView(R.id.dyanmic_detail_follow_button);
+        mFollowButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mSamllBang.bang(view, new SmallBangListener() {
+                    @Override
+                    public void onAnimationStart() {
+                        mFollowButton.setImageResource(R.mipmap.icon_followed);
+                    }
+
+                    @Override
+                    public void onAnimationEnd() {
+
+                    }
+                });
             }
         });
     }

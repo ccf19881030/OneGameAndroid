@@ -232,7 +232,7 @@ public class ImageUtils {
 
 
     public static String saveBitmap(Bitmap bitmap, String directory) {
-        File f = new File(directory, System.currentTimeMillis() + "");
+        File f = new File(directory, System.currentTimeMillis() + ".jpg");
         if (f.exists()) {
             f.delete();
         }

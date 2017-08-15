@@ -24,6 +24,7 @@ import com.guohe.onegame.util.FrescoUtils;
 import com.guohe.onegame.util.LogUtil;
 import com.guohe.onegame.util.RefreshUtil;
 import com.guohe.onegame.view.circle.DynamicDetailActivity;
+import com.guohe.onegame.view.circle.ImageFilterActivity;
 import com.guohe.onegame.view.circle.MoreMenuActivity;
 import com.guohe.onegame.view.mine.PersonalPageActivity;
 import com.jph.takephoto.app.TakePhoto;
@@ -84,7 +85,7 @@ public class MainFragment2 extends BaseMainFragment implements TakePhoto.TakeRes
         getView(R.id.takephoto_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new MaterialDialog.Builder(MainFragment2.this.getContext())
+               new MaterialDialog.Builder(MainFragment2.this.getContext())
                         .title("发布动态")
                         .items(R.array.take_photo_type)
                         .itemsCallback(new MaterialDialog.ListCallback() {
@@ -228,9 +229,9 @@ public class MainFragment2 extends BaseMainFragment implements TakePhoto.TakeRes
     }
 
     private void configCompress(TakePhoto takePhoto) {
-        int maxSize = 1024 * 100;  //50kb
-        int width = 800;
-        int height = 800;
+        int maxSize = 1024 * 1024;  //1M
+        int width = 1080;
+        int height = 1080;
         boolean showProgressBar = true;
         boolean enableRawFile = false;
         CompressConfig config;
@@ -282,7 +283,7 @@ public class MainFragment2 extends BaseMainFragment implements TakePhoto.TakeRes
     @Override
     public void takeSuccess(TResult result) {
         String imgPath = result.getImage().getCompressPath();
-
+        ImageFilterActivity.startActivity(MainFragment2.this.getContext(), imgPath);
     }
 
     @Override

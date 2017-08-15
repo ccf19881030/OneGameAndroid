@@ -78,6 +78,9 @@
         <activity android:name=".view.circle.PublishDynamicActivity"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".view.circle.ImageFilterActivity"
+            android:screenOrientation="portrait"/>
+
         <activity android:name=".view.DebugActivity"
             android:screenOrientation="portrait"/>
 

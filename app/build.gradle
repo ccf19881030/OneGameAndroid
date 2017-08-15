@@ -21,7 +21,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -30,7 +30,6 @@ dependencies {
     compile 'com.android.support:support-vector-drawable:25.3.1'
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:multidex:1.0.0'
-
     //okhttp
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.2.0'
@@ -62,4 +61,7 @@ dependencies {
     compile 'com.r0adkll:slidableactivity:2.0.5'
     //对话框
     compile 'com.afollestad.material-dialogs:core:0.9.4.5'
+    //图片滤镜
+    compile 'com.github.zomato:androidphotofilters:1.0.1'
+    compile files('libs/nineoldandroids-2.4.0.jar')
 }

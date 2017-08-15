@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/app_background"
     android:layout_width="match_parent"
@@ -8,4 +9,31 @@
     <include layout="@layout/toolbar_common"
         android:layout_width="match_parent"
         android:layout_height="44dip"/>
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:layout_marginTop="20dip"
+        android:id="@+id/publish_dynamic_image"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_width="match_parent"
+        android:layout_height="300dip"
+        app:placeholderImage="@drawable/default_placeholder"
+        app:actualImageScaleType="centerCrop"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:textSize="14sp"
+        android:hint="说点什么"
+        android:textColorHint="@color/app_second_textcolor"
+        android:textColor="@color/app_textcolor"
+        android:paddingLeft="10dip"
+        android:paddingRight="10dip"
+        android:background="@null"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:background="@color/app_splite_line"/>
 </LinearLayout>

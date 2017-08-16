@@ -107,7 +107,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 break;
             case R.id.main_nav3:
                 setFragment(2);
-                alpha = 0;
+                alpha = 30;
                 break;
             case R.id.main_nav4:
                 setFragment(3);

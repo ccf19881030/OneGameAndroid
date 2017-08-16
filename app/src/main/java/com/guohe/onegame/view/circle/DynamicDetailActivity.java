@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -48,6 +47,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.guohe.onegame.custome.imageFilter.LabelView.POST_TYPE_POI;
 import static com.guohe.onegame.custome.imageFilter.LabelView.POST_TYPE_TAG;
 
 /**
@@ -125,6 +125,16 @@ public class DynamicDetailActivity extends BaseActivity implements TakePhoto.Tak
     @Override
     protected void initView() {
         mImageOutLayout = getView(R.id.item_dynamic_picture_outlayout);
+        mImageOutLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mImageOutLayout.getChildCount() > 1){
+                    hideTagItems();
+                }else{
+                    showTagItems();
+                }
+            }
+        });
         mSamllBang = SmallBang.attach2Window(this);
         mHead = getView(R.id.item_dynamic_head);
         mMoreButton = getView(R.id.item_dynamic_more);
@@ -136,10 +146,12 @@ public class DynamicDetailActivity extends BaseActivity implements TakePhoto.Tak
                 String tag = String.valueOf(view.getTag());
                 if("closed".equals(tag)){
                     mExpandButton.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.mipmap.icon_close_arrow, 0);
+                    mExpandButton.setText("收起36个赞");
                     mRecyclerView.setVisibility(View.VISIBLE);
                     view.setTag("expand");
                 }else{
                     mExpandButton.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.mipmap.icon_expand_arrow, 0);
+                    mExpandButton.setText("展开36个赞");
                     mRecyclerView.setVisibility(View.GONE);
                     view.setTag("closed");
                 }
@@ -205,29 +217,44 @@ public class DynamicDetailActivity extends BaseActivity implements TakePhoto.Tak
     @Override
     protected void initData() {
         FrescoUtils.loadRes(mPicture, TestImageUtil.getDynamicImgRes(), null, 0, 0, null);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(DimenUtil.dp2px(18), DimenUtil.dp2px(18));
-        params.setMargins(0, 0, DimenUtil.dp2px(5), 0);
         mTagItems = new ArrayList<>();
-        TagItem tagItem = new TagItem(POST_TYPE_TAG, "这是一个可爱的标签");
-        tagItem.setX(100);
-        tagItem.setY(100);
-        mTagItems.add(tagItem);
-        if(mTagItems != null) {
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    for (TagItem feedImageTag : mTagItems) {
-                        LabelView tagView = new LabelView(DynamicDetailActivity.this);
-                        tagView.init(feedImageTag);
-                        tagView.draw(mImageOutLayout,
-                                (int) (feedImageTag.getX() * ((double) mImageOutLayout.getWidth() / (double) DynamicUtil.DEFAULT_PIXEL)),
-                                (int) (feedImageTag.getY() * ((double) mImageOutLayout.getWidth() / (double) DynamicUtil.DEFAULT_PIXEL)),
-                                feedImageTag.isLeft());
-                        tagView.wave();
-                    }
+        TagItem tagItem1 = new TagItem(POST_TYPE_TAG, "这是一个可爱的标签");
+        tagItem1.setX(100);
+        tagItem1.setY(100);
+        TagItem tagItem2 = new TagItem(POST_TYPE_TAG, "我淘气吧！");
+        tagItem2.setX(GlobalConfigManage.getInstance().getScreenWidth() / 2);
+        tagItem2.setY(GlobalConfigManage.getInstance().getScreenWidth() / 2);
+        tagItem2.setLeft(false);
+        TagItem tagItem3 = new TagItem(POST_TYPE_POI, "西安.大雁塔");
+        tagItem3.setX(300);
+        tagItem3.setY(GlobalConfigManage.getInstance().getScreenWidth() - 230);
+        mTagItems.add(tagItem1);
+        mTagItems.add(tagItem2);
+        mTagItems.add(tagItem3);
+        showTagItems();
+    }
+
+    private void hideTagItems(){
+        // 将标签移除,避免回收使用时标签重复
+       mImageOutLayout.removeViews(1, mImageOutLayout.getChildCount() - 1);
+    }
+
+    private void showTagItems(){
+        if(mTagItems == null) return;
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                for (TagItem feedImageTag : mTagItems) {
+                    LabelView tagView = new LabelView(DynamicDetailActivity.this);
+                    tagView.init(feedImageTag);
+                    tagView.draw(mImageOutLayout,
+                            (int) (feedImageTag.getX() * ((double) mImageOutLayout.getWidth() / (double) DynamicUtil.DEFAULT_PIXEL)),
+                            (int) (feedImageTag.getY() * ((double) mImageOutLayout.getWidth() / (double) DynamicUtil.DEFAULT_PIXEL)),
+                            feedImageTag.isLeft());
+                    tagView.wave();
                 }
-            }, 200);
-        }
+            }
+        }, 200);
     }
 
     public static void startActivity(Context context){
@@ -337,6 +364,12 @@ public class DynamicDetailActivity extends BaseActivity implements TakePhoto.Tak
             FrescoUtils.setCircle(holder.mFollowdHead, getResources().getColor(R.color.app_background));
             FrescoUtils.loadRes(holder.mFollowdHead, TestImageUtil.getHeadImgRes(),
                     null, DimenUtil.dp2px(30), DimenUtil.dp2px(30), null);
+            holder.mFollowdHead.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    PersonalPageActivity.startActivity(DynamicDetailActivity.this);
+                }
+            });
         }
 
         @Override

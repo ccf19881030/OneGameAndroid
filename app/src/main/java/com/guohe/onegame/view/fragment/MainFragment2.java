@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.facebook.drawee.drawable.ScalingUtils;
 import com.facebook.drawee.generic.GenericDraweeHierarchy;
@@ -225,6 +226,41 @@ public class MainFragment2 extends BaseMainFragment implements TakePhoto.TakeRes
         public int getItemCount() {
             return 10;
         }
+
+       /* @Override
+        public void onViewAttachedToWindow(DynamicViewHolder holder) {
+            super.onViewAttachedToWindow(holder);
+            final List<TagItem> mTagItems = new ArrayList<>();
+            TagItem tagItem = new TagItem(POST_TYPE_TAG, "这是一个可爱的标签");
+            tagItem.setX(100);
+            tagItem.setY(100);
+            mTagItems.add(tagItem);
+            final RelativeLayout imageOutLayout = holder.mImageOutLayout;
+            if(mTagItems != null) {
+                // 这里可能有问题 延迟200毫秒加载是为了等pictureLayout已经在屏幕上显示getWidth才为具体的值
+                imageOutLayout.getHandler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        for (TagItem feedImageTag : mTagItems) {
+                            LabelView tagView = new LabelView(MainFragment2.this.getContext());
+                            tagView.init(feedImageTag);
+                            tagView.draw(imageOutLayout,
+                                    (int) (feedImageTag.getX() * ((double) imageOutLayout.getWidth() / (double) DynamicUtil.DEFAULT_PIXEL)),
+                                    (int) (feedImageTag.getY() * ((double) imageOutLayout.getWidth() / (double) DynamicUtil.DEFAULT_PIXEL)),
+                                    feedImageTag.isLeft());
+                            tagView.wave();
+                        }
+                    }
+                }, 200);
+            }
+        }
+
+        @Override
+        public void onViewRecycled(DynamicViewHolder holder) {
+            // 将标签移除,避免回收使用时标签重复
+            holder.mImageOutLayout.removeViews(1, holder.mImageOutLayout.getChildCount() - 1);
+            super.onViewRecycled(holder);
+        }*/
     }
 
     class DynamicViewHolder extends RecyclerView.ViewHolder{
@@ -234,8 +270,10 @@ public class MainFragment2 extends BaseMainFragment implements TakePhoto.TakeRes
         private ImageButton mMoreButton;
         private SimpleDraweeView mHead;
         private ImageButton mFollowdButton;
+        private RelativeLayout mImageOutLayout;
         public DynamicViewHolder(View itemView) {
             super(itemView);
+            mImageOutLayout = (RelativeLayout) itemView.findViewById(R.id.item_dynamic_picture_outlayout);
             mHead = (SimpleDraweeView) itemView.findViewById(R.id.item_dynamic_head);
             mMoreButton = (ImageButton) itemView.findViewById(R.id.item_dynamic_more);
             mFollowdArea = (LinearLayout) itemView.findViewById(R.id.item_dynamic_followd_head_area);

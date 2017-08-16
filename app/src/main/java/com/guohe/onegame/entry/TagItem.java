@@ -5,15 +5,17 @@ package com.guohe.onegame.entry;
 import java.io.Serializable;
 
 public class TagItem implements Serializable {
+
     private static final long serialVersionUID = 2685507991821634905L;
-    private long              id;
-    private int               type;
-    private String            name;
-    private double            x                = -1;
-    private double            y                = -1;
+
+    private long id;
+    private int type;
+    private String name;
+    private double x = -1;
+    private double y = -1;
 
     private int recordCount;
-    private boolean           left             = true;
+    private boolean left = true;
     
     
     public boolean isLeft() {

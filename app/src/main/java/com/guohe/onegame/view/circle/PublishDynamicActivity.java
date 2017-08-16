@@ -15,6 +15,7 @@ import com.guohe.onegame.R;
 import com.guohe.onegame.custome.imageFilter.LabelView;
 import com.guohe.onegame.entry.TagItem;
 import com.guohe.onegame.manage.config.GlobalConfigManage;
+import com.guohe.onegame.util.DynamicUtil;
 import com.guohe.onegame.util.FrescoUtils;
 import com.guohe.onegame.view.base.BaseActivity;
 import com.jph.takephoto.model.InvokeParam;
@@ -90,8 +91,8 @@ public class PublishDynamicActivity extends BaseActivity implements InvokeListen
                         LabelView tagView = new LabelView(PublishDynamicActivity.this);
                         tagView.init(feedImageTag);
                         tagView.draw(mImageOutLayout,
-                                (int) (feedImageTag.getX() * ((double) mImageOutLayout.getWidth() / (double) 1242)),
-                                (int) (feedImageTag.getY() * ((double) mImageOutLayout.getWidth() / (double) 1242)),
+                                (int) (feedImageTag.getX() * ((double) mImageOutLayout.getWidth() / (double) DynamicUtil.DEFAULT_PIXEL)),
+                                (int) (feedImageTag.getY() * ((double) mImageOutLayout.getWidth() / (double) DynamicUtil.DEFAULT_PIXEL)),
                                 feedImageTag.isLeft());
                         tagView.wave();
                     }

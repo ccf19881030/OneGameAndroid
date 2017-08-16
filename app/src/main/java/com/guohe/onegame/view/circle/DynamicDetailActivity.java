@@ -2,22 +2,28 @@ package com.guohe.onegame.view.circle;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.facebook.drawee.drawable.ScalingUtils;
-import com.facebook.drawee.generic.GenericDraweeHierarchy;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.guohe.onegame.CustomeApplication;
 import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
+import com.guohe.onegame.custome.FullyGridLayoutManager;
 import com.guohe.onegame.custome.SmallBang;
 import com.guohe.onegame.custome.SmallBangListener;
+import com.guohe.onegame.custome.imageFilter.LabelView;
+import com.guohe.onegame.entry.TagItem;
 import com.guohe.onegame.manage.config.GlobalConfigManage;
 import com.guohe.onegame.util.DimenUtil;
 import com.guohe.onegame.util.DynamicUtil;
@@ -39,7 +45,10 @@ import com.jph.takephoto.permission.PermissionManager;
 import com.jph.takephoto.permission.TakePhotoInvocationHandler;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
+
+import static com.guohe.onegame.custome.imageFilter.LabelView.POST_TYPE_TAG;
 
 /**
  * Created by 水寒 on 2017/8/14.
@@ -55,11 +64,15 @@ public class DynamicDetailActivity extends BaseActivity implements TakePhoto.Tak
     private InvokeParam mInvokeParam;
     private TakePhoto mTakePhoto;
     private SimpleDraweeView mPicture;
-    private LinearLayout mFollowdArea;
     private ImageButton mMoreButton;
     private SimpleDraweeView mHead;
     private ImageButton mFollowButton;
     private SmallBang mSamllBang;
+    private RelativeLayout mImageOutLayout;
+    private List<TagItem> mTagItems;
+    private RecyclerView mRecyclerView;
+    private FollowdAdapter mAdapter;
+    private TextView mExpandButton;
 
     @Override
     public void initPresenter(List<MvpPresenter> presenters) {
@@ -111,11 +124,27 @@ public class DynamicDetailActivity extends BaseActivity implements TakePhoto.Tak
 
     @Override
     protected void initView() {
+        mImageOutLayout = getView(R.id.item_dynamic_picture_outlayout);
         mSamllBang = SmallBang.attach2Window(this);
         mHead = getView(R.id.item_dynamic_head);
         mMoreButton = getView(R.id.item_dynamic_more);
-        mFollowdArea = getView(R.id.item_dynamic_followd_head_area);
         mPicture = getView(R.id.item_dynamic_picture);
+        mExpandButton = getView(R.id.item_dynamic_expand_button);
+        mExpandButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String tag = String.valueOf(view.getTag());
+                if("closed".equals(tag)){
+                    mExpandButton.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.mipmap.icon_close_arrow, 0);
+                    mRecyclerView.setVisibility(View.VISIBLE);
+                    view.setTag("expand");
+                }else{
+                    mExpandButton.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.mipmap.icon_expand_arrow, 0);
+                    mRecyclerView.setVisibility(View.GONE);
+                    view.setTag("closed");
+                }
+            }
+        });
         ViewGroup.LayoutParams params = mPicture.getLayoutParams();
         params.height = GlobalConfigManage.getInstance().getScreenWidth();
         mPicture.setLayoutParams(params);
@@ -149,6 +178,28 @@ public class DynamicDetailActivity extends BaseActivity implements TakePhoto.Tak
                 });
             }
         });
+        mRecyclerView = getView(R.id.item_dynamic_followed_recyclerview);
+        bindRecyclerView();
+    }
+
+    private void bindRecyclerView(){
+        mRecyclerView.setHasFixedSize(false);
+        final int num = (GlobalConfigManage.getInstance().getScreenWidth() - DimenUtil.dp2px(36)) / DimenUtil.dp2px(33);
+        mRecyclerView.setLayoutManager(new FullyGridLayoutManager(this, num));
+        mRecyclerView.addItemDecoration(new RecyclerView.ItemDecoration(){
+            @Override
+            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+                int position = parent.getChildLayoutPosition(view);
+                if(position % num == 0){
+                    outRect.top = DimenUtil.dp2px(5);
+                }else{
+                    outRect.top = DimenUtil.dp2px(5);
+                    outRect.left = DimenUtil.dp2px(3);
+                }
+            }
+        });
+        mAdapter = new FollowdAdapter();
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     @Override
@@ -156,20 +207,26 @@ public class DynamicDetailActivity extends BaseActivity implements TakePhoto.Tak
         FrescoUtils.loadRes(mPicture, TestImageUtil.getDynamicImgRes(), null, 0, 0, null);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(DimenUtil.dp2px(18), DimenUtil.dp2px(18));
         params.setMargins(0, 0, DimenUtil.dp2px(5), 0);
-        mFollowdArea.removeAllViews();
-        for(int i = 0 ; i < 5; i++){
-            SimpleDraweeView draweeView = new SimpleDraweeView(DynamicDetailActivity.this);
-            draweeView.setLayoutParams(params);
-            GenericDraweeHierarchy hierarchy = draweeView.getHierarchy();
-            hierarchy.setPlaceholderImage(R.mipmap.default_header);
-            hierarchy.setActualImageScaleType(ScalingUtils.ScaleType.FIT_XY);
-            mFollowdArea.addView(draweeView);
-            draweeView.setOnClickListener(new View.OnClickListener() {
+        mTagItems = new ArrayList<>();
+        TagItem tagItem = new TagItem(POST_TYPE_TAG, "这是一个可爱的标签");
+        tagItem.setX(100);
+        tagItem.setY(100);
+        mTagItems.add(tagItem);
+        if(mTagItems != null) {
+            new Handler().postDelayed(new Runnable() {
                 @Override
-                public void onClick(View v) {
-                    PersonalPageActivity.startActivity(DynamicDetailActivity.this);
+                public void run() {
+                    for (TagItem feedImageTag : mTagItems) {
+                        LabelView tagView = new LabelView(DynamicDetailActivity.this);
+                        tagView.init(feedImageTag);
+                        tagView.draw(mImageOutLayout,
+                                (int) (feedImageTag.getX() * ((double) mImageOutLayout.getWidth() / (double) DynamicUtil.DEFAULT_PIXEL)),
+                                (int) (feedImageTag.getY() * ((double) mImageOutLayout.getWidth() / (double) DynamicUtil.DEFAULT_PIXEL)),
+                                feedImageTag.isLeft());
+                        tagView.wave();
+                    }
                 }
-            });
+            }, 200);
         }
     }
 
@@ -265,6 +322,35 @@ public class DynamicDetailActivity extends BaseActivity implements TakePhoto.Tak
             this.mInvokeParam = invokeParam;
         }
         return type;
+    }
+
+    class FollowdAdapter extends RecyclerView.Adapter<FollowdViewHolder>{
+
+        @Override
+        public FollowdViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            return new FollowdViewHolder((LayoutInflater.from(DynamicDetailActivity.this)
+                    .inflate(R.layout.item_main_dynamic_followed_list, parent, false)));
+        }
+
+        @Override
+        public void onBindViewHolder(FollowdViewHolder holder, int position) {
+            FrescoUtils.setCircle(holder.mFollowdHead, getResources().getColor(R.color.app_background));
+            FrescoUtils.loadRes(holder.mFollowdHead, TestImageUtil.getHeadImgRes(),
+                    null, DimenUtil.dp2px(30), DimenUtil.dp2px(30), null);
+        }
+
+        @Override
+        public int getItemCount() {
+            return 50;
+        }
+    }
+
+    class FollowdViewHolder extends RecyclerView.ViewHolder{
+        private SimpleDraweeView mFollowdHead;
+        public FollowdViewHolder(View itemView) {
+            super(itemView);
+            mFollowdHead = (SimpleDraweeView) itemView.findViewById(R.id.item_dynamic_followed_head);
+        }
     }
 
 }

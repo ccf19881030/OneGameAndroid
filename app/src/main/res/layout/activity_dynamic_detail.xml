@@ -9,6 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="44dip"/>
 
+    <com.guohe.onegame.custome.MyScrollview
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <RelativeLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
@@ -45,19 +48,24 @@
             android:textColor="@color/app_textcolor"
             android:text="星期天的午餐"/>
 
-        <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/item_dynamic_picture"
+        <RelativeLayout
+            android:id="@+id/item_dynamic_picture_outlayout"
+            android:layout_below="@id/item_dynamic_head"
             android:layout_marginTop="11dip"
             android:layout_width="match_parent"
-            android:layout_below="@id/item_dynamic_head"
-            android:layout_height="200dip"
-            app:actualImageScaleType="centerCrop"
-            app:placeholderImage="@drawable/default_placeholder"/>
-
+            android:layout_height="wrap_content">
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/item_dynamic_picture"
+                android:layout_width="match_parent"
+                android:layout_height="200dip"
+                app:actualImageScaleType="centerCrop"
+                app:placeholderImage="@drawable/default_placeholder"/>
+        </RelativeLayout>
         <LinearLayout
+            android:id="@+id/item_dynamic_bottom_menu"
             android:layout_width="match_parent"
             android:layout_height="50dip"
-            android:layout_below="@id/item_dynamic_picture"
+            android:layout_below="@id/item_dynamic_picture_outlayout"
             android:paddingLeft="10dip"
             android:orientation="horizontal"
             android:gravity="center_vertical">
@@ -69,18 +77,18 @@
                 android:scaleType="centerInside"
                 android:background="@null"
                 android:src="@mipmap/main_menu3_nomal_icon"/>
-            <LinearLayout
-                android:id="@+id/item_dynamic_followd_head_area"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"/>
             <TextView
+                android:id="@+id/item_dynamic_expand_button"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:textSize="13sp"
                 android:layout_marginLeft="3dip"
+                android:gravity="center_vertical"
                 android:textColor="@color/app_textcolor"
-                android:text="36个赞"/>
+                android:tag="closed"
+                android:drawableRight="@mipmap/icon_expand_arrow"
+                android:drawablePadding="5dip"
+                android:text="展开36个赞"/>
             <android.support.v4.widget.Space
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
@@ -93,5 +101,26 @@
                 android:scaleType="centerInside"
                 android:src="@mipmap/icon_more"/>
         </LinearLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/item_dynamic_followed_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginLeft="18dip"
+            android:layout_marginRight="18dip"
+            android:layout_below="@id/item_dynamic_bottom_menu"/>
+        <TextView
+            android:layout_below="@id/item_dynamic_followed_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="30dip"
+            android:layout_marginTop="15dip"
+            android:layout_marginLeft="18dip"
+            android:layout_marginRight="18dip"
+            android:lineSpacingMultiplier="1.4"
+            android:text="这里是描述哈哈哈哈哈哈我是文本哈哈哈哈，这里的风景，哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈，黑河"
+            android:textColor="@color/app_textcolor"
+            android:textSize="14sp"
+            android:layout_height="wrap_content" />
     </RelativeLayout>
+    </com.guohe.onegame.custome.MyScrollview>
 </LinearLayout>

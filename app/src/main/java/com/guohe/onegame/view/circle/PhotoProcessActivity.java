@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
@@ -392,8 +391,7 @@ public class PhotoProcessActivity extends BaseActivity{
         } else {
             currentBtn.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
         }
-        Drawable myImage = getResources().getDrawable(R.drawable.select_icon);
-        btn.setCompoundDrawablesWithIntrinsicBounds(null, null, null, myImage);
+        //btn.setCompoundDrawablesWithIntrinsicBounds(null, null, null, myImage);
         currentBtn = btn;
         return true;
     }

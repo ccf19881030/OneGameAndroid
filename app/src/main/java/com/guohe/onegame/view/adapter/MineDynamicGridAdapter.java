@@ -21,10 +21,16 @@ public class MineDynamicGridAdapter extends RecyclerView.Adapter<MineDynamicGrid
 
     private Context mContext;
     private int mDiment;
+    private int mGapWidth;
 
     public MineDynamicGridAdapter(Context context){
         mContext = context;
-        mDiment = (GlobalConfigManage.getInstance().getScreenWidth() - 2) / 3;
+        int width = GlobalConfigManage.getInstance().getScreenWidth() - 2;
+        if(width % 3 != 0){
+            mDiment = (width - (width % 3) + 3) / 3;
+        }else {
+            mDiment = width / 3;
+        }
     }
 
     @Override

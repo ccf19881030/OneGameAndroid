@@ -3,6 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="160dp"
     android:orientation="vertical"
+    android:background="@color/app_background"
     android:paddingLeft="13dp">
 
     <TextView
@@ -10,17 +11,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="常用标签"
-        android:textColor="#9b6b6c"
+        android:textColor="@color/app_textcolor"
         android:gravity="center"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:padding="10dp"/>
 
     <View
         android:id="@+id/split_line"
         android:layout_width="fill_parent"
         android:layout_height="1dp"
-        android:layout_marginBottom="2dp"
-        android:background="#9b6b6c" />
+        android:layout_marginBottom="1px"
+        android:background="@color/app_splite_line" />
 
     <com.guohe.onegame.custome.imageFilter.FlowLayout
         android:layout_width="wrap_content"
@@ -54,6 +55,14 @@
         <TextView
             style="@style/text_default"
             android:text="你好,夏天"/>
+
+        <TextView
+            style="@style/text_default"
+            android:text="\@一场足球，一场友谊"/>
+
+        <TextView
+            style="@style/text_default"
+            android:text="不可能越位"/>
 
     </com.guohe.onegame.custome.imageFilter.FlowLayout>
 

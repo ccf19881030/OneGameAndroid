@@ -48,10 +48,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         mFragmentsClass.add(MainFragment2.class);
         mFragmentsClass.add(MainFragment3.class);
         mFragmentsClass.add(MainFragment4.class);
-        mNavButton[0] = (RadioButton) findViewById(R.id.main_nav_menu1);
-        mNavButton[1] = (RadioButton) findViewById(R.id.main_nav_menu2);
-        mNavButton[2] = (RadioButton) findViewById(R.id.main_nav_menu3);
-        mNavButton[3] = (RadioButton) findViewById(R.id.main_nav_menu4);
+        mNavButton[0] = getView(R.id.main_nav_menu1);
+        mNavButton[1] = getView(R.id.main_nav_menu2);
+        mNavButton[2] = getView(R.id.main_nav_menu3);
+        mNavButton[3] = getView(R.id.main_nav_menu4);
         mCurrentIndex = 0;
         setRadioButtonStatus();
         getFragmentInstance();
@@ -60,10 +60,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 .show(mCurrentFragment)
                 .commit();
 
-        findViewById(R.id.main_nav1).setOnClickListener(this);
-        findViewById(R.id.main_nav2).setOnClickListener(this);
-        findViewById(R.id.main_nav3).setOnClickListener(this);
-        findViewById(R.id.main_nav4).setOnClickListener(this);
+        getView(R.id.main_nav1).setOnClickListener(this);
+        getView(R.id.main_nav2).setOnClickListener(this);
+        getView(R.id.main_nav3).setOnClickListener(this);
+        getView(R.id.main_nav4).setOnClickListener(this);
     }
 
     @Override

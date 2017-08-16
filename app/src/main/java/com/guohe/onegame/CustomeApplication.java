@@ -1,7 +1,6 @@
 package com.guohe.onegame;
 
 import android.content.Context;
-import android.os.Environment;
 import android.support.multidex.MultiDexApplication;
 
 import com.guohe.onegame.util.FrescoUtils;
@@ -35,25 +34,25 @@ public class CustomeApplication extends MultiDexApplication{
     //获取应用的data/data/....File目录
     public String getFilesDirPath() {
         //return getFilesDir().getAbsolutePath();
-        String filePath = null;
-        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())
+        String filePath = getCacheDir().getAbsolutePath();
+        /*if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())
                 || !Environment.isExternalStorageRemovable()) {
             filePath = Environment.getExternalStorageDirectory().getAbsolutePath();
         } else {
             filePath = getCacheDir().getAbsolutePath();
-        }
+        }*/
         return filePath;
     }
 
     //获取应用的data/data/....Cache目录
     public String getCacheDirPath(){
-        String cachePath = null;
-        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())
+        String cachePath = getCacheDir().getAbsolutePath();
+        /*if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())
                 || !Environment.isExternalStorageRemovable()) {
             cachePath = getExternalCacheDir().getAbsolutePath();
         } else {
             cachePath = getCacheDir().getAbsolutePath();
-        }
+        }*/
         return cachePath;
     }
 }

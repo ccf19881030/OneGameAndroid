@@ -62,9 +62,9 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="贴纸"
+            android:background="?android:attr/selectableItemBackground"
             android:textColor="@android:color/white"
-            android:textSize="14sp"
-            android:textStyle="bold"/>
+            android:textSize="14sp"/>
 
         <TextView
             android:id="@+id/filter_btn"
@@ -73,9 +73,9 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="滤镜"
+            android:background="?android:attr/selectableItemBackground"
             android:textColor="@android:color/white"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/text_btn"
@@ -84,8 +84,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="标签"
+            android:background="?android:attr/selectableItemBackground"
             android:textColor="@android:color/white"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            android:textSize="14sp" />
     </LinearLayout>
 </LinearLayout>

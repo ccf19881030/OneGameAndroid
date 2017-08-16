@@ -286,9 +286,16 @@ public class FrescoUtils {
     public static void clearCacheByUrl(String url){
         ImagePipeline imagePipeline = Fresco.getImagePipeline();
         Uri uri = Uri.parse(url);
-       // imagePipeline.evictFromMemoryCache(uri);
-        imagePipeline.evictFromDiskCache(uri);
-        //imagePipeline.evictFromCache(uri);//这个包含了从内存移除和从硬盘移除
+        //imagePipeline.evictFromMemoryCache(uri);
+        //imagePipeline.evictFromDiskCache(uri);
+        imagePipeline.evictFromCache(uri);//这个包含了从内存移除和从硬盘移除
+    }
+
+    public static void clearCatcheByUri(Uri uri){
+        ImagePipeline imagePipeline = Fresco.getImagePipeline();
+        //imagePipeline.evictFromMemoryCache(uri);
+        //imagePipeline.evictFromDiskCache(uri);
+        imagePipeline.evictFromCache(uri);//这个包含了从内存移除和从硬盘移除
     }
 
     /**

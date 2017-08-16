@@ -13,6 +13,8 @@ import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
 import com.guohe.onegame.util.ToastUtil;
 import com.guohe.onegame.view.base.BaseActivity;
+import com.guohe.onegame.view.circle.CropPhotoActivity;
+import com.guohe.onegame.view.circle.PhotoProcessActivity;
 import com.guohe.onegame.view.fragment.BaseMainFragment;
 import com.guohe.onegame.view.fragment.MainFragment1;
 import com.guohe.onegame.view.fragment.MainFragment2;
@@ -186,5 +188,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
             return true;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    protected void onActivityResult(final int requestCode, final int resultCode, final Intent result) {
+        super.onActivityResult(requestCode, resultCode, result);
+        if (requestCode == CropPhotoActivity.REQUEST_CROP && resultCode == RESULT_OK) {
+            PhotoProcessActivity.startActivity(this, result.getData());
+        }
     }
 }

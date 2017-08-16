@@ -4,13 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.text.InputType;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.guohe.onegame.CustomeApplication;
 import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
 import com.guohe.onegame.util.DimenUtil;
@@ -39,7 +39,9 @@ import java.util.List;
 
 public class MineInfoActivity extends BaseActivity implements View.OnClickListener,TakePhoto.TakeResultListener,InvokeListener {
 
-    private static File mUploadFile = new File(Environment.getExternalStorageDirectory(), "/temp/upload_head.jpg");
+    private static File mUploadFile = new File(
+            CustomeApplication.getApplication().getCacheDirPath(),
+            CustomeApplication.FILE_HEADER);
     private static Uri mImageUri;
     private InvokeParam mInvokeParam;
     private TakePhoto mTakePhoto;

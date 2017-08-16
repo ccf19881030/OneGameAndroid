@@ -3,7 +3,6 @@ package com.guohe.onegame.view.fragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,18 +15,20 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.facebook.drawee.drawable.ScalingUtils;
 import com.facebook.drawee.generic.GenericDraweeHierarchy;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.guohe.onegame.CustomeApplication;
 import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
 import com.guohe.onegame.custome.SmallBang;
 import com.guohe.onegame.custome.SmallBangListener;
 import com.guohe.onegame.manage.config.GlobalConfigManage;
 import com.guohe.onegame.util.DimenUtil;
+import com.guohe.onegame.util.DynamicUtil;
 import com.guohe.onegame.util.FrescoUtils;
 import com.guohe.onegame.util.LogUtil;
 import com.guohe.onegame.util.RefreshUtil;
 import com.guohe.onegame.util.TestImageUtil;
+import com.guohe.onegame.util.ToastUtil;
 import com.guohe.onegame.view.circle.DynamicDetailActivity;
-import com.guohe.onegame.view.circle.ImageFilterActivity;
 import com.guohe.onegame.view.circle.MoreMenuActivity;
 import com.guohe.onegame.view.mine.PersonalPageActivity;
 import com.jph.takephoto.app.TakePhoto;
@@ -53,7 +54,9 @@ import in.srain.cube.views.ptr.PtrFrameLayout;
 
 public class MainFragment2 extends BaseMainFragment implements TakePhoto.TakeResultListener,InvokeListener {
 
-    private static File mUploadFile = new File(Environment.getExternalStorageDirectory(), "/temp/publish.jpg");
+    private static File mUploadFile = new File(
+            CustomeApplication.getApplication().getCacheDirPath(),
+            CustomeApplication.FILE_DYNAMIC_ORIGIN);
     private static Uri mImageUri;
     private InvokeParam mInvokeParam;
     private TakePhoto mTakePhoto;
@@ -256,8 +259,8 @@ public class MainFragment2 extends BaseMainFragment implements TakePhoto.TakeRes
 
     private void configCompress(TakePhoto takePhoto) {
         int maxSize = 1024 * 1024;  //1M
-        int width = 1080;
-        int height = 1080;
+        int width = (int)DynamicUtil.DEFAULT_PIXEL;
+        int height = (int)DynamicUtil.DEFAULT_PIXEL;
         boolean showProgressBar = true;
         boolean enableRawFile = false;
         CompressConfig config;
@@ -309,12 +312,13 @@ public class MainFragment2 extends BaseMainFragment implements TakePhoto.TakeRes
     @Override
     public void takeSuccess(TResult result) {
         String imgPath = result.getImage().getCompressPath();
-        ImageFilterActivity.startActivity(MainFragment2.this.getContext(), imgPath);
+        //ImageFilterActivity.startActivity(MainFragment2.this.getContext(), imgPath);
+        DynamicUtil.processPhotoItem(MainFragment2.this.getActivity(), imgPath);
     }
 
     @Override
     public void takeFail(TResult result,String msg) {
-
+        ToastUtil.showToast("压缩图片失败");
     }
     @Override
     public void takeCancel() {

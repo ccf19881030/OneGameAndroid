@@ -78,10 +78,16 @@
         <activity android:name=".view.circle.PublishDynamicActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".view.circle.ImageFilterActivity"
+        <activity android:name=".view.DebugActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".view.DebugActivity"
+        <activity android:name=".view.circle.CropPhotoActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".view.circle.PictureAddTagActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".view.circle.PhotoProcessActivity"
             android:screenOrientation="portrait"/>
 
     </application>

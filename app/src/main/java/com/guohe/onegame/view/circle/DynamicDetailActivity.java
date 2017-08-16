@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -15,12 +14,14 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.facebook.drawee.drawable.ScalingUtils;
 import com.facebook.drawee.generic.GenericDraweeHierarchy;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.guohe.onegame.CustomeApplication;
 import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
 import com.guohe.onegame.custome.SmallBang;
 import com.guohe.onegame.custome.SmallBangListener;
 import com.guohe.onegame.manage.config.GlobalConfigManage;
 import com.guohe.onegame.util.DimenUtil;
+import com.guohe.onegame.util.DynamicUtil;
 import com.guohe.onegame.util.FrescoUtils;
 import com.guohe.onegame.util.LogUtil;
 import com.guohe.onegame.util.TestImageUtil;
@@ -48,7 +49,9 @@ import java.util.List;
 
 public class DynamicDetailActivity extends BaseActivity implements TakePhoto.TakeResultListener,InvokeListener {
 
-    private static File mUploadFile = new File(Environment.getExternalStorageDirectory(), "/temp/publish.jpg");
+    private static File mUploadFile = new File(
+            CustomeApplication.getApplication().getCacheDirPath(),
+            CustomeApplication.FILE_DYNAMIC_ORIGIN);
     private static Uri mImageUri;
     private InvokeParam mInvokeParam;
     private TakePhoto mTakePhoto;
@@ -150,8 +153,8 @@ public class DynamicDetailActivity extends BaseActivity implements TakePhoto.Tak
     @Override
     protected void initData() {
         FrescoUtils.loadRes(mPicture, TestImageUtil.getDynamicImgRes(), null, 0, 0, null);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(DimenUtil.dp2px(15), DimenUtil.dp2px(15));
-        params.setMargins(0, 0, DimenUtil.dp2px(3), 0);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(DimenUtil.dp2px(18), DimenUtil.dp2px(18));
+        params.setMargins(0, 0, DimenUtil.dp2px(5), 0);
         mFollowdArea.removeAllViews();
         for(int i = 0 ; i < 5; i++){
             SimpleDraweeView draweeView = new SimpleDraweeView(DynamicDetailActivity.this);
@@ -186,9 +189,9 @@ public class DynamicDetailActivity extends BaseActivity implements TakePhoto.Tak
     }
 
     private void configCompress(TakePhoto takePhoto) {
-        int maxSize = 1024 * 100;  //50kb
-        int width = 800;
-        int height = 800;
+        int maxSize = 1024 * 1024;  //1M
+        int width = (int)DynamicUtil.DEFAULT_PIXEL;
+        int height = (int)DynamicUtil.DEFAULT_PIXEL;
         boolean showProgressBar = true;
         boolean enableRawFile = false;
         CompressConfig config;
@@ -233,14 +236,16 @@ public class DynamicDetailActivity extends BaseActivity implements TakePhoto.Tak
     }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == CropPhotoActivity.REQUEST_CROP && resultCode == RESULT_OK) {
+            PhotoProcessActivity.startActivity(this, data.getData());
+        }
         getTakePhoto().onActivityResult(requestCode, resultCode, data);
-        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
     public void takeSuccess(TResult result) {
         String imgPath = result.getImage().getCompressPath();
-
+        DynamicUtil.processPhotoItem(DynamicDetailActivity.this, imgPath);
     }
 
     @Override
@@ -260,4 +265,5 @@ public class DynamicDetailActivity extends BaseActivity implements TakePhoto.Tak
         }
         return type;
     }
+
 }

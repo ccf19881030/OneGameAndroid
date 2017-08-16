@@ -76,6 +76,7 @@ public class PublishDynamicActivity extends BaseActivity implements InvokeListen
         int width = GlobalConfigManage.getInstance().getScreenWidth();
         params.height = width;
         mImageView.setLayoutParams(params);
+        FrescoUtils.clearCatcheByUri(FrescoUtils.getFileUri(mFilterImagePath));
         FrescoUtils.loadFile(mImageView, mFilterImagePath, null, width, width, null);
     }
 

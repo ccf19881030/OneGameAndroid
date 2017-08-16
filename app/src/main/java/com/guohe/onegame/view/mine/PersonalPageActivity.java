@@ -47,7 +47,7 @@ public class PersonalPageActivity extends BaseActivity {
         moreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MoreMenuActivity.startActivity(PersonalPageActivity.this);
+                MoreMenuActivity.startActivity(PersonalPageActivity.this, 2, -1);
             }
         });
     }

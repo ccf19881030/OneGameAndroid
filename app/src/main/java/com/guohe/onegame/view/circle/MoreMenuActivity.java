@@ -4,12 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.InputType;
 import android.view.View;
+import android.widget.ImageButton;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
 import com.guohe.onegame.view.base.BaseActivity;
-import com.jaeger.library.StatusBarUtil;
 
 import java.util.List;
 
@@ -19,6 +19,12 @@ import java.util.List;
  */
 
 public class MoreMenuActivity extends BaseActivity implements View.OnClickListener {
+
+    private boolean mIsMine;
+    private int mUserId;
+    private int mDynamicId;
+
+    private ImageButton mJubaoButton;
 
     @Override
     public void initPresenter(List<MvpPresenter> presenters) {
@@ -31,23 +37,32 @@ public class MoreMenuActivity extends BaseActivity implements View.OnClickListen
     }
 
     @Override
-    protected void setStatuBar() {
-        StatusBarUtil.setTranslucentForImageView(this, 0, null);
-    }
-
-    @Override
     protected int getContentView() {
         return R.layout.activity_more_menu;
     }
 
     @Override
     protected void initView() {
+        mUserId = getIntent().getIntExtra("userid", -1);
+        mDynamicId = getIntent().getIntExtra("dynamicid", -1);
+        mIsMine = mUserId == 1;
         getView(R.id.more_menu_close).setOnClickListener(this);
         getView(R.id.more_menu_wx_circle).setOnClickListener(this);
         getView(R.id.more_menu_wx_friend).setOnClickListener(this);
         getView(R.id.more_menu_weibo).setOnClickListener(this);
         getView(R.id.more_menu_qq).setOnClickListener(this);
-        getView(R.id.more_menu_jubao).setOnClickListener(this);
+        mJubaoButton = getView(R.id.more_menu_jubao);
+        mJubaoButton.setOnClickListener(this);
+
+        if(mIsMine){
+            if(mDynamicId == -1){
+                //mJubaoButton.setImageResource(R.m);
+            }else {
+                mJubaoButton.setImageResource(R.mipmap.icon_delete_img_black);
+            }
+        }else{
+            mJubaoButton.setImageResource(R.mipmap.icon_menu_more_jubao);
+        }
     }
 
     @Override
@@ -55,8 +70,10 @@ public class MoreMenuActivity extends BaseActivity implements View.OnClickListen
 
     }
 
-    public static void startActivity(Context context){
+    public static void startActivity(Context context, int userid, int dynamicid){
         Intent intent = new Intent(context, MoreMenuActivity.class);
+        intent.putExtra("userid", userid);
+        intent.putExtra("dynamicid", dynamicid);
         context.startActivity(intent);
     }
 
@@ -79,17 +96,25 @@ public class MoreMenuActivity extends BaseActivity implements View.OnClickListen
 
                 break;
             case R.id.more_menu_jubao:
-                new MaterialDialog.Builder(this)
-                        .title("举报")
-                        .content("感谢您的举报，请填写您的举报原因")
-                        .inputRangeRes(4, 50, R.color.app_error)
-                        .inputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL)
-                        .input("举报原因...", "", new MaterialDialog.InputCallback() {
-                            @Override
-                            public void onInput(MaterialDialog dialog, CharSequence input) {
+                if(mIsMine){
+                    if(mDynamicId == -1){
 
-                            }
-                        }).show();
+                    }else{
+
+                    }
+                }else {
+                    new MaterialDialog.Builder(this)
+                            .title("举报")
+                            .content("感谢您的举报，请填写您的举报原因")
+                            .inputRangeRes(4, 50, R.color.app_error)
+                            .inputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL)
+                            .input("举报原因...", "", new MaterialDialog.InputCallback() {
+                                @Override
+                                public void onInput(MaterialDialog dialog, CharSequence input) {
+
+                                }
+                            }).show();
+                }
                 break;
         }
     }

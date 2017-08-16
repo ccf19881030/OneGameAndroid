@@ -10,7 +10,6 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.facebook.drawee.drawable.ScalingUtils;
 import com.facebook.drawee.generic.GenericDraweeHierarchy;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -80,7 +79,9 @@ public class DynamicDetailActivity extends BaseActivity implements TakePhoto.Tak
         moreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new MaterialDialog.Builder(DynamicDetailActivity.this)
+                configCompress(mTakePhoto);
+                mTakePhoto.onPickFromDocuments();
+                /*new MaterialDialog.Builder(DynamicDetailActivity.this)
                         .title("发布动态")
                         .items(R.array.take_photo_type)
                         .itemsCallback(new MaterialDialog.ListCallback() {
@@ -98,7 +99,7 @@ public class DynamicDetailActivity extends BaseActivity implements TakePhoto.Tak
                                 }
                             }
                         })
-                        .show();
+                        .show();*/
             }
         });
     }
@@ -127,7 +128,7 @@ public class DynamicDetailActivity extends BaseActivity implements TakePhoto.Tak
         mMoreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MoreMenuActivity.startActivity(DynamicDetailActivity.this);
+                MoreMenuActivity.startActivity(DynamicDetailActivity.this, 2, 1);
             }
         });
 
@@ -189,7 +190,7 @@ public class DynamicDetailActivity extends BaseActivity implements TakePhoto.Tak
     }
 
     private void configCompress(TakePhoto takePhoto) {
-        int maxSize = 1024 * 1024;  //1M
+        int maxSize = 1024 * 512;  //500kb
         int width = (int)DynamicUtil.DEFAULT_PIXEL;
         int height = (int)DynamicUtil.DEFAULT_PIXEL;
         boolean showProgressBar = true;

@@ -45,7 +45,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class DynamicUtil {
 
-    public static final float DEFAULT_PIXEL = 1242;
+    public static final float DEFAULT_PIXEL = 1080;
 
     public static List<Addon> addonList = new ArrayList<Addon>();
     private static List<MyHighlightView> hightlistViews = new CopyOnWriteArrayList<MyHighlightView>();

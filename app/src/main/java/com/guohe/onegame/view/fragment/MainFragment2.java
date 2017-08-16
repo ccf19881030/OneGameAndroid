@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.facebook.drawee.drawable.ScalingUtils;
 import com.facebook.drawee.generic.GenericDraweeHierarchy;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -93,7 +92,9 @@ public class MainFragment2 extends BaseMainFragment implements TakePhoto.TakeRes
         getView(R.id.takephoto_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               new MaterialDialog.Builder(MainFragment2.this.getContext())
+                configCompress(mTakePhoto);
+                mTakePhoto.onPickFromDocuments();
+              /* new MaterialDialog.Builder(MainFragment2.this.getContext())
                         .title("发布动态")
                         .items(R.array.take_photo_type)
                         .itemsCallback(new MaterialDialog.ListCallback() {
@@ -111,7 +112,7 @@ public class MainFragment2 extends BaseMainFragment implements TakePhoto.TakeRes
                                 }
                             }
                         })
-                        .show();
+                        .show();*/
             }
         });
         mToolbar = getView(R.id.main_page2_toolbar);
@@ -199,7 +200,7 @@ public class MainFragment2 extends BaseMainFragment implements TakePhoto.TakeRes
             holder.mMoreButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    MoreMenuActivity.startActivity(MainFragment2.this.getContext());
+                    MoreMenuActivity.startActivity(MainFragment2.this.getContext(), 2, 1);
                 }
             });
             holder.mFollowdButton.setOnClickListener(new View.OnClickListener() {
@@ -258,7 +259,7 @@ public class MainFragment2 extends BaseMainFragment implements TakePhoto.TakeRes
     }
 
     private void configCompress(TakePhoto takePhoto) {
-        int maxSize = 1024 * 1024;  //1M
+        int maxSize = 1024 * 512;  //500kb
         int width = (int)DynamicUtil.DEFAULT_PIXEL;
         int height = (int)DynamicUtil.DEFAULT_PIXEL;
         boolean showProgressBar = true;
@@ -312,6 +313,7 @@ public class MainFragment2 extends BaseMainFragment implements TakePhoto.TakeRes
     @Override
     public void takeSuccess(TResult result) {
         String imgPath = result.getImage().getCompressPath();
+        LogUtil.d("imagePath ..... " + imgPath);
         //ImageFilterActivity.startActivity(MainFragment2.this.getContext(), imgPath);
         DynamicUtil.processPhotoItem(MainFragment2.this.getActivity(), imgPath);
     }

@@ -70,6 +70,7 @@
             android:screenOrientation="portrait"/>
 
         <activity android:name=".view.circle.MoreMenuActivity"
+            android:theme="@style/FullScreenTheme"
             android:screenOrientation="portrait"/>
 
         <activity android:name=".view.circle.DynamicDetailActivity"

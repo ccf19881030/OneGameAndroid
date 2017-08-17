@@ -27,7 +27,7 @@
             android:layout_centerInParent="true"
             android:text="关注"
             android:textColor="@color/app_textcolor"
-            android:textSize="20sp"/>
+            android:textSize="18sp"/>
 
         <TextView
             android:id="@+id/toolbar_menu"

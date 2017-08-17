@@ -52,6 +52,11 @@ public class MineInfoActivity extends BaseActivity implements View.OnClickListen
     }
 
     @Override
+    protected boolean showErroNetView() {
+        return true;
+    }
+
+    @Override
     protected void customeToolbar(TextView titleText, TextView toolbarMenu, ImageButton moreButton) {
         titleText.setText("个人信息");
     }
@@ -93,26 +98,12 @@ public class MineInfoActivity extends BaseActivity implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.mine_info_head:
-                new MaterialDialog.Builder(this)
-                        .title("设置头像")
-                        .items(R.array.take_photo_type)
-                        .itemsCallback(new MaterialDialog.ListCallback() {
-                            @Override
-                            public void onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
-                                if(mImageUri == null) {
-                                    if (!mUploadFile.getParentFile().exists())mUploadFile.getParentFile().mkdirs();
-                                    mImageUri = Uri.fromFile(mUploadFile);
-                                }
-                                configCompress(mTakePhoto);
-                                if("拍照上传".equals(text)){
-                                    mTakePhoto.onPickFromCaptureWithCrop(mImageUri, getCropOptions());
-                                }else{
-                                    mTakePhoto.onPickFromDocumentsWithCrop(mImageUri, getCropOptions());
-                                }
-                            }
-                        })
-                        .show();
-                break;
+                if(mImageUri == null) {
+                    if (!mUploadFile.getParentFile().exists())mUploadFile.getParentFile().mkdirs();
+                    mImageUri = Uri.fromFile(mUploadFile);
+                }
+                configCompress(mTakePhoto);
+                mTakePhoto.onPickFromDocumentsWithCrop(mImageUri, getCropOptions());
             case R.id.mine_info_role:
 
                 break;
@@ -201,7 +192,7 @@ public class MineInfoActivity extends BaseActivity implements View.OnClickListen
         takePhoto.setTakePhotoOptions(options);
     }
 
-    private static CropOptions getCropOptions(){
+    private CropOptions getCropOptions(){
         int height= DimenUtil.dp2px(100);
         int width= DimenUtil.dp2px(100);
         boolean withWonCrop= true;

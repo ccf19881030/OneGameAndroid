@@ -40,6 +40,11 @@ public class WalletDetailActivity extends BaseActivity{
     }
 
     @Override
+    protected boolean showErroNetView() {
+        return true;
+    }
+
+    @Override
     protected void customeToolbar(TextView titleText, TextView toolbarMenu, ImageButton moreButton) {
         titleText.setText("明细");
     }

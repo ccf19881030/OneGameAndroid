@@ -1,11 +1,18 @@
 package com.guohe.onegame.view.base;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -20,6 +27,7 @@ import com.jaeger.library.StatusBarUtil;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrConfig;
 import com.r0adkll.slidr.model.SlidrPosition;
+import com.wou.commonutils.NetWorkUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,11 +47,18 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
     private List<MvpPresenter> mPresenters = new ArrayList<>();
     private PtrFrameLayout mRefreshView;
     private Toolbar mToolbar;
-
+    private View mHiddenNetworkView;
+    private NetWorkBroadcastReciver mNetWorkReciver;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getContentView());
+        View contentView = LayoutInflater.from(this).inflate(getContentView(), null);
+        FrameLayout frameLayout = new FrameLayout(this);
+        frameLayout.addView(contentView);
+        initNetworkStatu(frameLayout);
+        setContentView(frameLayout, new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         initToolbar();
         setStatuBar();
         initView();
@@ -56,10 +71,39 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
         if(canSlidr()){
             setSlidr();
         }
+       /*
+        getWindow().getContainer().addContentView(view, new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));*/
+    }
+
+    private void initNetworkStatu(FrameLayout frameLayout) {
+        if(showErroNetView()){
+            mHiddenNetworkView = LayoutInflater.from(this).inflate(R.layout.hidden_bg_network, null);
+            frameLayout.addView(mHiddenNetworkView);
+            if(!delayNetReciver() || delayNetReciver() && !NetWorkUtils.isNetworkConnected(this)) {
+                IntentFilter filter = new IntentFilter();
+                filter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
+                mNetWorkReciver = new NetWorkBroadcastReciver();
+                registerReceiver(mNetWorkReciver, filter);
+            }
+            if(NetWorkUtils.isNetworkConnected(this)) {
+                mHiddenNetworkView.setVisibility(View.GONE);
+            }else{
+                mHiddenNetworkView.setVisibility(View.VISIBLE);
+            }
+        }
     }
 
     protected boolean canSlidr(){
         return true;
+    }
+
+    protected boolean showErroNetView(){
+        return false;
+    }
+
+    protected boolean delayNetReciver(){
+        return false;
     }
 
     protected void setStatuBar(){
@@ -169,6 +213,24 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
             subscription.unsubscribe();
         }
         mSubscriptions.clear();
+        if(mNetWorkReciver != null) {
+            unregisterReceiver(mNetWorkReciver);
+        }
+    }
+
+    class NetWorkBroadcastReciver extends BroadcastReceiver{
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if(NetWorkUtils.isNetworkConnected(BaseActivity.this)){
+                if(!delayNetReciver()) {
+                    mHiddenNetworkView.setVisibility(View.GONE);
+                    initData();
+                }
+            }else{
+                mHiddenNetworkView.setVisibility(View.VISIBLE);
+            }
+        }
     }
 
     @SuppressWarnings("unchecked")

@@ -11,7 +11,6 @@ import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
 import com.guohe.onegame.util.DimenUtil;
 import com.guohe.onegame.util.FrescoUtils;
-import com.guohe.onegame.util.TestImageUtil;
 
 import java.util.List;
 
@@ -68,7 +67,7 @@ public class MsgFragment1 extends BaseMsgFragment {
         @Override
         public void onBindViewHolder(Msg1ViewHolder holder, int position) {
             FrescoUtils.setCircle(holder.mHeadDrawee, getResources().getColor(R.color.app_background));
-            FrescoUtils.loadRes(holder.mHeadDrawee, TestImageUtil.getHeadImgRes(),
+            FrescoUtils.loadRes(holder.mHeadDrawee, R.mipmap.icon_logo,
                     null, DimenUtil.dp2px(38), DimenUtil.dp2px(38), null);
         }
 

@@ -3,6 +3,7 @@ package com.guohe.onegame.view.fragment;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.widget.Space;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -41,6 +42,8 @@ public class MainFragment4 extends BaseMainFragment implements View.OnClickListe
     private PtrFrameLayout mPtrFrameLayout;
     private int mUserId;
     private boolean mIsMine;
+    private CoordinatorLayout mCoordinatorLayout;
+    private AppBarLayout mAppBarLayout;
 
     @Override
     public void initPresenter(List<MvpPresenter> presenters) {
@@ -104,8 +107,8 @@ public class MainFragment4 extends BaseMainFragment implements View.OnClickListe
 
             }
         });
-        AppBarLayout appBarLayout = getView(R.id.app_bar);
-        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+        mAppBarLayout = getView(R.id.app_bar);
+        mAppBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
                 if (verticalOffset >= 0) {
@@ -124,7 +127,7 @@ public class MainFragment4 extends BaseMainFragment implements View.OnClickListe
                 }
             }
         });
-
+        mCoordinatorLayout = getView(R.id.app_coordinatorlayout);
     }
 
     private NickNameHideListener mNickNameHideListener;
@@ -185,7 +188,7 @@ public class MainFragment4 extends BaseMainFragment implements View.OnClickListe
 
                 break;
             case R.id.mine_menu_dynamic:
-
+                mAppBarLayout.setExpanded(false);
                 break;
             case R.id.mine_menu_myfollowed:
                 MyFollowdActivity.startActivity(MainFragment4.this.getContext());

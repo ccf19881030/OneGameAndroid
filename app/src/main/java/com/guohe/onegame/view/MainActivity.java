@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 
+import com.guohe.onegame.BuildConfig;
 import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
 import com.guohe.onegame.util.ToastUtil;
@@ -72,13 +73,27 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     }
 
     @Override
+    protected boolean showErroNetView() {
+        return true;
+    }
+
+    @Override
+    protected boolean delayNetReciver() {
+        return true;
+    }
+
+    @Override
     public void turnToOtherView() {
 
     }
 
     @Override
     protected void initData() {
-
+        //UpdateManager.setWifiOnly(false);
+        //UpdateManager.create(this).check(); //检查更新
+        if(BuildConfig.DEBUG){
+            ToastUtil.showToast("当前安装的是debug版本");
+        }
     }
 
     @Override

@@ -1,22 +1,66 @@
 apply plugin: 'com.android.application'
 
+def releaseTime() {
+    return new Date().format("MM-dd-HH-mm-ss", TimeZone.getTimeZone("UTC"))
+}
+
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.guohe.onegame"
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion 22
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        vectorDrawables.useSupportLibrary = true
+        vectorDrawables.useSupportLibrary = false
     }
-    buildTypes {
+    signingConfigs {
+        debug {
+            storeFile file("../keystore/onegame-debug.jks")
+            storePassword "123456"
+            keyAlias "android"
+            keyPassword "123456"
+        }
         release {
-            minifyEnabled false
+            storeFile file("../keystore/onegame.jks")
+            storePassword "MERITCB768@lxq"
+            keyAlias "ltsy"
+            keyPassword "MERITCB768@lxq"
+        }
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            signingConfig signingConfigs.debug
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //自定义apk名字
+            applicationVariants.all { variant ->
+                if(variant.buildType.name.equals('release')){
+                    variant.outputs.each { output ->
+                        output.outputFile = new File(
+                                output.outputFile.parent,
+                                "${defaultConfig.applicationId}-${variant.buildType.name}-${defaultConfig.versionName}-${releaseTime()}.apk".toLowerCase())
+                    }
+                }
+            }
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
     }
 }
 

@@ -8,7 +8,8 @@
         android:id="@+id/item_rollview_image"
         android:layout_width="match_parent"
         android:layout_height="200dip"
-        fresco:actualImageScaleType="centerCrop"/>
+        fresco:actualImageScaleType="centerCrop"
+        fresco:placeholderImage="@drawable/default_placeholder"/>
 
     <TextView
         android:layout_width="match_parent"

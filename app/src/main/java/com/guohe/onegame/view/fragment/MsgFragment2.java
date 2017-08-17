@@ -13,6 +13,8 @@ import com.guohe.onegame.R;
 import com.guohe.onegame.util.DimenUtil;
 import com.guohe.onegame.util.FrescoUtils;
 import com.guohe.onegame.util.TestImageUtil;
+import com.guohe.onegame.view.circle.DynamicDetailActivity;
+import com.guohe.onegame.view.mine.PersonalPageActivity;
 
 import java.util.List;
 
@@ -74,6 +76,18 @@ public class MsgFragment2 extends BaseMsgFragment {
             FrescoUtils.loadRes(holder.mPictureDrawee, TestImageUtil.getDynamicImgRes(),
                     null, DimenUtil.dp2px(38), DimenUtil.dp2px(38), null);
             holder.mNickname.setText("一场" + position);
+            holder.mHeadDrawee.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    PersonalPageActivity.startActivity(MsgFragment2.this.getContext());
+                }
+            });
+            holder.mPictureDrawee.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DynamicDetailActivity.startActivity(MsgFragment2.this.getContext());
+                }
+            });
         }
 
         @Override

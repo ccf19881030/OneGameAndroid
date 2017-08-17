@@ -43,6 +43,11 @@ public class MyWalletActivity extends BaseActivity {
     }
 
     @Override
+    protected boolean showErroNetView() {
+        return true;
+    }
+
+    @Override
     protected int getContentView() {
         return R.layout.activity_mywallet;
     }

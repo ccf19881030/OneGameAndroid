@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <array name="take_photo_type">
-        <item>拍照上传</item>
-        <item>相册选择</item>
+    <array name="report_dynamic_type">
+        <item>欺诈</item>
+        <item>色情暴力</item>
+        <item>违规侵权照片</item>
+        <item>颜值太低</item>
     </array>
 </resources>

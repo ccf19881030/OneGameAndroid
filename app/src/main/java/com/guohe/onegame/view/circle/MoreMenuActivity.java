@@ -103,17 +103,32 @@ public class MoreMenuActivity extends BaseActivity implements View.OnClickListen
 
                     }
                 }else {
-                    new MaterialDialog.Builder(this)
-                            .title("举报")
-                            .content("感谢您的举报，请填写您的举报原因")
-                            .inputRangeRes(4, 50, R.color.app_error)
-                            .inputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL)
-                            .input("举报原因...", "", new MaterialDialog.InputCallback() {
-                                @Override
-                                public void onInput(MaterialDialog dialog, CharSequence input) {
+                    if(mDynamicId == -1) {
+                        new MaterialDialog.Builder(this)
+                                .title("举报")
+                                .content("感谢您，请填写您对该用户的举报原因")
+                                .inputRangeRes(4, 50, R.color.app_error)
+                                .inputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL)
+                                .input("举报原因...", "", new MaterialDialog.InputCallback() {
+                                    @Override
+                                    public void onInput(MaterialDialog dialog, CharSequence input) {
 
-                                }
-                            }).show();
+                                    }
+                                }).show();
+                    }else{
+                        new MaterialDialog.Builder(this)
+                                .title("举报")
+                                .items(R.array.report_dynamic_type)
+                                .itemsCallbackSingleChoice(-1, new MaterialDialog.ListCallbackSingleChoice() {
+                                    @Override
+                                    public boolean onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
+
+                                        return true;
+                                    }
+                                })
+                                .positiveText("提交")
+                                .show();
+                    }
                 }
                 break;
         }

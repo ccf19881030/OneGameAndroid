@@ -4,14 +4,18 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.amap.api.location.AMapLocation;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.guohe.onegame.CustomeApplication;
 import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
 import com.guohe.onegame.model.entry.ScrollBanner;
 import com.guohe.onegame.util.DimenUtil;
 import com.guohe.onegame.util.FrescoUtils;
 import com.guohe.onegame.util.RefreshUtil;
+import com.guohe.onegame.view.team.PlaceMapActivity;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 import com.jude.rollviewpager.hintview.ColorPointHintView;
@@ -62,6 +66,17 @@ public class MainFragment1 extends BaseMainFragment {
             @Override
             public void refreshBegin(PtrFrameLayout frame) {
 
+            }
+        });
+
+        TextView location = getView(R.id.test_location);
+        AMapLocation mapLocation = CustomeApplication.mLocationClient.getLastKnownLocation();
+        location.setText("当前城市:" + mapLocation.getCity());
+
+        getView(R.id.test_map).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PlaceMapActivity.startActivity(MainFragment1.this.getContext());
             }
         });
     }

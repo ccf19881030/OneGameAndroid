@@ -132,6 +132,28 @@
         <activity android:name=".view.circle.PhotoProcessActivity"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".view.mine.CreditValueActivtiy"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".view.team.PlaceMapActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".view.team.SearchPlaceActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".view.team.PlaceErrorReportActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".view.team.PlaceServiceReportActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".view.team.FootballPlaceActivity"
+            android:screenOrientation="portrait"/>
+
+        <!-- 高德地图-->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="712459e686de32e28544d857e745815a"/>
         <!-- 更新需要-->
         <provider
             android:name="com.guohe.onegame.update.UpdateFileProvider"

@@ -29,5 +29,25 @@
         app:rollviewpager_hint_alpha="0"
         app:rollviewpager_play_delay="3000" />
 
+    <TextView
+        android:id="@+id/test_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dip"
+        android:layout_marginTop="15dip"
+        android:textSize="14sp"
+        android:textColor="@color/app_textcolor"
+        android:text="当前位置"/>
+
+    <Button
+        android:id="@+id/test_map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dip"
+        android:layout_marginTop="15dip"
+        android:textSize="14sp"
+        android:textColor="@android:color/white"
+        android:background="@color/colorAccent"
+        android:text="查看球场"/>
 </LinearLayout>
 </in.srain.cube.views.ptr.PtrFrameLayout>

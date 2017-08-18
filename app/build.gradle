@@ -108,9 +108,10 @@ dependencies {
     //图片滤镜
     compile files('libs/nineoldandroids-2.4.0.jar')
     //可拖拽的图片
-    compile project(":ImageViewTouch")
+    compile project(':ImageViewTouch')
     //渲染图片
-    compile project(":Gpu-Image")
+    compile project(':Gpu-Image')
     //水平滑动list
     compile 'it.sephiroth.android.library.horizontallistview:hlistview:1.2.2'
+    compile files('libs/AMap3DMap_5.3.0_AMapLocation_3.5.0_20170815.jar')
 }

@@ -1,16 +1,21 @@
 package com.guohe.onegame.view;
 
+import android.content.res.AssetManager;
 import android.os.Message;
 import android.os.SystemClock;
 
+import com.guohe.onegame.CustomeApplication;
 import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
 import com.guohe.onegame.custome.WeakRefrenceHandler;
 import com.guohe.onegame.manage.config.GlobalConfigManage;
+import com.guohe.onegame.util.LogUtil;
 import com.guohe.onegame.view.base.BaseActivity;
-import com.jaeger.library.StatusBarUtil;
+import com.wou.commonutils.FileUtils;
 import com.wou.commonutils.ScreenSizeUtil;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -22,7 +27,7 @@ public class SplashActivity extends BaseActivity{
     private static final int SPLASH_TIME = 3000;        //闪屏时间
     private static final int HAND_START_INIT = 0x0001;  //开始初始化操作
     private static final int HAND_TURN_NEXT = 0x0002;   //跳转到下一个界面
-
+    public static String mapFilePath;
     private long mStartTime;  //开始启动页时间
 
     private WeakRefrenceHandler<SplashActivity> mHandler = new WeakRefrenceHandler<SplashActivity>(this) {
@@ -52,17 +57,22 @@ public class SplashActivity extends BaseActivity{
 
     }
 
-    @Override
-    protected void setStatuBar() {
-        StatusBarUtil.setTranslucent(this);
-    }
-
     /**
      * 做一些初始化操作
      */
     private void doInit(){
         GlobalConfigManage.getInstance().setScreenWidth(ScreenSizeUtil.getScreenWidth(this));
         GlobalConfigManage.getInstance().setScreenHeight(ScreenSizeUtil.getScreenHeight(this));
+        AssetManager assertManager = getAssets();
+        try {
+            File file = new File(CustomeApplication.getApplication().getFilesDirPath(), "gaodeditu.data");
+            mapFilePath = file.getAbsolutePath();
+            LogUtil.d("file.Path == " + mapFilePath);
+            if(file.exists()) return;
+            FileUtils.writeFile(file, assertManager.open("mystyle_sdk_1503030101_0100.data"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

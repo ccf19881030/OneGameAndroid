@@ -19,6 +19,7 @@ import com.guohe.onegame.util.FrescoUtils;
 import com.guohe.onegame.util.RefreshUtil;
 import com.guohe.onegame.util.TestImageUtil;
 import com.guohe.onegame.view.adapter.MineDynamicGridAdapter;
+import com.guohe.onegame.view.mine.CreditValueActivtiy;
 import com.guohe.onegame.view.mine.MineInfoActivity;
 import com.guohe.onegame.view.mine.MyFansActivity;
 import com.guohe.onegame.view.mine.MyFollowdActivity;
@@ -185,7 +186,7 @@ public class MainFragment4 extends BaseMainFragment implements View.OnClickListe
 
                 break;
             case R.id.mine_credit_score:
-
+                CreditValueActivtiy.startActivity(MainFragment4.this.getContext());
                 break;
             case R.id.mine_menu_dynamic:
                 mAppBarLayout.setExpanded(false);

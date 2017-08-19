@@ -8,16 +8,44 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="44dip"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
-        <android.support.v7.widget.SearchView
-            android:id="@+id/search_place_view"
+
+        <RelativeLayout
             android:layout_width="0dip"
             android:layout_weight="1"
-            android:layout_marginLeft="20dip"
-            android:layout_marginRight="20dip"
-            android:layout_height="wrap_content"
-            android:iconifiedByDefault="false"
-            android:queryHint="请输入搜索内容" />
+            android:layout_marginLeft="19dip"
+            android:layout_marginRight="19dip"
+            android:layout_height="40dip">
+
+            <ImageView
+                android:id="@+id/search_place_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerInside"
+                android:layout_marginRight="8dip"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/icon_map_search_icon"/>
+
+            <EditText
+                android:id="@+id/search_place_searchedit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:background="@null"
+                android:layout_centerVertical="true"
+                android:lines="1"
+                android:layout_toRightOf="@id/search_place_icon"
+                android:textColor="@color/app_textcolor"
+                android:textColorHint="@color/app_second_textcolor"
+                android:hint="去找那个球场"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_alignParentBottom="true"
+                android:background="@color/app_splite_line"/>
+        </RelativeLayout>
         <Button
             android:id="@+id/search_cancel_button"
             android:layout_width="50dip"
@@ -28,11 +56,99 @@
             android:gravity="center"
             android:text="取消"/>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="88dip"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        
+        <LinearLayout
+            android:id="@+id/search_place_frequent1"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerInside"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="9dip"
+                android:src="@mipmap/icon_map_place_collectioned"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="常用球场1"
+                    android:textColor="@color/app_textcolor"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dip"
+                    android:text="点击设置常用球场"
+                    android:textColor="@color/app_second_textcolor"
+                    android:textSize="11sp" />
+            </LinearLayout>
+        </LinearLayout>
+        <View
+            android:layout_width="1px"
+            android:layout_height="60dip"
+            android:background="@color/app_splite_line"/>
+        <LinearLayout
+            android:id="@+id/search_place_frequent2"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerInside"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="9dip"
+                android:src="@mipmap/icon_map_place_collection"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="常用球场2"
+                    android:textColor="@color/app_textcolor"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dip"
+                    android:text="点击设置常用球场"
+                    android:textColor="@color/app_second_textcolor"
+                    android:textSize="11sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/app_splite_line"/>
     <ListView
         android:id="@+id/search_place_listview"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:dividerHeight="1px"
-        android:divider="@color/app_splite_line"
-        android:layout_weight="1"/>
+        android:divider="@color/app_splite_line" />
 </LinearLayout>

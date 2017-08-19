@@ -6,4 +6,24 @@
         <item>违规侵权照片</item>
         <item>颜值太低</item>
     </array>
+
+    <array name="map_citys">
+        <item>西安市</item>
+        <item>北京市</item>
+        <item>重庆市</item>
+        <item>上海市</item>
+        <item>广州市</item>
+        <item>杭州市</item>
+        <item>长春市</item>
+        <item>成都市</item>
+        <item>南京市"</item>
+        <item>天津市</item>
+        <item>哈尔滨</item>
+        <item>沈阳市</item>
+        <item>呼和浩特</item>
+        <item>乌鲁木齐</item>
+        <item>兰州市</item>
+        <item>郑州市</item>
+        <item>昆明市</item>
+    </array>
 </resources>

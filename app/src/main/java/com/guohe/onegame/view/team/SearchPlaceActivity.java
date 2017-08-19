@@ -2,13 +2,15 @@ package com.guohe.onegame.view.team;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.widget.SearchView;
+import android.text.Editable;
 import android.text.TextUtils;
-import android.util.TypedValue;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ListView;
@@ -30,7 +32,7 @@ import java.util.List;
 public class SearchPlaceActivity extends BaseActivity{
 
 
-    private SearchView mSearchView;
+    private EditText mSearchEdit;
     private ListView mListView;
     private List<FootballField> mfields = new ArrayList<>();
     private PlaceAdapter mAdapter;
@@ -58,39 +60,75 @@ public class SearchPlaceActivity extends BaseActivity{
                 SearchPlaceActivity.this.finish();
             }
         });
-        mSearchView = getView(R.id.search_place_view);
-        mSearchView.onActionViewExpanded();
-        SearchView.SearchAutoComplete textView = ( SearchView.SearchAutoComplete) mSearchView.findViewById(R.id.search_src_text);
-        textView.setTextColor(getResources().getColor(R.color.app_textcolor));
-        textView.setTextSize(14, TypedValue.COMPLEX_UNIT_SP);
+        mSearchEdit = getView(R.id.search_place_searchedit);
         mListView = getView(R.id.search_place_listview);
         mAdapter = new PlaceAdapter(mfields);
         mListView.setAdapter(mAdapter);
         mListView.setTextFilterEnabled(true);
 
-        // 设置搜索文本监听
-        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            // 当点击搜索按钮时触发该方法
+        mSearchEdit.addTextChangedListener(new TextWatcher() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
             }
 
-            // 当搜索内容改变时触发该方法
             @Override
-            public boolean onQueryTextChange(String newText) {
+            public void onTextChanged(CharSequence newText, int start, int before, int count) {
                 if (!TextUtils.isEmpty(newText)){
-                    mListView.setFilterText(newText.trim());
+                    mListView.setFilterText(newText.toString().trim());
                 }else{
                     mListView.clearTextFilter();
                 }
-                return false;
+            }
+
+            @Override
+            public void afterTextChanged(Editable newText) {
+
+            }
+        });
+
+        getView(R.id.search_place_frequent1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FootballPlaceActivity.startActivity(SearchPlaceActivity.this);
+                SearchPlaceActivity.this.finish();
+            }
+        });
+        getView(R.id.search_place_frequent2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FootballPlaceActivity.startActivity(SearchPlaceActivity.this);
+                SearchPlaceActivity.this.finish();
+            }
+        });
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                FootballPlaceActivity.startActivity(SearchPlaceActivity.this);
+                SearchPlaceActivity.this.finish();
             }
         });
     }
 
     @Override
     protected void initData() {
+        mfields.add(new FootballField("西安苔色特足球场", 34.2450847120, 108.8778162003));
+        mfields.add(new FootballField("西安鹿鸣特足球场", 34.2551236671,108.8597488403));
+        mfields.add(new FootballField("西安嘉州国际足球场", 34.2487740785,108.8961839676));
+        mfields.add(new FootballField("西安辉度足球场", 34.2367830461,108.8873863220));
+        mfields.add(new FootballField("西安苔色特足球场", 34.2450847120, 108.8778162003));
+        mfields.add(new FootballField("西安鹿鸣特足球场", 34.2551236671,108.8597488403));
+        mfields.add(new FootballField("西安嘉州国际足球场", 34.2487740785,108.8961839676));
+        mfields.add(new FootballField("西安辉度足球场", 34.2367830461,108.8873863220));
+        mfields.add(new FootballField("西安苔色特足球场", 34.2450847120, 108.8778162003));
+        mfields.add(new FootballField("西安鹿鸣特足球场", 34.2551236671,108.8597488403));
+        mfields.add(new FootballField("西安嘉州国际足球场", 34.2487740785,108.8961839676));
+        mfields.add(new FootballField("西安辉度足球场", 34.2367830461,108.8873863220));
+        mfields.add(new FootballField("西安苔色特足球场", 34.2450847120, 108.8778162003));
+        mfields.add(new FootballField("西安鹿鸣特足球场", 34.2551236671,108.8597488403));
+        mfields.add(new FootballField("西安嘉州国际足球场", 34.2487740785,108.8961839676));
+        mfields.add(new FootballField("西安辉度足球场", 34.2367830461,108.8873863220));
         mfields.add(new FootballField("西安苔色特足球场", 34.2450847120, 108.8778162003));
         mfields.add(new FootballField("西安鹿鸣特足球场", 34.2551236671,108.8597488403));
         mfields.add(new FootballField("西安嘉州国际足球场", 34.2487740785,108.8961839676));

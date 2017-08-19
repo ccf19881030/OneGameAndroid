@@ -113,5 +113,8 @@ dependencies {
     compile project(':Gpu-Image')
     //水平滑动list
     compile 'it.sephiroth.android.library.horizontallistview:hlistview:1.2.2'
-    compile files('libs/AMap3DMap_5.3.0_AMapLocation_3.5.0_20170815.jar')
+    //高德地图
+    compile files('libs/AMap3DMap_5.3.0_AMapSearch_5.3.1_AMapLocation_3.5.0_20170817.jar')
+    //友盟统计
+    compile 'com.umeng.analytics:analytics:latest.integration'
 }

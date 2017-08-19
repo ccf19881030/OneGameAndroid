@@ -13,6 +13,7 @@ import com.guohe.onegame.manage.rxbus.RxBus;
 import com.guohe.onegame.manage.rxbus.bean.BaseBusEvent;
 import com.guohe.onegame.util.LogUtil;
 import com.guohe.onegame.util.RefreshUtil;
+import com.umeng.analytics.MobclickAgent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,13 +64,13 @@ public abstract class BaseFragment extends Fragment implements MvpView {
     @Override
     public void onResume() {
         super.onResume();
-        //MobclickAgent.onPageStart(this.getClass().getName());
+        MobclickAgent.onPageStart(this.getClass().getName());
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        //MobclickAgent.onPageEnd(this.getClass().getName());
+        MobclickAgent.onPageEnd(this.getClass().getName());
     }
 
     protected <E extends BaseBusEvent> void observerRxBus(Class<E> busClass, final Action1<E> onNext) {

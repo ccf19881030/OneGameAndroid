@@ -51,6 +51,19 @@
             app:backgroundTint="@android:color/white"
             app:fabSize="mini"
             android:src="@mipmap/icon_map_refresh" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/map_button_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="18dip"
+            android:layout_marginBottom="70dip"
+            android:layout_alignParentRight="true"
+            app:rippleColor="#33000000"
+            app:backgroundTint="@android:color/white"
+            app:fabSize="mini"
+            android:src="@mipmap/icon_map_menu_city_change" />
     </RelativeLayout>
 
 </LinearLayout>

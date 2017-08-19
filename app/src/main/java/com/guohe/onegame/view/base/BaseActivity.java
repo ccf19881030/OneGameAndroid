@@ -27,6 +27,7 @@ import com.jaeger.library.StatusBarUtil;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrConfig;
 import com.r0adkll.slidr.model.SlidrPosition;
+import com.umeng.analytics.MobclickAgent;
 import com.wou.commonutils.NetWorkUtils;
 
 import java.util.ArrayList;
@@ -185,18 +186,19 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
     protected void onPause() {
         super.onPause();
         if(!youMenPause()){
-            //MobclickAgent.onPause(this);
-           // MobclickAgent.onPageEnd(this.getClass().getName());
+            MobclickAgent.onPageEnd(this.getClass().getName());
         }
+        MobclickAgent.onPause(this);
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         if(!youMenResume()) {
-            //MobclickAgent.onResume(this);
-            //MobclickAgent.onPageStart(this.getClass().getName());
+            MobclickAgent.onPageStart(this.getClass().getName());
         }
+        MobclickAgent.onResume(this);
     }
 
     @Override

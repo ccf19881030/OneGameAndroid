@@ -68,6 +68,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     }
 
     @Override
+    protected boolean youMenPause() {
+        return true;
+    }
+
+    @Override
+    protected boolean youMenResume() {
+        return true;
+    }
+
+    @Override
     public void initPresenter(List<MvpPresenter> presenters) {
 
     }

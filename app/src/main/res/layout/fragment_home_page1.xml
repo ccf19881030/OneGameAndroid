@@ -20,7 +20,7 @@
         <android.support.design.widget.AppBarLayout
             android:id="@+id/app_bar"
             android:layout_width="match_parent"
-            android:layout_height="240dip"
+            android:layout_height="200dip"
             android:theme="@style/AppTheme.AppBarOverlay">
 
             <android.support.design.widget.CollapsingToolbarLayout
@@ -54,33 +54,6 @@
                             app:rollviewpager_hint_alpha="0"
                             app:rollviewpager_play_delay="6000" />
                     </android.support.v7.widget.CardView>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="40dip"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="14sp"
-                            android:layout_marginLeft="30dip"
-                            android:textColor="@color/app_textcolor"
-                            android:text="球队"/>
-
-                        <TextView
-                            android:layout_width="37dip"
-                            android:layout_height="15dip"
-                            android:textSize="12sp"
-                            android:layout_marginLeft="10dip"
-                            android:paddingLeft="5dip"
-                            android:paddingRight="5dip"
-                            android:background="@mipmap/icon_home_yuezhan_city_bg"
-                            android:textColor="@color/app_textcolor"
-                            android:drawablePadding="4dip"
-                            android:drawableLeft="@mipmap/icon_home_yuezhan_location"
-                            android:text="西安市"/>
-                    </LinearLayout>
                 </LinearLayout>
             </android.support.design.widget.CollapsingToolbarLayout>
         </android.support.design.widget.AppBarLayout>

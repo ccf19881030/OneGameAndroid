@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.guohe.onegame.MvpPresenter;
@@ -15,6 +16,7 @@ import com.guohe.onegame.util.DimenUtil;
 import com.guohe.onegame.util.FrescoUtils;
 import com.guohe.onegame.util.LogUtil;
 import com.guohe.onegame.util.RefreshUtil;
+import com.guohe.onegame.view.invitation.TeamInvatationActivity;
 import com.guohe.onegame.view.team.BallTeamActivity;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.adapter.StaticPagerAdapter;
@@ -175,6 +177,12 @@ public class HomeFragment1 extends BaseHomeFragment {
                     BallTeamActivity.startActivity(HomeFragment1.this.getContext());
                 }
             });
+            holder.mInvitButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    TeamInvatationActivity.startActivity(HomeFragment1.this.getContext());
+                }
+            });
         }
 
         @Override
@@ -186,9 +194,11 @@ public class HomeFragment1 extends BaseHomeFragment {
     class YuezhanViewHolder extends RecyclerView.ViewHolder{
 
         private View itemView;
+        private Button mInvitButton;
         public YuezhanViewHolder(View itemView) {
             super(itemView);
             this.itemView = itemView;
+            mInvitButton = (Button) itemView.findViewById(R.id.item_yuezhan_agree_button);
         }
     }
 }

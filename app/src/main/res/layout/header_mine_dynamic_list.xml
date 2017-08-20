@@ -24,7 +24,7 @@
         android:text="球员"
         android:gravity="center"
         android:textColor="@android:color/white"
-        android:background="@mipmap/tag_blue_bg"
+        android:background="@drawable/tag_blue_bg"
         android:textSize="12sp"/>
 
     <TextView

@@ -156,6 +156,12 @@
         <activity android:name=".view.team.BallTeamActivity"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".view.invitation.TeamInvatationActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".view.invitation.AcceptTeamInvatationActivity"
+            android:screenOrientation="portrait"/>
+
         <!-- 高德地图-->
         <meta-data
             android:name="com.amap.api.v2.apikey"

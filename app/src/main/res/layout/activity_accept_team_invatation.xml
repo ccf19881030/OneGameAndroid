@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/app_background"
+    android:gravity="center_horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/toolbar_common"
+        android:layout_width="match_parent"
+        android:layout_height="44dip"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerInside"
+        android:layout_marginTop="30dip"
+        android:src="@mipmap/icon_invatation_success"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_marginTop="18dip"
+        android:textColor="@color/colorAccent"
+        android:text="订单迎站成功"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="￥ 299"
+        android:textColor="@color/app_textcolor"
+        android:layout_marginTop="23dip"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="44dip"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:text="确定"
+        android:background="@color/colorAccent"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginTop="43dip"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorAccent"
+        android:textSize="12sp"
+        android:text="生成比赛海报"
+        android:layout_marginTop="14dip"/>
+</LinearLayout>

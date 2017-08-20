@@ -264,8 +264,7 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
         final PtrFrameLayout refreshView = getView(id);
         if (refreshView == null) return;
         mRefreshView = refreshView;
-        //RefreshUtil.refreshView(this, refreshView, onRefresh);
-        RefreshUtil.refreshMainView(this, refreshView, onRefresh);
+        RefreshUtil.refreshView(this, refreshView, onRefresh);
     }
 
     public void refreshStop() {

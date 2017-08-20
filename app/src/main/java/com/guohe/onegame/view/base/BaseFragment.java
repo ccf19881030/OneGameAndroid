@@ -124,8 +124,7 @@ public abstract class BaseFragment extends Fragment implements MvpView {
         final PtrFrameLayout refreshView = getView(id);
         if (refreshView == null) return null;
         mRefreshView = refreshView;
-        //RefreshUtil.refreshView(this.getContext(), refreshView, onRefresh);
-        RefreshUtil.refreshMainView(this.getContext(), refreshView, onRefresh);
+        RefreshUtil.refreshView(this.getContext(), refreshView, onRefresh);
         return refreshView;
     }
 

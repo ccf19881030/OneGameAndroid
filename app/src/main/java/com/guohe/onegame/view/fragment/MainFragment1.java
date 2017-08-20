@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
+import com.guohe.onegame.view.team.PlaceMapActivity;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
@@ -47,12 +48,19 @@ public class MainFragment1 extends BaseMainFragment {
         mViewPager = getView(R.id.home_viewpager);
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
                 getChildFragmentManager(), FragmentPagerItems.with(MainFragment1.this.getActivity())
-                .add("约战", HomeFragment1.class)
-                .add("约裁判", HomeFragment2.class)
-                .add("去踢球", HomeFragment3.class)
-                .add("学踢球", HomeFragment4.class)
+                .add("约战", HomeFragment.class)
+                .add("约裁判", HomeFragment.class)
+                .add("去踢球", HomeFragment.class)
+                .add("学踢球", HomeFragment.class)
                 .create());
         mViewPager.setAdapter(adapter);
         mTabLayout.setViewPager(mViewPager);
+
+        getView(R.id.main_page1_map_comein).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PlaceMapActivity.startActivity(MainFragment1.this.getContext());
+            }
+        });
     }
 }

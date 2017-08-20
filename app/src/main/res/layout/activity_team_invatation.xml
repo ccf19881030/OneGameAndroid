@@ -254,19 +254,7 @@
             android:textSize="13sp"
             android:textColor="@color/colorAccent" />
     </LinearLayout>
-    <com.guohe.onegame.custome.AutoLinkStyleTextView
-        android:id="@+id/recharge_protocl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_horizontal"
-        android:textSize="12sp"
-        android:lineSpacingMultiplier="1.2"
-        android:textColor="#898989"
-        android:text="点击去充值，即表示已阅读并同意“充值协议”\n一场不会以任何形式要求您输入银行账户和密码"
-        app:AutoLinkStyleTextView_text_value="“充值协议”,"
-        app:AutoLinkStyleTextView_default_color="@color/colorAccent"
-        app:AutoLinkStyleTextView_has_under_line="false"/>
+
     <Button
         android:id="@+id/team_invatation_button"
         android:layout_marginTop="14dip"

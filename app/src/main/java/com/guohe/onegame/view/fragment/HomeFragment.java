@@ -30,7 +30,7 @@ import in.srain.cube.views.ptr.PtrFrameLayout;
  * Created by 水寒 on 2017/8/19.
  */
 
-public class HomeFragment1 extends BaseHomeFragment {
+public class HomeFragment extends BaseHomeFragment {
 
     private RollPagerView mRollpagerView;
     private RollPagerAdapter mRollPagerAdapter;
@@ -110,7 +110,7 @@ public class HomeFragment1 extends BaseHomeFragment {
 
     private void bindRecyclerView(){
         mRecyclerView.setHasFixedSize(false);
-        mLinearLayoutManager = new LinearLayoutManager(HomeFragment1.this.getContext());
+        mLinearLayoutManager = new LinearLayoutManager(HomeFragment.this.getContext());
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
         mAdapter = new YuezhanAdapter();
         mRecyclerView.setAdapter(mAdapter);
@@ -141,8 +141,8 @@ public class HomeFragment1 extends BaseHomeFragment {
         private int height;
 
         public RollPagerAdapter(){
-            mInflater = HomeFragment1.this.getActivity().getLayoutInflater();
-            width = DimenUtil.getScreenWidth(HomeFragment1.this.getActivity());
+            mInflater = HomeFragment.this.getActivity().getLayoutInflater();
+            width = DimenUtil.getScreenWidth(HomeFragment.this.getActivity());
             height = DimenUtil.dp2px(150);
         }
 
@@ -151,7 +151,8 @@ public class HomeFragment1 extends BaseHomeFragment {
             View view = mInflater.inflate(R.layout.item_mainfragment_two_rollview, null);
             SimpleDraweeView imageView = (SimpleDraweeView) view.findViewById(R.id.item_rollview_image);
             ScrollBanner scrollBanner = mScrollBanners.get(position);
-            FrescoUtils.loadUrl(imageView, scrollBanner.getUrl(), null, width, height, null);
+            //FrescoUtils.loadUrl(imageView, scrollBanner.getUrl(), null, width, height, null);
+            FrescoUtils.loadRes(imageView, R.mipmap.test_banner, null, width, height, null);
             return view;
         }
 
@@ -165,7 +166,7 @@ public class HomeFragment1 extends BaseHomeFragment {
 
         @Override
         public YuezhanViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new YuezhanViewHolder(LayoutInflater.from(HomeFragment1.this.getContext())
+            return new YuezhanViewHolder(LayoutInflater.from(HomeFragment.this.getContext())
                     .inflate(R.layout.item_yuezhan_list, parent, false));
         }
 
@@ -174,13 +175,13 @@ public class HomeFragment1 extends BaseHomeFragment {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    BallTeamActivity.startActivity(HomeFragment1.this.getContext());
+                    BallTeamActivity.startActivity(HomeFragment.this.getContext());
                 }
             });
-            holder.mInvitButton.setOnClickListener(new View.OnClickListener() {
+            holder.agreeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    TeamInvatationActivity.startActivity(HomeFragment1.this.getContext());
+                    TeamInvatationActivity.startActivity(HomeFragment.this.getContext());
                 }
             });
         }
@@ -194,11 +195,11 @@ public class HomeFragment1 extends BaseHomeFragment {
     class YuezhanViewHolder extends RecyclerView.ViewHolder{
 
         private View itemView;
-        private Button mInvitButton;
+        private Button agreeButton;
         public YuezhanViewHolder(View itemView) {
             super(itemView);
             this.itemView = itemView;
-            mInvitButton = (Button) itemView.findViewById(R.id.item_yuezhan_agree_button);
+            this.agreeButton = (Button) itemView.findViewById(R.id.item_yuezhan_agree_button);
         }
     }
 }

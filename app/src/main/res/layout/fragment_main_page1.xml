@@ -46,6 +46,7 @@
             app:stl_drawDecorationAfterTab="false" />
 
         <TextView
+            android:id="@+id/main_page1_map_comein"
             android:layout_width="wrap_content"
             android:layout_height="21dip"
             android:background="@drawable/tag_blue_bg"

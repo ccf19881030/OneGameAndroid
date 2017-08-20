@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/app_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/test_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dip"
+        android:layout_marginTop="15dip"
+        android:textSize="14sp"
+        android:textColor="@color/app_textcolor"
+        android:text="当前位置"/>
+
+    <Button
+        android:id="@+id/test_map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dip"
+        android:layout_marginTop="15dip"
+        android:textSize="14sp"
+        android:textColor="@android:color/white"
+        android:background="@color/colorAccent"
+        android:text="查看球场"/>
+</LinearLayout>

@@ -1,53 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<in.srain.cube.views.ptr.PtrFrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main_home_refreshview"
-    xmlns:cube_ptr="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    cube_ptr:ptr_duration_to_close="300"
-    cube_ptr:ptr_duration_to_close_header="2000"
-    cube_ptr:ptr_keep_header_when_refresh="true"
-    cube_ptr:ptr_pull_to_fresh="false"
-    cube_ptr:ptr_ratio_of_header_height_to_refresh="1.2"
-    cube_ptr:ptr_resistance="1.7">
-<LinearLayout
     android:orientation="vertical"
     android:background="@color/app_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <com.jude.rollviewpager.RollPagerView
-        android:id="@+id/main_one_rollpagerview"
+
+    <com.ogaclejapan.smarttablayout.SmartTabLayout
+        android:id="@+id/home_viewpagertab"
+        android:layout_marginLeft="12dip"
+        android:layout_marginRight="12dip"
+        android:layout_centerInParent="true"
         android:layout_width="match_parent"
-        android:layout_height="200dip"
-        app:rollviewpager_hint_color="@color/colorPrimary"
-        app:rollviewpager_hint_gravity="right"
-        app:rollviewpager_hint_paddingRight="15dp"
-        app:rollviewpager_hint_paddingBottom="5dp"
-        app:rollviewpager_hint_paddingTop="5dp"
-        app:rollviewpager_hint_alpha="0"
-        app:rollviewpager_play_delay="3000" />
-
-    <TextView
-        android:id="@+id/test_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dip"
-        android:layout_marginTop="15dip"
-        android:textSize="14sp"
-        android:textColor="@color/app_textcolor"
-        android:text="当前位置"/>
-
-    <Button
-        android:id="@+id/test_map"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dip"
-        android:layout_marginTop="15dip"
-        android:textSize="14sp"
-        android:textColor="@android:color/white"
-        android:background="@color/colorAccent"
-        android:text="查看球场"/>
+        android:layout_height="50dp"
+        android:background="@android:color/transparent"
+        app:stl_indicatorAlwaysInCenter="false"
+        app:stl_indicatorWithoutPadding="false"
+        app:stl_indicatorInFront="false"
+        app:stl_indicatorInterpolation="smart"
+        app:stl_indicatorGravity="bottom"
+        app:stl_indicatorColor="@color/colorAccent"
+        app:stl_indicatorThickness="2dp"
+        app:stl_indicatorWidth="36dip"
+        app:stl_indicatorCornerRadius="0dp"
+        app:stl_overlineColor="#4D000000"
+        app:stl_overlineThickness="0dp"
+        app:stl_underlineColor="@android:color/transparent"
+        app:stl_underlineThickness="1dp"
+        app:stl_dividerColor="@android:color/transparent"
+        app:stl_dividerThickness="1dp"
+        app:stl_defaultTabBackground="?attr/selectableItemBackground"
+        app:stl_defaultTabTextAllCaps="false"
+        app:stl_defaultTabTextColor="@drawable/main_home_tag_textcolor"
+        app:stl_defaultTabTextSize="13sp"
+        app:stl_defaultTabTextHorizontalPadding="16dp"
+        app:stl_defaultTabTextMinWidth="0dp"
+        app:stl_distributeEvenly="false"
+        app:stl_clickable="true"
+        app:stl_titleOffset="24dp"
+        app:stl_drawDecorationAfterTab="false" />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/home_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>
-</in.srain.cube.views.ptr.PtrFrameLayout>

@@ -16,6 +16,7 @@ import android.view.animation.RotateAnimation;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.GravityEnum;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.amap.api.location.AMapLocation;
 import com.amap.api.maps.AMap;
@@ -66,7 +67,7 @@ public class PlaceMapActivity extends BaseActivity implements View.OnClickListen
     private AMap mAmap;
     private RotateAnimation mRotateAnim;
     private FloatingActionButton mRefreshButton;
-    private List<FootballField> mFootballFields = new ArrayList<>();
+    private ArrayList<FootballField> mFootballFields = new ArrayList<>();
     private List<Marker> mMarkes = new ArrayList<>();
     private TextView mTitleText;
 
@@ -184,13 +185,13 @@ public class PlaceMapActivity extends BaseActivity implements View.OnClickListen
     @Override
     protected void customeToolbar(TextView titleText, TextView toolbarMenu, ImageButton moreButton) {
         mTitleText = titleText;
-        mTitleText.setText(CustomeApplication.mLocationClient.getLastKnownLocation().getCity() + "球场");
+        mTitleText.setText(CustomeApplication.mLocationClient.getLastKnownLocation().getCity() + "足球场");
         moreButton.setVisibility(View.VISIBLE);
         moreButton.setImageResource(R.mipmap.icon_map_search_icon);
         moreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SearchPlaceActivity.startActivity(PlaceMapActivity.this);
+                SearchPlaceActivity.startActivity(PlaceMapActivity.this, mFootballFields);
             }
         });
     }
@@ -286,7 +287,7 @@ public class PlaceMapActivity extends BaseActivity implements View.OnClickListen
                 mAmap.animateCamera(CameraUpdateFactory.newLatLngZoom(
                         new LatLng(mapLocation.getLatitude(), mapLocation.getLongitude()), 12));
                 poiSearchPlace(mapLocation.getCityCode());
-                mTitleText.setText(mapLocation.getCity() + "球场");
+                mTitleText.setText(mapLocation.getCity() + "足球场");
                 break;
             case R.id.map_button_refresh:
                /* for(Marker marker : mMarkes){
@@ -329,11 +330,16 @@ public class PlaceMapActivity extends BaseActivity implements View.OnClickListen
             case R.id.map_button_city:
                 new MaterialDialog.Builder(this)
                         .title("切换城市")
-                        .content("其他城市敬请期待...")
+                        .titleGravity(GravityEnum.CENTER)
+                        .titleColorRes(R.color.colorAccent)
                         .items(R.array.map_citys)
+                        .itemsGravity(GravityEnum.CENTER)
+                        .itemsColorRes(R.color.app_textcolor)
+                        .dividerColorRes(R.color.app_splite_line)
                         .itemsCallback(new MaterialDialog.ListCallback() {
                             @Override
                             public void onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
+                                if(text.equals("其他城市敬请期待...")) return;
                                 getLatlon(text.toString());
                             }
                         })
@@ -361,7 +367,7 @@ public class PlaceMapActivity extends BaseActivity implements View.OnClickListen
                         mAmap.animateCamera(CameraUpdateFactory.newLatLngZoom(
                                 new LatLng(latitude, longititude), 12));
                         poiSearchPlace(CustomeApplication.mCitys.get(cityName));
-                        mTitleText.setText(cityName + "球场");
+                        mTitleText.setText(cityName + "足球场");
                     }else {
                         ToastUtil.showToast("地址名出错了");
                     }

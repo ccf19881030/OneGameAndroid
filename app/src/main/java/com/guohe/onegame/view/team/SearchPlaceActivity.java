@@ -5,20 +5,19 @@ import android.content.Intent;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
 import android.widget.EditText;
-import android.widget.Filter;
-import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
+import com.guohe.onegame.manage.config.GlobalConfigManage;
 import com.guohe.onegame.model.entry.FootballField;
+import com.guohe.onegame.util.ToastUtil;
+import com.guohe.onegame.view.adapter.FootballPlaceAdapter;
 import com.guohe.onegame.view.base.BaseActivity;
 
 import java.util.ArrayList;
@@ -34,8 +33,15 @@ public class SearchPlaceActivity extends BaseActivity{
 
     private EditText mSearchEdit;
     private ListView mListView;
-    private List<FootballField> mfields = new ArrayList<>();
-    private PlaceAdapter mAdapter;
+    private ArrayList<FootballField> mfields = new ArrayList<>();
+    private FootballPlaceAdapter mAdapter;
+    private int mSetCollectionNum;
+    private ImageView mCollection1Icon;
+    private ImageView mCollection2Icon;
+    private TextView mCollection1Name;
+    private TextView mCollection2Name;
+    private TextView mCollection1Descript;
+    private TextView mCollection2Descript;
 
     @Override
     public void initPresenter(List<MvpPresenter> presenters) {
@@ -54,6 +60,10 @@ public class SearchPlaceActivity extends BaseActivity{
 
     @Override
     protected void initView() {
+        List<FootballField> fields = (List<FootballField>) getIntent().getSerializableExtra("footballFields");
+        if(fields != null){
+            mfields.addAll(fields);
+        }
         getView(R.id.search_cancel_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,7 +72,7 @@ public class SearchPlaceActivity extends BaseActivity{
         });
         mSearchEdit = getView(R.id.search_place_searchedit);
         mListView = getView(R.id.search_place_listview);
-        mAdapter = new PlaceAdapter(mfields);
+        mAdapter = new FootballPlaceAdapter(this, mfields);
         mListView.setAdapter(mAdapter);
         mListView.setTextFilterEnabled(true);
 
@@ -90,15 +100,43 @@ public class SearchPlaceActivity extends BaseActivity{
         getView(R.id.search_place_frequent1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FootballPlaceActivity.startActivity(SearchPlaceActivity.this);
-                SearchPlaceActivity.this.finish();
+                if(GlobalConfigManage.getInstance().getFbPlaceCollection1() == null) {
+                    FootballPlaceListActivity.startActivityForResult(SearchPlaceActivity.this, mfields);
+                    mSetCollectionNum = 1;
+                }else{
+                    FootballPlaceActivity.startActivity(SearchPlaceActivity.this);
+                    SearchPlaceActivity.this.finish();
+                }
+            }
+        });
+
+        getView(R.id.search_place_frequent1).setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                FootballPlaceListActivity.startActivityForResult(SearchPlaceActivity.this, mfields);
+                mSetCollectionNum = 1;
+                return true;
+            }
+        });
+
+        getView(R.id.search_place_frequent2).setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                FootballPlaceListActivity.startActivityForResult(SearchPlaceActivity.this, mfields);
+                mSetCollectionNum = 2;
+                return true;
             }
         });
         getView(R.id.search_place_frequent2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FootballPlaceActivity.startActivity(SearchPlaceActivity.this);
-                SearchPlaceActivity.this.finish();
+                if(GlobalConfigManage.getInstance().getFbPlaceCollection2() == null) {
+                    FootballPlaceListActivity.startActivityForResult(SearchPlaceActivity.this, mfields);
+                    mSetCollectionNum = 2;
+                }else{
+                    FootballPlaceActivity.startActivity(SearchPlaceActivity.this);
+                    SearchPlaceActivity.this.finish();
+                }
             }
         });
 
@@ -109,111 +147,69 @@ public class SearchPlaceActivity extends BaseActivity{
                 SearchPlaceActivity.this.finish();
             }
         });
+
+        mCollection1Icon = getView(R.id.search_collection1_icon);
+        mCollection1Name = getView(R.id.search_collection1_name);
+        mCollection1Descript = getView(R.id.search_collection1_descript);
+        mCollection2Icon = getView(R.id.search_collection2_icon);
+        mCollection2Name = getView(R.id.search_collection2_name);
+        mCollection2Descript = getView(R.id.search_collection2_descript);
+        setCollectionPlace();
+    }
+
+    private void setCollectionPlace(){
+        if(GlobalConfigManage.getInstance().getFbPlaceCollection1() != null){
+            mCollection1Icon.setImageResource(R.mipmap.icon_map_place_collectioned);
+            mCollection1Name.setText(GlobalConfigManage.getInstance().getFbPlaceCollection1().split("#")[1]);
+            mCollection1Descript.setVisibility(View.GONE);
+        }else{
+            mCollection1Icon.setImageResource(R.mipmap.icon_map_place_collection);
+            mCollection1Name.setText("常用球场1");
+            mCollection1Descript.setVisibility(View.VISIBLE);
+            mCollection1Descript.setText("点击设置常用球场");
+        }
+        if(GlobalConfigManage.getInstance().getFbPlaceCollection2() != null){
+            mCollection2Icon.setImageResource(R.mipmap.icon_map_place_collectioned);
+            mCollection2Name.setText(GlobalConfigManage.getInstance().getFbPlaceCollection2().split("#")[1]);
+            mCollection2Descript.setVisibility(View.GONE);
+        }else{
+            mCollection2Icon.setImageResource(R.mipmap.icon_map_place_collection);
+            mCollection2Name.setText("常用球场2");
+            mCollection2Descript.setVisibility(View.VISIBLE);
+            mCollection2Descript.setText("点击设置常用球场");
+        }
     }
 
     @Override
     protected void initData() {
-        mfields.add(new FootballField("西安苔色特足球场", 34.2450847120, 108.8778162003));
-        mfields.add(new FootballField("西安鹿鸣特足球场", 34.2551236671,108.8597488403));
-        mfields.add(new FootballField("西安嘉州国际足球场", 34.2487740785,108.8961839676));
-        mfields.add(new FootballField("西安辉度足球场", 34.2367830461,108.8873863220));
-        mfields.add(new FootballField("西安苔色特足球场", 34.2450847120, 108.8778162003));
-        mfields.add(new FootballField("西安鹿鸣特足球场", 34.2551236671,108.8597488403));
-        mfields.add(new FootballField("西安嘉州国际足球场", 34.2487740785,108.8961839676));
-        mfields.add(new FootballField("西安辉度足球场", 34.2367830461,108.8873863220));
-        mfields.add(new FootballField("西安苔色特足球场", 34.2450847120, 108.8778162003));
-        mfields.add(new FootballField("西安鹿鸣特足球场", 34.2551236671,108.8597488403));
-        mfields.add(new FootballField("西安嘉州国际足球场", 34.2487740785,108.8961839676));
-        mfields.add(new FootballField("西安辉度足球场", 34.2367830461,108.8873863220));
-        mfields.add(new FootballField("西安苔色特足球场", 34.2450847120, 108.8778162003));
-        mfields.add(new FootballField("西安鹿鸣特足球场", 34.2551236671,108.8597488403));
-        mfields.add(new FootballField("西安嘉州国际足球场", 34.2487740785,108.8961839676));
-        mfields.add(new FootballField("西安辉度足球场", 34.2367830461,108.8873863220));
-        mfields.add(new FootballField("西安苔色特足球场", 34.2450847120, 108.8778162003));
-        mfields.add(new FootballField("西安鹿鸣特足球场", 34.2551236671,108.8597488403));
-        mfields.add(new FootballField("西安嘉州国际足球场", 34.2487740785,108.8961839676));
-        mfields.add(new FootballField("西安辉度足球场", 34.2367830461,108.8873863220));
-        mAdapter.notifyDataSetChanged();
+
     }
 
-    public static void startActivity(Context context){
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK){
+            if(requestCode == FootballPlaceListActivity.REQUEST_CODE){
+                FootballField footballField = (FootballField) data.getSerializableExtra("field");
+                if(mSetCollectionNum == 1){
+                    GlobalConfigManage.getInstance().setFbPlaceCollection1(
+                            footballField.getId() + "#" + footballField.getLabel());
+                }else if(mSetCollectionNum == 2){
+                    GlobalConfigManage.getInstance().setFbPlaceCollection2(
+                            footballField.getId() + "#" + footballField.getLabel());
+                }
+                setCollectionPlace();
+            }
+        }
+    }
+
+    public static void startActivity(Context context, ArrayList<FootballField> footballFields){
+        if(footballFields == null || footballFields.isEmpty()) {
+            ToastUtil.showToast("当前地区没有足球场地可搜索");
+            return;
+        }
         Intent intent = new Intent(context, SearchPlaceActivity.class);
+        intent.putExtra("footballFields", footballFields);
         context.startActivity(intent);
-    }
-
-    class PlaceAdapter extends BaseAdapter implements Filterable{
-
-        private Filter mFilter;
-        private List<FootballField> mFilterData = new ArrayList<>();
-
-        public PlaceAdapter(List<FootballField> mfilterdata){
-            mFilterData = mfilterdata;
-        }
-
-        @Override
-        public int getCount() {
-            return mFilterData.size();
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return mFilterData.get(position);
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            if(convertView == null){
-                convertView = LayoutInflater.from(SearchPlaceActivity.this).inflate(R.layout.item_search_place, null);
-            }
-            TextView placeName = (TextView) convertView.findViewById(R.id.item_search_place_name);
-            placeName.setText(mFilterData.get(position).getLabel());
-            return convertView;
-        }
-
-
-        @Override
-        public Filter getFilter() {
-            if (mFilter ==null){
-                mFilter = new PlaceFilter();
-            }
-            return mFilter;
-        }
-
-        class PlaceFilter extends Filter{
-
-            @Override
-            protected FilterResults performFiltering(CharSequence constraint) {
-                FilterResults result = new FilterResults();
-                List<FootballField> list;
-                if (TextUtils.isEmpty(constraint)){//当过滤的关键字为空的时候，我们则显示所有的数据
-                    list = mfields;
-                }else {//否则把符合条件的数据对象添加到集合中
-                    list = new ArrayList<>();
-                    for (FootballField field : mfields){
-                        if (field.getLabel().contains(constraint)){
-                            list.add(field);
-                        }
-                    }
-                }
-                result.values = list; //将得到的集合保存到FilterResults的value变量中
-                result.count = list.size();//将集合的大小保存到FilterResults的count变量中
-                return result;
-            }
-
-            @Override
-            protected void publishResults(CharSequence constraint, FilterResults results) {
-                mFilterData = (List<FootballField>) results.values;
-                if (results.count > 0){
-                    notifyDataSetChanged();//通知数据发生了改变
-                }else {
-                    notifyDataSetInvalidated();//通知数据失效
-                }
-            }
-        }
     }
 }

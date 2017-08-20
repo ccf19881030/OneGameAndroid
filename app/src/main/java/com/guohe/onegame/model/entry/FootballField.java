@@ -5,7 +5,7 @@ package com.guohe.onegame.model.entry;
  * 足球场
  */
 
-public class FootballField {
+public class FootballField extends BaseBean{
 
     private int id;
     private String city;

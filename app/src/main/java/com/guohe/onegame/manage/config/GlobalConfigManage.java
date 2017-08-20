@@ -21,6 +21,8 @@ public class GlobalConfigManage extends BaseConfigManage{
     private int mScreenHeight;      //屏幕高
     private boolean mRandomTheme;   //是否随机主题
     private boolean mHasGuide;      //是否引导过了
+    private String mFbPlaceCollection1;  //足球场地收藏1
+    private String mFbPlaceCollection2;  //足球场地收藏2
 
     /**
      * 配置相关的key
@@ -33,6 +35,8 @@ public class GlobalConfigManage extends BaseConfigManage{
         String KEY_SCREEN_HEIGHT = "screen_height";
         String KEY_RANDOM_THEME = "random_theme";
         String KEY_HAS_GUIDE = "has_guide";
+        String KEY_FB_PLACE_COLLECTION1 = "fb_place_collection1";
+        String KEY_FB_PLACE_COLLECTION2 = "fb_place_collection2";
     }
 
     private GlobalConfigManage(String shareName) {
@@ -46,6 +50,8 @@ public class GlobalConfigManage extends BaseConfigManage{
         mScreenHeight = mSharePreference.getInt(configKeys.KEY_SCREEN_HEIGHT, 0);
         mRandomTheme = mSharePreference.getBoolean(configKeys.KEY_RANDOM_THEME, false);
         mHasGuide = mSharePreference.getBoolean(configKeys.KEY_HAS_GUIDE, false);
+        mFbPlaceCollection1 = mSharePreference.getString(configKeys.KEY_FB_PLACE_COLLECTION1, null);
+        mFbPlaceCollection2 = mSharePreference.getString(configKeys.KEY_FB_PLACE_COLLECTION2, null);
     }
 
     public static GlobalConfigManage getInstance(){
@@ -53,6 +59,24 @@ public class GlobalConfigManage extends BaseConfigManage{
             mInstance = new GlobalConfigManage(SHARE_NAME);
         }
         return mInstance;
+    }
+
+    public String getFbPlaceCollection1() {
+        return mFbPlaceCollection1;
+    }
+
+    public void setFbPlaceCollection1(String fbPlaceCollection1) {
+        this.mFbPlaceCollection1 = fbPlaceCollection1;
+        setConfig(configKeys.KEY_FB_PLACE_COLLECTION1, mFbPlaceCollection1);
+    }
+
+    public String getFbPlaceCollection2() {
+        return mFbPlaceCollection2;
+    }
+
+    public void setFbPlaceCollection2(String mFbPlaceCollection2) {
+        this.mFbPlaceCollection2 = mFbPlaceCollection2;
+        setConfig(configKeys.KEY_FB_PLACE_COLLECTION2, mFbPlaceCollection2);
     }
 
     public void setHasGuide(boolean hasGuide){

@@ -11,8 +11,11 @@ import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
 import com.guohe.onegame.util.DimenUtil;
 import com.guohe.onegame.util.FrescoUtils;
+import com.guohe.onegame.util.RefreshUtil;
 
 import java.util.List;
+
+import in.srain.cube.views.ptr.PtrFrameLayout;
 
 /**
  * Created by 水寒 on 2017/8/16.
@@ -47,6 +50,12 @@ public class MsgFragment1 extends BaseMsgFragment {
     protected void initView(View view) {
         mRecyclerView = getView(R.id.msg1_recyclerview);
         bindRecyclerView();
+        refreshView(R.id.msg1_refreshview, new RefreshUtil.OnRefresh() {
+            @Override
+            public void refreshBegin(PtrFrameLayout frame) {
+
+            }
+        });
     }
 
     private void bindRecyclerView(){

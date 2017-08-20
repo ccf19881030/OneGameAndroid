@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
 import com.guohe.onegame.view.base.BaseActivity;
+import com.wou.commonutils.TextUtil;
 
 import java.util.List;
 
@@ -18,6 +19,8 @@ import java.util.List;
  */
 
 public class MyWalletActivity extends BaseActivity {
+
+    private TextView mWalletTotal;
 
     @Override
     public void initPresenter(List<MvpPresenter> presenters) {
@@ -54,7 +57,9 @@ public class MyWalletActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        findViewById(R.id.to_recharge_button).setOnClickListener(new View.OnClickListener() {
+        mWalletTotal = getView(R.id.wallet_total_money);
+        TextUtil.setNumberText(this, mWalletTotal, "84.3");
+        getView(R.id.to_recharge_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 RechargeActivity.startActivity(MyWalletActivity.this);

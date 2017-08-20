@@ -4,7 +4,6 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.v4.widget.Space;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -16,6 +15,7 @@ import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
 import com.guohe.onegame.util.DimenUtil;
 import com.guohe.onegame.util.FrescoUtils;
+import com.guohe.onegame.util.LogUtil;
 import com.guohe.onegame.util.RefreshUtil;
 import com.guohe.onegame.util.TestImageUtil;
 import com.guohe.onegame.view.adapter.MineDynamicGridAdapter;
@@ -26,6 +26,7 @@ import com.guohe.onegame.view.mine.MyFollowdActivity;
 import com.guohe.onegame.view.mine.MyProcessActivity;
 import com.guohe.onegame.view.mine.MyWalletActivity;
 import com.guohe.onegame.view.mine.SettingActivity;
+import com.wou.commonutils.TextUtil;
 
 import java.util.List;
 
@@ -40,11 +41,15 @@ public class MainFragment4 extends BaseMainFragment implements View.OnClickListe
     private RecyclerView mRecyclerView;
     private MineDynamicGridAdapter mAdapter;
     private SimpleDraweeView mHeaderDraw;
+    private GridLayoutManager mGridLayoutManager;
     private PtrFrameLayout mPtrFrameLayout;
     private int mUserId;
     private boolean mIsMine;
     private CoordinatorLayout mCoordinatorLayout;
     private AppBarLayout mAppBarLayout;
+    private TextView mDynamicNumber;
+    private TextView mFollwedNumber;
+    private TextView mFollwmeNumber;
 
     @Override
     public void initPresenter(List<MvpPresenter> presenters) {
@@ -65,6 +70,9 @@ public class MainFragment4 extends BaseMainFragment implements View.OnClickListe
     protected void initData() {
         FrescoUtils.setCircle(mHeaderDraw, getResources().getColor(R.color.app_background));
         FrescoUtils.loadRes(mHeaderDraw, TestImageUtil.getHeadImgRes(), null, DimenUtil.dp2px(57), DimenUtil.dp2px(57), null);
+        TextUtil.setNumberText(this.getContext(), mDynamicNumber, 23);
+        TextUtil.setNumberText(this.getContext(), mFollwedNumber, 162);
+        TextUtil.setNumberText(this.getContext(), mFollwmeNumber, 85);
     }
 
     @Override
@@ -80,7 +88,6 @@ public class MainFragment4 extends BaseMainFragment implements View.OnClickListe
         mHeaderDraw = getView(R.id.header_icon);
         ImageButton attentionButton = getView(R.id.attention_icon);
         attentionButton.setOnClickListener(this);
-        Space space = getView(R.id.mine_dynamic_top_space);
         getView(R.id.header_icon).setOnClickListener(this);
         getView(R.id.mine_role).setOnClickListener(this);
         TextView creditScore = getView(R.id.mine_credit_score);
@@ -93,11 +100,9 @@ public class MainFragment4 extends BaseMainFragment implements View.OnClickListe
 
         if(mIsMine){
             attentionButton.setImageResource(R.mipmap.icon_setting);
-            space.setVisibility(View.VISIBLE);
             creditScore.setText("信用积分156");
         }else{
             attentionButton.setImageResource(R.mipmap.icon_not_followed);
-            space.setVisibility(View.GONE);
             creditScore.setText("23岁");
         }
         mRecyclerView = getView(R.id.personal_recyclerview);
@@ -129,6 +134,10 @@ public class MainFragment4 extends BaseMainFragment implements View.OnClickListe
             }
         });
         mCoordinatorLayout = getView(R.id.app_coordinatorlayout);
+
+        mDynamicNumber = getView(R.id.mine_menu_dynamic_number);
+        mFollwedNumber = getView(R.id.mine_menu_myfollowed_number);
+        mFollwmeNumber = getView(R.id.mine_menu_followme_number);
     }
 
     private NickNameHideListener mNickNameHideListener;
@@ -140,12 +149,31 @@ public class MainFragment4 extends BaseMainFragment implements View.OnClickListe
     }
 
     public interface NickNameHideListener{
-        public void changed(boolean hide, String nickname);
+        void changed(boolean hide, String nickname);
     }
 
+    private int mRecyclerScrollStatu;
     private void bindRecyclerView(){
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                mRecyclerScrollStatu = newState;
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                LogUtil.d("dy == " + dy);
+                if(dy < 0 && mRecyclerScrollStatu == RecyclerView.SCROLL_STATE_SETTLING
+                        && mGridLayoutManager.findFirstVisibleItemPosition() <= 5){
+                    mAppBarLayout.setExpanded(true);
+                }
+            }
+        });
         mRecyclerView.setHasFixedSize(false);
-        mRecyclerView.setLayoutManager(new GridLayoutManager(this.getContext(), 3));
+        mGridLayoutManager = new GridLayoutManager(this.getContext(), 3);
+        mRecyclerView.setLayoutManager(mGridLayoutManager);
         mRecyclerView.addItemDecoration(new RecyclerView.ItemDecoration(){
             @Override
             public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {

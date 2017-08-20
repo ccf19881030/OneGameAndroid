@@ -9,7 +9,6 @@
         android:id="@+id/main_page2_toolbar"
         android:layout_width="match_parent"
         android:animateLayoutChanges="true"
-        android:layout_marginTop="25dip"
         android:layout_height="44dip">
 
         <ImageButton

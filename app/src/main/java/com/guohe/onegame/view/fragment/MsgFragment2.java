@@ -12,11 +12,14 @@ import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
 import com.guohe.onegame.util.DimenUtil;
 import com.guohe.onegame.util.FrescoUtils;
+import com.guohe.onegame.util.RefreshUtil;
 import com.guohe.onegame.util.TestImageUtil;
 import com.guohe.onegame.view.circle.DynamicDetailActivity;
 import com.guohe.onegame.view.mine.PersonalPageActivity;
 
 import java.util.List;
+
+import in.srain.cube.views.ptr.PtrFrameLayout;
 
 /**
  * Created by 水寒 on 2017/8/16.
@@ -51,6 +54,12 @@ public class MsgFragment2 extends BaseMsgFragment {
     protected void initView(View view) {
         mRecyclerView = getView(R.id.msg2_recyclerview);
         bindRecyclerView();
+        refreshView(R.id.msg2_refreshview, new RefreshUtil.OnRefresh() {
+            @Override
+            public void refreshBegin(PtrFrameLayout frame) {
+
+            }
+        });
     }
 
     private void bindRecyclerView(){

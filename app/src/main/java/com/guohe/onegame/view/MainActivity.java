@@ -21,7 +21,6 @@ import com.guohe.onegame.view.fragment.MainFragment1;
 import com.guohe.onegame.view.fragment.MainFragment2;
 import com.guohe.onegame.view.fragment.MainFragment3;
 import com.guohe.onegame.view.fragment.MainFragment4;
-import com.jaeger.library.StatusBarUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -111,35 +110,23 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         return false;
     }
 
-    @Override
-    protected void setStatuBar() {
-        StatusBarUtil.setTranslucentForImageViewInFragment(this, 0, null);
-        //StatusBarUtil.setTranslucentForImageView(this, 30, null);
-        //StatusBarUtil.setColor(this, getResources().getColor(R.color.app_background));
-    }
 
     @Override
     public void onClick(View view) {
-        int alpha = 30;
         switch (view.getId()){
             case R.id.main_nav1:
                 setFragment(0);
-                alpha = 0;
                 break;
             case R.id.main_nav2:
                 setFragment(1);
-                alpha = 30;
                 break;
             case R.id.main_nav3:
                 setFragment(2);
-                alpha = 30;
                 break;
             case R.id.main_nav4:
                 setFragment(3);
-                alpha = 30;
                 break;
         }
-        StatusBarUtil.setTranslucentForImageViewInFragment(this, alpha, null);
     }
 
     /**

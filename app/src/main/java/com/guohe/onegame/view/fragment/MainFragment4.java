@@ -166,7 +166,7 @@ public class MainFragment4 extends BaseMainFragment implements View.OnClickListe
                 super.onScrolled(recyclerView, dx, dy);
                 LogUtil.d("dy == " + dy);
                 if(dy < 0 && mRecyclerScrollStatu == RecyclerView.SCROLL_STATE_SETTLING
-                        && mGridLayoutManager.findFirstVisibleItemPosition() <= 5){
+                        && mGridLayoutManager.findFirstVisibleItemPosition() <= 2){
                     mAppBarLayout.setExpanded(true);
                 }
             }

@@ -148,6 +148,7 @@
             android:screenOrientation="portrait"/>
 
         <activity android:name=".view.team.FootballPlaceActivity"
+            android:theme="@style/FullScreenTheme"
             android:screenOrientation="portrait"/>
 
         <activity android:name=".view.team.FootballPlaceListActivity"
@@ -160,6 +161,9 @@
             android:screenOrientation="portrait"/>
 
         <activity android:name=".view.invitation.AcceptTeamInvatationActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".view.team.MobiDemo"
             android:screenOrientation="portrait"/>
 
         <!-- 高德地图-->

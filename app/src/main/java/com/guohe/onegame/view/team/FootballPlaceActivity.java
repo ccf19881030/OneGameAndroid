@@ -2,11 +2,11 @@ package com.guohe.onegame.view.team;
 
 import android.content.Context;
 import android.content.Intent;
-import android.widget.ImageButton;
-import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
+import com.guohe.onegame.util.FrescoUtils;
 import com.guohe.onegame.view.base.BaseActivity;
 
 import java.util.List;
@@ -18,6 +18,7 @@ import java.util.List;
 
 public class FootballPlaceActivity extends BaseActivity {
 
+    private SimpleDraweeView mPlaceBg;
     @Override
     public void initPresenter(List<MvpPresenter> presenters) {
 
@@ -29,18 +30,14 @@ public class FootballPlaceActivity extends BaseActivity {
     }
 
     @Override
-    protected void customeToolbar(TextView titleText, TextView toolbarMenu, ImageButton moreButton) {
-        titleText.setText("鹿鸣大球场");
-    }
-
-    @Override
     protected int getContentView() {
         return R.layout.activity_football_place;
     }
 
     @Override
     protected void initView() {
-
+        mPlaceBg = getView(R.id.football_place_bg);
+        FrescoUtils.loadRes(mPlaceBg, R.mipmap.test_football_place_bg, null, 0, 0, null);
     }
 
     @Override

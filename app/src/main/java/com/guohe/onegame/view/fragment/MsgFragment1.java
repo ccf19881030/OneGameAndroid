@@ -12,6 +12,7 @@ import com.guohe.onegame.R;
 import com.guohe.onegame.util.DimenUtil;
 import com.guohe.onegame.util.FrescoUtils;
 import com.guohe.onegame.util.RefreshUtil;
+import com.guohe.onegame.view.team.MobiDemo;
 
 import java.util.List;
 
@@ -78,6 +79,12 @@ public class MsgFragment1 extends BaseMsgFragment {
             FrescoUtils.setCircle(holder.mHeadDrawee, getResources().getColor(R.color.app_background));
             FrescoUtils.loadRes(holder.mHeadDrawee, R.mipmap.icon_logo,
                     null, DimenUtil.dp2px(38), DimenUtil.dp2px(38), null);
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    MobiDemo.startActivity(MsgFragment1.this.getContext());
+                }
+            });
         }
 
         @Override
@@ -89,8 +96,10 @@ public class MsgFragment1 extends BaseMsgFragment {
     class Msg1ViewHolder extends RecyclerView.ViewHolder{
 
         private SimpleDraweeView mHeadDrawee;
+        private View itemView;
         public Msg1ViewHolder(View itemView) {
             super(itemView);
+            this.itemView = itemView;
             mHeadDrawee = (SimpleDraweeView) itemView.findViewById(R.id.item_msg1_head);
         }
     }

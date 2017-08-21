@@ -101,7 +101,8 @@ dependencies {
     //下拉刷新
     compile project(':ptr-lib')
     //图片轮播器
-    compile 'com.jude:rollviewpager:1.4.5'
+    //compile 'com.jude:rollviewpager:1.4.5'
+    compile project(':rollviewpager')
     //滑动返回
     compile 'com.r0adkll:slidableactivity:2.0.5'
     //对话框
@@ -121,4 +122,6 @@ dependencies {
     //SmartTabLayout
     compile 'com.ogaclejapan.smarttablayout:library:1.6.1@aar'
     compile 'com.ogaclejapan.smarttablayout:utils-v4:1.6.1@aar'
+    //膜拜贴纸
+    compile project(':MobikeLibrary')
 }

@@ -1,11 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/app_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include layout="@layout/toolbar_common"
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/football_place_bg"
         android:layout_width="match_parent"
-        android:layout_height="44dip"/>
-</LinearLayout>
+        android:layout_height="240dip"
+        fresco:actualImageScaleType="centerCrop"
+        fresco:placeholderImage="@drawable/default_placeholder"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="60dip"
+        android:layout_alignBottom="@id/football_place_bg"
+        android:background="@drawable/football_place_bg_gradient"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dip">
+
+        <ImageButton
+            android:id="@+id/toolbar_back"
+            android:layout_width="50dip"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:scaleType="centerInside"
+            android:src="@mipmap/icon_arrow_back_white"/>
+
+        <ImageButton
+            android:id="@+id/toolbar_more"
+            android:layout_width="50dip"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:layout_alignParentRight="true"
+            android:scaleType="centerInside"
+            android:src="@mipmap/icon_more_white"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="120dip"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:background="@color/app_background"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/app_textcolor"
+            android:textSize="24sp"
+            android:layout_marginLeft="16dip"
+            android:layout_marginTop="32dip"
+            android:text="西安外事学院南校区足球场"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:layout_marginLeft="16dip"
+            android:layout_marginTop="16dip"
+            android:drawablePadding="8dip"
+            android:drawableLeft="@mipmap/icon_football_place_location"
+            android:textColor="@color/app_second_textcolor"
+            android:text="陕西省西安市雁塔区鱼斗路18号"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dip"
+            android:layout_marginTop="50dip"
+            android:gravity="center_vertical"
+            android:background="@color/app_not_choosed_bg">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerInside"
+                android:layout_marginLeft="14dip"
+                android:src="@mipmap/icon_football_place_date"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:layout_marginLeft="25dip"
+                android:textColor="@color/app_textcolor"
+                android:text="选择日期"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dip"
+            android:layout_marginTop="10dip"
+            android:gravity="center_vertical"
+            android:background="@color/app_not_choosed_bg">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerInside"
+                android:layout_marginLeft="14dip"
+                android:src="@mipmap/icon_football_place_time"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:layout_marginLeft="25dip"
+                android:textColor="@color/app_textcolor"
+                android:text="选择时间段"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dip"
+            android:layout_marginTop="10dip"
+            android:gravity="center_vertical"
+            android:background="@color/app_not_choosed_bg">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerInside"
+                android:layout_marginLeft="14dip"
+                android:src="@mipmap/icon_football_place_number"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:layout_marginLeft="25dip"
+                android:textColor="@color/app_textcolor"
+                android:text="选择几人制场地"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dip"
+            android:layout_marginTop="10dip"
+            android:gravity="center_vertical"
+            android:background="@color/app_not_choosed_bg">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerInside"
+                android:layout_marginLeft="14dip"
+                android:src="@mipmap/icon_football_place_money"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:layout_marginLeft="25dip"
+                android:textColor="@color/app_textcolor"
+                android:text="350元"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="44dip"
+        android:textSize="14sp"
+        android:textColor="@android:color/white"
+        android:background="@color/colorAccent"
+        android:layout_alignParentBottom="true"
+        android:text="确认定场"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginBottom="15dip"/>
+</RelativeLayout>

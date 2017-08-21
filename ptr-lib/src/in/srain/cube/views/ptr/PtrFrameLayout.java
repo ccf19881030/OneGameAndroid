@@ -272,6 +272,8 @@ public class PtrFrameLayout extends ViewGroup {
         return super.dispatchTouchEvent(e);
     }
 
+    int eventX;
+    int eventY;
     @Override
     public boolean dispatchTouchEvent(MotionEvent e) {
         if (!isEnabled() || mContent == null || mHeaderView == null) {
@@ -297,6 +299,8 @@ public class PtrFrameLayout extends ViewGroup {
                 }
 
             case MotionEvent.ACTION_DOWN:
+                eventX = (int) e.getX();
+                eventY = (int) e.getY();
                 mHasSendCancelEvent = false;
                 mPtrIndicator.onPressDown(e.getX(), e.getY());
 
@@ -310,6 +314,11 @@ public class PtrFrameLayout extends ViewGroup {
                 return true;
 
             case MotionEvent.ACTION_MOVE:
+                int deventX = (int)e.getX() - eventX;
+                int deventY = (int)e.getY() - eventY;
+                if(Math.abs(deventX) > Math.abs(deventY)){
+                    return super.dispatchTouchEvent(e);
+                }
                 mLastMoveEvent = e;
                 mPtrIndicator.onMove(e.getX(), e.getY());
                 float offsetX = mPtrIndicator.getOffsetX();

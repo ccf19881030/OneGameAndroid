@@ -2,11 +2,14 @@ package com.guohe.onegame.view.mine;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
+import com.guohe.onegame.view.adapter.FollowAdapter;
 import com.guohe.onegame.view.base.BaseActivity;
 
 import java.util.List;
@@ -17,6 +20,9 @@ import java.util.List;
  */
 
 public class MyFollowdActivity extends BaseActivity{
+
+    private RecyclerView mRecyclerView;
+    private FollowAdapter mAdapter;
 
     @Override
     public void initPresenter(List<MvpPresenter> presenters) {
@@ -40,7 +46,16 @@ public class MyFollowdActivity extends BaseActivity{
 
     @Override
     protected void initView() {
+        mRecyclerView = getView(R.id.myfollowed_recyclerview);
 
+        bindRecyclerView();
+    }
+
+    private void bindRecyclerView(){
+        mRecyclerView.setHasFixedSize(false);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mAdapter = new FollowAdapter(this, false);
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     @Override

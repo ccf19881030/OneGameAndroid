@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.guohe.onegame.MvpPresenter;
@@ -16,6 +17,7 @@ import com.guohe.onegame.util.DimenUtil;
 import com.guohe.onegame.util.FrescoUtils;
 import com.guohe.onegame.util.LogUtil;
 import com.guohe.onegame.util.RefreshUtil;
+import com.guohe.onegame.util.TestImageUtil;
 import com.guohe.onegame.view.invitation.TeamInvatationActivity;
 import com.guohe.onegame.view.team.BallTeamActivity;
 import com.jude.rollviewpager.RollPagerView;
@@ -32,6 +34,11 @@ import in.srain.cube.views.ptr.PtrFrameLayout;
 
 public class HomeFragment extends BaseHomeFragment {
 
+    public static final int HOME_TYPE_YUEZHAN = 1;
+    public static final int HOME_TYPE_YUECAIPAN = 2;
+    public static final int HOME_TYPE_QUTIQIU = 3;
+    public static final int HOME_TYPE_XUETIQIU = 4;
+
     private RollPagerView mRollpagerView;
     private RollPagerAdapter mRollPagerAdapter;
     private List<ScrollBanner> mScrollBanners = new ArrayList<>();
@@ -40,6 +47,8 @@ public class HomeFragment extends BaseHomeFragment {
     private YuezhanAdapter mAdapter;
     private AppBarLayout mAppBarLayout;
     private LinearLayoutManager mLinearLayoutManager;
+
+    private int mHomeType;
 
     @Override
     public void initPresenter(List<MvpPresenter> presenters) {
@@ -68,6 +77,7 @@ public class HomeFragment extends BaseHomeFragment {
     private int mRecyclerScrollStatu;
     @Override
     protected void initView(View view) {
+        mHomeType = getArguments().getInt("homeType");
         bindRollpagerView();
         mPtrFrameLayout = refreshView(R.id.main_home1_refreshview, new RefreshUtil.OnRefresh() {
             @Override
@@ -172,6 +182,24 @@ public class HomeFragment extends BaseHomeFragment {
 
         @Override
         public void onBindViewHolder(YuezhanViewHolder holder, int position) {
+            switch (mHomeType){
+                case HOME_TYPE_YUEZHAN:
+
+                    break;
+                case HOME_TYPE_YUECAIPAN:
+                    holder.agreeButton.setText("应约");
+                    holder.hongbao.setText("执法有红包");
+                    break;
+                case HOME_TYPE_QUTIQIU:
+                    holder.agreeButton.setText("报名");
+                    holder.teamNum.setText("缺2人");
+                    break;
+                case HOME_TYPE_XUETIQIU:
+                    holder.teamName.setText("小红帽培训小班");
+                    holder.teamNum.setText("5/8人制");
+                    holder.agreeButton.setText("报名");
+                    break;
+            }
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -181,9 +209,11 @@ public class HomeFragment extends BaseHomeFragment {
             holder.agreeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    TeamInvatationActivity.startActivity(HomeFragment.this.getContext());
+                    TeamInvatationActivity.startActivity(HomeFragment.this.getContext(), mHomeType);
                 }
             });
+            FrescoUtils.setCircle(holder.head, getResources().getColor(R.color.app_background));
+            FrescoUtils.loadRes(holder.head, TestImageUtil.getHeadImgRes(), null, DimenUtil.dp2px(14), DimenUtil.dp2px(14), null);
         }
 
         @Override
@@ -196,10 +226,18 @@ public class HomeFragment extends BaseHomeFragment {
 
         private View itemView;
         private Button agreeButton;
+        private TextView teamName;
+        private TextView teamNum;
+        private TextView hongbao;
+        private SimpleDraweeView head;
         public YuezhanViewHolder(View itemView) {
             super(itemView);
             this.itemView = itemView;
             this.agreeButton = (Button) itemView.findViewById(R.id.item_yuezhan_agree_button);
+            this.teamName = (TextView) itemView.findViewById(R.id.item_yuezhan_team_name);
+            this.teamNum = (TextView) itemView.findViewById(R.id.item_yuezhan_team_num);
+            this.hongbao = (TextView) itemView.findViewById(R.id.item_yuezhan_hongbao);
+            this.head = (SimpleDraweeView) itemView.findViewById(R.id.item_yuezhan_head);
         }
     }
 }

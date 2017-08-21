@@ -21,26 +21,29 @@
             android:orientation="horizontal">
 
             <com.facebook.drawee.view.SimpleDraweeView
-                android:layout_width="12dip"
-                android:layout_height="12dip"
+                android:id="@+id/item_yuezhan_head"
+                android:layout_width="14dip"
+                android:layout_height="14dip"
                 fresco:placeholderImage="@drawable/default_placeholder"
                 fresco:actualImageScaleType="centerInside"/>
             <TextView
+                android:id="@+id/item_yuezhan_team_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="13sp"
-                android:layout_marginLeft="10dip"
+                android:layout_marginLeft="9dip"
                 android:textColor="@color/app_textcolor"
                 android:text="广州恒大淘宝"/>
 
         </LinearLayout>
 
         <TextView
+            android:id="@+id/item_yuezhan_team_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:layout_marginTop="5dip"
-            android:layout_marginLeft="20dip"
+            android:layout_marginLeft="22dip"
             android:textColor="@color/app_textcolor"
             android:text="7人制"/>
     </LinearLayout>
@@ -59,6 +62,7 @@
         android:background="@drawable/icon_nomal_bg"/>
 
     <TextView
+        android:id="@+id/item_yuezhan_hongbao"
         android:layout_toLeftOf="@id/item_yuezhan_agree_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

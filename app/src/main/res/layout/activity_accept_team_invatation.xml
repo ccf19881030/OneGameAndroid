@@ -18,6 +18,7 @@
         android:src="@mipmap/icon_invatation_success"/>
 
     <TextView
+        android:id="@+id/accept_invatation_descript"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="12sp"
@@ -26,6 +27,7 @@
         android:text="订单迎站成功"/>
 
     <TextView
+        android:id="@+id/accept_invatation_charge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15sp"
@@ -45,6 +47,7 @@
         android:layout_marginTop="43dip"/>
 
     <TextView
+        android:id="@+id/accept_invatation_follow_work"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorAccent"

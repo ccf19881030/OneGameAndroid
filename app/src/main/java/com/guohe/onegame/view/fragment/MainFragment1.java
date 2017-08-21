@@ -1,5 +1,6 @@
 package com.guohe.onegame.view.fragment;
 
+import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
@@ -46,12 +47,20 @@ public class MainFragment1 extends BaseMainFragment {
     protected void initView(View view) {
         mTabLayout = getView(R.id.home_viewpagertab);
         mViewPager = getView(R.id.home_viewpager);
+        Bundle bundle1 = new Bundle();
+        bundle1.putInt("homeType", HomeFragment.HOME_TYPE_YUEZHAN);
+        Bundle bundle2 = new Bundle();
+        bundle2.putInt("homeType", HomeFragment.HOME_TYPE_YUECAIPAN);
+        Bundle bundle3 = new Bundle();
+        bundle3.putInt("homeType", HomeFragment.HOME_TYPE_QUTIQIU);
+        Bundle bundle4 = new Bundle();
+        bundle4.putInt("homeType", HomeFragment.HOME_TYPE_XUETIQIU);
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
                 getChildFragmentManager(), FragmentPagerItems.with(MainFragment1.this.getActivity())
-                .add("约战", HomeFragment.class)
-                .add("约裁判", HomeFragment.class)
-                .add("去踢球", HomeFragment.class)
-                .add("学踢球", HomeFragment.class)
+                .add("约战", HomeFragment.class, bundle1)
+                .add("约裁判", HomeFragment.class, bundle2)
+                .add("去踢球", HomeFragment.class, bundle3)
+                .add("学踢球", HomeFragment.class, bundle4)
                 .create());
         mViewPager.setAdapter(adapter);
         mTabLayout.setViewPager(mViewPager);

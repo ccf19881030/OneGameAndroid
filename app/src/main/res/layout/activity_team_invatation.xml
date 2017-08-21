@@ -17,6 +17,7 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/team_invatation_teamname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="24sp"
@@ -25,6 +26,7 @@
             android:text="广州恒大淘宝队"/>
 
         <TextView
+            android:id="@+id/team_invatation_teamnum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="12sp"
@@ -34,24 +36,46 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/team_invatation_descript"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="12sp"
         android:layout_marginLeft="20dip"
         android:layout_marginTop="14dip"
+        android:lineSpacingMultiplier="1.4"
         android:textColor="@color/app_second_textcolor"
-        android:text="确认迎站后，对方可以看到您的手机号码"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:layout_marginLeft="20dip"
-        android:layout_marginTop="5dip"
-        android:textColor="@color/app_second_textcolor"
-        android:text="确认后取消或者放鸽子，您的球队信用分将会下降"/>
+        android:text="确认迎站后，对方可以看到您的手机号码\n确认后取消或者放鸽子，您的球队信用分将会下降"/>
 
     <LinearLayout
+        android:id="@+id/team_invatation_agegroup"
+        android:layout_width="match_parent"
+        android:layout_height="44dip"
+        android:visibility="gone"
+        android:layout_marginLeft="9dip"
+        android:layout_marginRight="9dip"
+        android:layout_marginTop="20dip"
+        android:gravity="center_vertical"
+        android:background="@color/app_not_choosed_bg">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/app_textcolor"
+            android:layout_marginLeft="12dip"
+            android:text="年龄段" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:layout_marginLeft="40dip"
+            android:textColor="@color/app_textcolor"
+            android:text="8岁-15岁"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/team_invatation_caipan"
         android:layout_width="match_parent"
         android:layout_height="44dip"
         android:layout_marginLeft="9dip"
@@ -79,8 +103,9 @@
                 android:layout_height="wrap_content"
                 android:text="主裁"
                 android:textSize="12sp"
-                android:drawablePadding="5dip"
-                android:button="@drawable/choose_payment_radio_bg"
+                android:drawablePadding="6dip"
+                android:button="@null"
+                android:drawableLeft="@drawable/choose_payment_radio_bg"
                 android:layout_marginLeft="40dip"
                 android:textColor="@color/app_textcolor"/>
             <RadioButton
@@ -88,8 +113,9 @@
                 android:layout_height="wrap_content"
                 android:text="边裁"
                 android:textSize="12sp"
-                android:drawablePadding="5dip"
-                android:button="@drawable/choose_payment_radio_bg"
+                android:drawablePadding="6dip"
+                android:button="@null"
+                android:drawableLeft="@drawable/choose_payment_radio_bg"
                 android:layout_marginLeft="40dip"
                 android:textColor="@color/app_textcolor"/>
 
@@ -97,14 +123,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="边裁"
-                android:drawablePadding="5dip"
+                android:drawablePadding="6dip"
                 android:textSize="12sp"
-                android:button="@drawable/choose_payment_radio_bg"
+                android:button="@null"
+                android:drawableLeft="@drawable/choose_payment_radio_bg"
                 android:layout_marginLeft="40dip"
                 android:textColor="@color/app_textcolor"/>
         </RadioGroup>
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/team_invatation_qiuyi"
         android:layout_width="match_parent"
         android:layout_height="44dip"
         android:layout_marginLeft="9dip"
@@ -130,6 +158,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/team_invatation_address"
         android:layout_width="match_parent"
         android:layout_height="44dip"
         android:layout_marginLeft="9dip"
@@ -156,6 +185,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/team_invatation_time"
         android:layout_width="match_parent"
         android:layout_height="44dip"
         android:layout_marginLeft="9dip"
@@ -198,6 +228,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/team_invatation_charge"
         android:layout_width="match_parent"
         android:layout_height="44dip"
         android:layout_marginLeft="9dip"
@@ -215,6 +246,7 @@
             android:text="费用" />
 
         <TextView
+            android:id="@+id/team_invatation_charge_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="12sp"
@@ -228,6 +260,7 @@
         android:layout_weight="1"/>
 
     <LinearLayout
+        android:id="@+id/team_invatation_not_enough"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dip"

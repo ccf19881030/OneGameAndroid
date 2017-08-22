@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
 import com.guohe.onegame.view.base.BaseActivity;
+import com.guohe.onegame.view.mine.RechargeActivity;
 
 import java.util.List;
 
@@ -78,6 +79,12 @@ public class TeamInvatationActivity extends BaseActivity{
             @Override
             public void onClick(View v) {
                 AcceptTeamInvatationActivity.startActivity(TeamInvatationActivity.this, mHomeType);
+            }
+        });
+        getView(R.id.team_invatation_torecharge).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RechargeActivity.startActivity(TeamInvatationActivity.this);
             }
         });
     }

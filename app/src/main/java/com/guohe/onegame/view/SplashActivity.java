@@ -1,6 +1,7 @@
 package com.guohe.onegame.view;
 
 import android.content.res.AssetManager;
+import android.os.Bundle;
 import android.os.Message;
 import android.os.SystemClock;
 
@@ -11,6 +12,7 @@ import com.guohe.onegame.custome.WeakRefrenceHandler;
 import com.guohe.onegame.manage.config.GlobalConfigManage;
 import com.guohe.onegame.util.LogUtil;
 import com.guohe.onegame.view.base.BaseActivity;
+import com.guohe.onegame.view.fragment.VideoItemFragment;
 import com.wou.commonutils.FileUtils;
 import com.wou.commonutils.ScreenSizeUtil;
 
@@ -82,7 +84,16 @@ public class SplashActivity extends BaseActivity{
 
     @Override
     protected void initView() {
+        VideoItemFragment videoItemFragment = new VideoItemFragment();
+        Bundle localBundle = new Bundle();
+        localBundle.putInt("videoRes", R.raw.splash_1);
+        localBundle.putInt("imgRes", R.drawable.slogan_1);
+        videoItemFragment.setArguments(localBundle);
 
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.fragment_container, videoItemFragment)
+                .show(videoItemFragment)
+                .commit();
     }
 
     @Override

@@ -1,1 +1,1 @@
-include ':app', ':takephoto_library', ':commonutils', ':HeaderAndFooterRecyclerView', ':ptr-lib', ':ImageViewTouch', ':Gpu-Image', ':rollviewpager', ':MobikeLibrary'
+include ':app', ':takephoto_library', ':commonutils', ':HeaderAndFooterRecyclerView', ':ptr-lib', ':ImageViewTouch', ':Gpu-Image', ':rollviewpager', ':MobikeLibrary', ':sublimepickerlibrary'

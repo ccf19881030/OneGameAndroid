@@ -57,6 +57,7 @@
             android:textSize="24sp"
             android:layout_marginLeft="16dip"
             android:layout_marginTop="32dip"
+            android:textStyle="bold"
             android:text="西安外事学院南校区足球场"/>
 
         <TextView
@@ -71,6 +72,7 @@
             android:text="陕西省西安市雁塔区鱼斗路18号"/>
 
         <LinearLayout
+            android:id="@+id/football_place_date_area"
             android:layout_width="match_parent"
             android:layout_height="44dip"
             android:layout_marginTop="50dip"
@@ -85,6 +87,7 @@
                 android:src="@mipmap/icon_football_place_date"/>
 
             <TextView
+                android:id="@+id/football_place_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
@@ -94,6 +97,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/football_place_time"
             android:layout_width="match_parent"
             android:layout_height="44dip"
             android:layout_marginTop="10dip"
@@ -117,6 +121,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/football_place_number"
             android:layout_width="match_parent"
             android:layout_height="44dip"
             android:layout_marginTop="10dip"

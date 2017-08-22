@@ -124,4 +124,6 @@ dependencies {
     compile 'com.ogaclejapan.smarttablayout:utils-v4:1.6.1@aar'
     //膜拜贴纸
     compile project(':MobikeLibrary')
+    //日期时间选择控件
+    compile project(':sublimepickerlibrary')
 }

@@ -60,6 +60,10 @@ public class MobiDemo extends BaseActivity {
     @Override
     protected void initView() {
         mobikeView = (MobikeView) findViewById(R.id.mobike_view);
+        mobikeView.getmMobike().setDensity(1.0f);
+        mobikeView.getmMobike().setFriction(0.1f);
+        mobikeView.getmMobike().setRestitution(0.1f);
+        mobikeView.getmMobike().setRatio(50f);
         initMobikeTiezhi();
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         defaultSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);

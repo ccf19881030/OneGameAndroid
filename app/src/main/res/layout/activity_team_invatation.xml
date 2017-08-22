@@ -58,7 +58,7 @@
         android:background="@color/app_not_choosed_bg">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="64dip"
             android:layout_height="wrap_content"
             android:textSize="12sp"
             android:textColor="@color/app_textcolor"
@@ -69,7 +69,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="12sp"
-            android:layout_marginLeft="40dip"
             android:textColor="@color/app_textcolor"
             android:text="8岁-15岁"/>
     </LinearLayout>
@@ -85,7 +84,7 @@
         android:gravity="center_vertical">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="64dip"
             android:layout_height="wrap_content"
             android:textSize="12sp"
             android:textColor="@color/app_textcolor"
@@ -106,7 +105,6 @@
                 android:drawablePadding="6dip"
                 android:button="@null"
                 android:drawableLeft="@drawable/choose_payment_radio_bg"
-                android:layout_marginLeft="40dip"
                 android:textColor="@color/app_textcolor"/>
             <RadioButton
                 android:layout_width="wrap_content"
@@ -142,7 +140,7 @@
         android:background="@color/app_not_choosed_bg">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="64dip"
             android:layout_height="wrap_content"
             android:textSize="12sp"
             android:textColor="@color/app_textcolor"
@@ -153,7 +151,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:scaleType="centerInside"
-            android:layout_marginLeft="40dip"
             android:src="@mipmap/icon_clothes_color_red"/>
     </LinearLayout>
 
@@ -168,7 +165,7 @@
         android:background="@color/app_not_choosed_bg">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="64dip"
             android:layout_height="wrap_content"
             android:textSize="12sp"
             android:textColor="@color/app_textcolor"
@@ -179,7 +176,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="12sp"
-            android:layout_marginLeft="40dip"
             android:textColor="@color/app_textcolor"
             android:text="易联足球公园6号场"/>
     </LinearLayout>
@@ -195,7 +191,7 @@
         android:background="@color/app_not_choosed_bg">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="64dip"
             android:layout_height="wrap_content"
             android:textSize="12sp"
             android:textColor="@color/app_textcolor"
@@ -206,7 +202,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="12sp"
-            android:layout_marginLeft="40dip"
             android:textColor="@color/app_textcolor"
             android:text="2017.08.06"/>
 
@@ -214,7 +209,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="12sp"
-            android:layout_marginLeft="40dip"
+            android:layout_marginLeft="30dip"
             android:textColor="@color/app_textcolor"
             android:text="星期六"/>
 
@@ -222,7 +217,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="12sp"
-            android:layout_marginLeft="40dip"
+            android:layout_marginLeft="30dip"
             android:textColor="@color/app_textcolor"
             android:text="19：30-21：00"/>
     </LinearLayout>
@@ -238,7 +233,8 @@
         android:background="@color/app_not_choosed_bg">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/team_invatation_charge_key"
+            android:layout_width="64dip"
             android:layout_height="wrap_content"
             android:textSize="12sp"
             android:textColor="@color/app_textcolor"
@@ -250,7 +246,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="12sp"
-            android:layout_marginLeft="40dip"
             android:textColor="@color/app_textcolor"
             android:text="300元"/>
     </LinearLayout>

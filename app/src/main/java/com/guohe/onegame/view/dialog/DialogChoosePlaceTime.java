@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
 
 import com.guohe.onegame.R;
 import com.guohe.onegame.util.DimenUtil;
@@ -70,7 +71,11 @@ public class DialogChoosePlaceTime extends BaseDialogFragment {
 
         @Override
         public void onBindViewHolder(PlaceTimeChooseViewHolder holder, int position) {
-
+            if(position == 3 || position == 8){
+                holder.radioButton.setEnabled(false);
+            }else{
+                holder.radioButton.setEnabled(true);
+            }
         }
 
         @Override
@@ -81,8 +86,10 @@ public class DialogChoosePlaceTime extends BaseDialogFragment {
 
     class PlaceTimeChooseViewHolder extends RecyclerView.ViewHolder{
 
+        private RadioButton radioButton;
         public PlaceTimeChooseViewHolder(View itemView) {
             super(itemView);
+            radioButton = (RadioButton) itemView.findViewById(R.id.item_choose_placetime_radio);
         }
     }
 }

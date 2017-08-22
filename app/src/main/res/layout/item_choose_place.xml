@@ -22,52 +22,31 @@
         android:layout_marginTop="13dip"
         android:layout_marginBottom="10dip"
         android:orientation="horizontal">
-        <LinearLayout
+
+        <RadioButton
+            android:id="@+id/item_choose_place_half"
             android:layout_width="0dip"
-            android:layout_height="43dip"
             android:layout_weight="1"
+            android:layout_height="43dip"
+            android:button="@null"
+            android:textSize="14sp"
+            android:text="半场  ￥160"
             android:gravity="center"
-            android:background="@drawable/item_choose_place_grey_bg"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textColor="@color/app_textcolor"
-                android:text="半场"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:layout_marginLeft="9dip"
-                android:textColor="@color/app_textcolor"
-                android:text="￥160"/>
-        </LinearLayout>
-
-        <LinearLayout
+            android:textColor="@drawable/recharge_radio_textcolor"
+            android:background="@drawable/recharge_radio_bg"/>
+        <Space
+            android:layout_width="14dip"
+            android:layout_height="wrap_content" />
+        <RadioButton
+            android:id="@+id/item_choose_place_full"
             android:layout_width="0dip"
-            android:layout_height="43dip"
-            android:layout_marginLeft="14dip"
             android:layout_weight="1"
+            android:layout_height="43dip"
+            android:button="@null"
+            android:textSize="14sp"
+            android:text="全场  ￥320"
             android:gravity="center"
-            android:background="@color/colorAccent"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textColor="@android:color/white"
-                android:text="半场"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:layout_marginLeft="9dip"
-                android:textColor="@android:color/white"
-                android:text="￥160"/>
-        </LinearLayout>
+            android:textColor="@drawable/recharge_radio_textcolor"
+            android:background="@drawable/recharge_radio_bg"/>
     </LinearLayout>
 </LinearLayout>

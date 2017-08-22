@@ -5,12 +5,13 @@
     android:layout_height="wrap_content">
 
     <RadioButton
+        android:id="@+id/item_choose_placetime_radio"
         android:layout_width="match_parent"
         android:layout_height="43dip"
         android:button="@null"
         android:textSize="14sp"
-        android:textColor="@android:color/white"
         android:text="10:30-11:30"
         android:gravity="center"
-        android:background="@color/colorAccent"/>
+        android:textColor="@drawable/recharge_radio_textcolor"
+        android:background="@drawable/recharge_radio_bg"/>
 </LinearLayout>

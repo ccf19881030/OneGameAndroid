@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
 
 import com.guohe.onegame.R;
 
@@ -50,7 +51,9 @@ public class DialogChoosePlace extends BaseDialogFragment{
         mRecyclerView.setAdapter(mAdapter);
     }
 
-    class PlaceChooseAdapter extends RecyclerView.Adapter<PlaceChooseViewHolder>{
+    class PlaceChooseAdapter extends RecyclerView.Adapter<PlaceChooseViewHolder> implements View.OnClickListener{
+
+        private int mSelectedItem = -1;
 
         @Override
         public PlaceChooseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -60,19 +63,39 @@ public class DialogChoosePlace extends BaseDialogFragment{
 
         @Override
         public void onBindViewHolder(PlaceChooseViewHolder holder, int position) {
+            if(position == 3){
+                holder.mHalfRadio.setEnabled(false);
+            }else if(position == 8){
+                holder.mFullRadio.setEnabled(false);
+            }else{
+                holder.mHalfRadio.setEnabled(true);
+                holder.mFullRadio.setEnabled(true);
+            }
 
+            holder.mHalfRadio.setOnClickListener(this);
+            holder.mFullRadio.setOnClickListener(this);
         }
 
         @Override
         public int getItemCount() {
             return 10;
         }
+
+        @Override
+        public void onClick(View view) {
+
+        }
     }
 
     class PlaceChooseViewHolder extends RecyclerView.ViewHolder{
 
+        private RadioButton mHalfRadio;
+        private RadioButton mFullRadio;
         public PlaceChooseViewHolder(View itemView) {
             super(itemView);
+
+            mHalfRadio = (RadioButton) itemView.findViewById(R.id.item_choose_place_half);
+            mFullRadio = (RadioButton) itemView.findViewById(R.id.item_choose_place_full);
         }
     }
 }

@@ -126,4 +126,6 @@ dependencies {
     compile project(':MobikeLibrary')
     //日期时间选择控件
     compile project(':sublimepickerlibrary')
+    //阿里云oss
+    compile files('libs/aliyun-oss-sdk-android-2.3.0.jar')
 }

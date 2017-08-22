@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/app_background"
+        android:paddingLeft="26dip"
+        android:paddingRight="26dip"
+        android:layout_height="50dip">
+
+        <TextView
+            android:id="@+id/gameinfo_time_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:layout_marginTop="15dip"
+            android:textColor="@color/app_second_textcolor"
+            android:text="时间"/>
+
+        <TextView
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="8dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:textColor="@color/app_textcolor"
+            android:text="2017.08.22"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textSize="16sp"
+            android:textColor="@color/app_textcolor"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="8dip"
+            android:text="19:30-21:00"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/app_background"
+        android:paddingLeft="26dip"
+        android:paddingRight="26dip"
+        android:layout_height="50dip">
+
+        <TextView
+            android:id="@+id/gameinfo_duishou_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:layout_marginTop="15dip"
+            android:textColor="@color/app_second_textcolor"
+            android:text="对手"/>
+
+        <TextView
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="8dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:textColor="@color/app_textcolor"
+            android:text="西安"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textSize="16sp"
+            android:textColor="@color/app_textcolor"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="8dip"
+            android:text="恒大足球淘宝队"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/app_background"
+        android:paddingLeft="26dip"
+        android:paddingRight="26dip"
+        android:layout_height="50dip">
+
+        <TextView
+            android:id="@+id/gameinfo_address_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:layout_marginTop="15dip"
+            android:textColor="@color/app_second_textcolor"
+            android:text="地点"/>
+
+        <TextView
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="8dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:textColor="@color/app_textcolor"
+            android:text="西安外事南区足球场"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textSize="16sp"
+            android:textColor="@color/app_textcolor"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="8dip"
+            android:text="6号场"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/app_background"
+        android:paddingLeft="26dip"
+        android:paddingRight="26dip"
+        android:layout_height="50dip">
+
+        <TextView
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:textColor="@color/app_second_textcolor"
+            android:text="应报人数"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textSize="16sp"
+            android:textColor="@color/app_textcolor"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="8dip"
+            android:text="20"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/app_background"
+        android:paddingLeft="26dip"
+        android:paddingRight="26dip"
+        android:layout_height="50dip">
+
+        <TextView
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:textColor="@color/app_second_textcolor"
+            android:text="球衣"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerInside"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dip"
+            android:src="@mipmap/icon_clothes_color_red"/>
+    </RelativeLayout>
+</LinearLayout>

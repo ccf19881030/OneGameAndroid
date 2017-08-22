@@ -56,6 +56,12 @@ public class AcceptTeamInvatationActivity extends BaseActivity{
         mDescript = getView(R.id.accept_invatation_descript);
         mCharege = getView(R.id.accept_invatation_charge);
         mFollowWorke = getView(R.id.accept_invatation_follow_work);
+        getView(R.id.accept_team_invatation_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AcceptTeamInvatationActivity.this.finish();
+            }
+        });
     }
 
     @Override

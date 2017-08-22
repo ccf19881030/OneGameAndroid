@@ -164,7 +164,7 @@
         <activity android:name=".view.invitation.AcceptTeamInvatationActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".view.team.MobiDemo"
+        <activity android:name=".view.team.MatchSignupActivity"
             android:screenOrientation="portrait"/>
 
         <!-- 高德地图-->

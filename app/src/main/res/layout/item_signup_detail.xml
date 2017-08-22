@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:gravity="center_vertical"
+    android:background="@color/app_background"
+    android:layout_height="50dip">
+    
+    <TextView
+        android:id="@+id/item_signup_detail_num"
+        android:layout_width="25dip"
+        android:layout_height="25dip"
+        android:textColor="@android:color/white"
+        android:textSize="10sp"
+        android:layout_marginLeft="30dip"
+        android:background="@mipmap/icon_match_signup_ok"
+        android:text="10"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_marginLeft="10dip"
+        android:textColor="@color/app_textcolor"
+        android:text="梅西"/>
+</LinearLayout>

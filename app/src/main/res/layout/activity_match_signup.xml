@@ -57,67 +57,100 @@
         android:layout_width="match_parent"
         android:background="#262930"
         android:layout_height="120dip"/>
-
-    <com.ogaclejapan.smarttablayout.SmartTabLayout
-        android:id="@+id/match_signup_viewpagertab"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_marginLeft="10dip"
-        android:layout_marginRight="10dip"
-        android:layout_height="48dp"
-        android:background="@android:color/transparent"
-        app:stl_indicatorAlwaysInCenter="false"
-        app:stl_indicatorWithoutPadding="false"
-        app:stl_indicatorInFront="false"
-        app:stl_indicatorInterpolation="smart"
-        app:stl_indicatorGravity="bottom"
-        app:stl_indicatorColor="@color/colorAccent"
-        app:stl_indicatorThickness="4dp"
-        app:stl_indicatorWidth="auto"
-        app:stl_indicatorCornerRadius="0dp"
-        app:stl_overlineColor="#4D000000"
-        app:stl_overlineThickness="0dp"
-        app:stl_underlineColor="@color/app_splite_line"
-        app:stl_underlineThickness="1dp"
-        app:stl_dividerColor="@android:color/transparent"
-        app:stl_dividerThickness="0dp"
-        app:stl_defaultTabBackground="?attr/selectableItemBackground"
-        app:stl_defaultTabTextAllCaps="false"
-        app:stl_defaultTabTextColor="@color/app_textcolor"
-        app:stl_defaultTabTextSize="12sp"
-        app:stl_defaultTabTextHorizontalPadding="16dp"
-        app:stl_defaultTabTextMinWidth="0dp"
-        app:stl_distributeEvenly="true"
-        app:stl_clickable="true"
-        app:stl_titleOffset="24dp"
-        app:stl_drawDecorationAfterTab="false" />
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/match_signup_viewpager"
-        android:layout_marginLeft="10dip"
-        android:layout_marginRight="10dip"
-        android:layout_width="match_parent"
-        android:background="@color/app_background"
         android:layout_height="0dip"
-        android:layout_weight="1"/>
+        android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="67dip"
+            android:visibility="gone"
+            android:orientation="vertical">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="44dip"
-        android:layout_marginTop="18dip"
-        android:layout_marginLeft="10dip"
-        android:layout_marginRight="10dip"
-        android:layout_marginBottom="10dip"
-        android:background="@android:color/white"
-        android:text="请假"
-        android:textColor="@color/app_second_textcolor"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerInside"
+                android:src="@mipmap/icon_match_signup_nodata"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="44dip"
-        android:layout_marginLeft="10dip"
-        android:layout_marginRight="10dip"
-        android:layout_marginBottom="15dip"
-        android:text="报名"
-        android:background="@color/colorAccent"
-        android:textColor="@android:color/white"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/app_second_textcolor"
+                android:layout_marginTop="22dip"
+                android:lineSpacingMultiplier="1.4"
+                android:text="当前还没有比赛活动\n块吆喝队长来一场吧"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <com.ogaclejapan.smarttablayout.SmartTabLayout
+                android:id="@+id/match_signup_viewpagertab"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:layout_height="48dp"
+                android:background="@android:color/transparent"
+                app:stl_indicatorAlwaysInCenter="false"
+                app:stl_indicatorWithoutPadding="false"
+                app:stl_indicatorInFront="false"
+                app:stl_indicatorInterpolation="smart"
+                app:stl_indicatorGravity="bottom"
+                app:stl_indicatorColor="@color/colorAccent"
+                app:stl_indicatorThickness="4dp"
+                app:stl_indicatorWidth="auto"
+                app:stl_indicatorCornerRadius="0dp"
+                app:stl_overlineColor="#4D000000"
+                app:stl_overlineThickness="0dp"
+                app:stl_underlineColor="@color/app_splite_line"
+                app:stl_underlineThickness="1dp"
+                app:stl_dividerColor="@android:color/transparent"
+                app:stl_dividerThickness="0dp"
+                app:stl_defaultTabBackground="?attr/selectableItemBackground"
+                app:stl_defaultTabTextAllCaps="false"
+                app:stl_defaultTabTextColor="@color/app_textcolor"
+                app:stl_defaultTabTextSize="12sp"
+                app:stl_defaultTabTextHorizontalPadding="16dp"
+                app:stl_defaultTabTextMinWidth="0dp"
+                app:stl_distributeEvenly="true"
+                app:stl_clickable="true"
+                app:stl_titleOffset="24dp"
+                app:stl_drawDecorationAfterTab="false" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/match_signup_viewpager"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:layout_width="match_parent"
+                android:background="@color/app_background"
+                android:layout_height="0dip"
+                android:layout_weight="1"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="44dip"
+                android:layout_marginTop="18dip"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:layout_marginBottom="10dip"
+                android:background="@android:color/white"
+                android:text="请假"
+                android:textColor="@color/app_second_textcolor"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="44dip"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:layout_marginBottom="15dip"
+                android:text="报名"
+                android:background="@color/colorAccent"
+                android:textColor="@android:color/white"/>
+        </LinearLayout>
+    </FrameLayout>
 </LinearLayout>

@@ -128,4 +128,6 @@ dependencies {
     compile project(':sublimepickerlibrary')
     //阿里云oss
     compile files('libs/aliyun-oss-sdk-android-2.3.0.jar')
+    //一种好看的切页，在我的球队里面用到
+    compile 'com.yarolegovich:discrete-scrollview:1.2.0'
 }

@@ -87,7 +87,6 @@ public class MatchSignupActivity extends BaseActivity {
         mViewPager.setAdapter(adapter);
         mSmartTabLayout.setViewPager(mViewPager);
 
-
         mobikeView = (MobikeView) findViewById(R.id.mobike_view);
         mobikeView.getmMobike().setDensity(1.0f);
         mobikeView.getmMobike().setFriction(0.1f);

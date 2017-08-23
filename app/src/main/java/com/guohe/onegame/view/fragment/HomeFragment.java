@@ -19,7 +19,7 @@ import com.guohe.onegame.util.LogUtil;
 import com.guohe.onegame.util.RefreshUtil;
 import com.guohe.onegame.util.TestImageUtil;
 import com.guohe.onegame.view.invitation.TeamInvatationActivity;
-import com.guohe.onegame.view.team.BallTeamActivity;
+import com.guohe.onegame.view.team.MyTeamActivity;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 
@@ -203,7 +203,11 @@ public class HomeFragment extends BaseHomeFragment {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    BallTeamActivity.startActivity(HomeFragment.this.getContext());
+                    if(mHomeType == HOME_TYPE_XUETIQIU){
+
+                    }else {
+                        MyTeamActivity.startActivity(HomeFragment.this.getContext(), MyTeamActivity.TEAM_TYPE_NOMAL);
+                    }
                 }
             });
             holder.agreeButton.setOnClickListener(new View.OnClickListener() {

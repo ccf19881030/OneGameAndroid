@@ -96,9 +96,6 @@
         <activity android:name=".view.mine.MyFansActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".view.mine.MyProcessActivity"
-            android:screenOrientation="portrait"/>
-
         <activity android:name=".view.mine.BindMobileActivity"
             android:screenOrientation="portrait"/>
 
@@ -155,9 +152,6 @@
         <activity android:name=".view.team.FootballPlaceListActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".view.team.BallTeamActivity"
-            android:screenOrientation="portrait"/>
-
         <activity android:name=".view.invitation.TeamInvatationActivity"
             android:screenOrientation="portrait"/>
 
@@ -165,6 +159,10 @@
             android:screenOrientation="portrait"/>
 
         <activity android:name=".view.team.MatchSignupActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".view.team.MyTeamActivity"
+            android:theme="@style/FullScreenTheme"
             android:screenOrientation="portrait"/>
 
         <!-- 高德地图-->

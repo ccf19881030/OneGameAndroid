@@ -38,6 +38,12 @@
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="8dip"
             android:text="19:30-21:00"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_splite_line"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -74,6 +80,11 @@
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="8dip"
             android:text="恒大足球淘宝队"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_splite_line"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -110,6 +121,11 @@
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="8dip"
             android:text="6号场"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_splite_line"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -137,6 +153,11 @@
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="8dip"
             android:text="20"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_splite_line"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -163,5 +184,10 @@
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="10dip"
             android:src="@mipmap/icon_clothes_color_red"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_splite_line"/>
     </RelativeLayout>
 </LinearLayout>

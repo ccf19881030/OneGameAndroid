@@ -23,9 +23,9 @@ import com.guohe.onegame.view.mine.CreditValueActivtiy;
 import com.guohe.onegame.view.mine.MineInfoActivity;
 import com.guohe.onegame.view.mine.MyFansActivity;
 import com.guohe.onegame.view.mine.MyFollowdActivity;
-import com.guohe.onegame.view.mine.MyProcessActivity;
 import com.guohe.onegame.view.mine.MyWalletActivity;
 import com.guohe.onegame.view.mine.SettingActivity;
+import com.guohe.onegame.view.team.MyTeamActivity;
 import com.wou.commonutils.TextUtil;
 
 import java.util.List;
@@ -229,7 +229,7 @@ public class MainFragment4 extends BaseMainFragment implements View.OnClickListe
                 MyWalletActivity.startActivity(MainFragment4.this.getContext());
                 break;
             case R.id.mine_progress:
-                MyProcessActivity.startActivity(MainFragment4.this.getContext());
+                MyTeamActivity.startActivity(MainFragment4.this.getContext(), MyTeamActivity.TEAM_TYPE_MINE);
                 break;
         }
     }

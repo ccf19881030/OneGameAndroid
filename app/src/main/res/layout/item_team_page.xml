@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_margin="2dp"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        xmlns:fresco="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="300dip"
+        android:background="@color/app_background"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/item_team_page_picture"
+                android:layout_width="match_parent"
+                android:layout_height="300dip"
+                fresco:actualImageScaleType="centerCrop"
+                fresco:placeholderImage="@drawable/default_placeholder"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginTop="20dip"
+                android:layout_marginLeft="21dip"
+                android:textColor="@color/app_textcolor"
+                android:text="巴塞罗那足球队"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="21dip"
+                android:layout_marginRight="21dip"
+                android:layout_marginTop="12dip"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textColor="@color/app_second_textcolor"
+                        android:text="成立:"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textColor="@color/app_textcolor"
+                        android:text="1899"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="@color/app_second_textcolor"
+                        android:text="地区:"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textColor="@color/app_textcolor"
+                        android:text="西安"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="21dip"
+                android:layout_marginRight="21dip"
+                android:layout_marginTop="8dip"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textColor="@color/app_second_textcolor"
+                        android:text="队长:"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textColor="@color/app_textcolor"
+                        android:text="梅西"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="@color/app_second_textcolor"
+                        android:text="球队人数:"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textColor="@color/app_textcolor"
+                        android:text="30"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="21dip"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="@color/app_second_textcolor"
+                    android:text="主要荣誉:"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="@color/app_textcolor"
+                    android:text="2016年西安民间联赛冠军"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="21dip"
+                android:layout_marginBottom="14dip"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="@color/app_second_textcolor"
+                    android:text="赞助商:"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="@color/app_textcolor"
+                    android:text="耐克"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/app_splite_line"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="15dip"
+                android:layout_marginBottom="15dip"
+                android:layout_marginLeft="17dip"
+                android:layout_height="26dip">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/item_team_page_head1"
+                    android:layout_width="26dip"
+                    android:layout_height="26dip"
+                    fresco:actualImageScaleType="fitXY"
+                    fresco:placeholderImage="@drawable/default_placeholder"/>
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/item_team_page_head2"
+                    android:layout_marginLeft="20dip"
+                    android:layout_width="26dip"
+                    android:layout_height="26dip"
+                    fresco:actualImageScaleType="fitXY"
+                    fresco:placeholderImage="@drawable/default_placeholder"/>
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/item_team_page_head3"
+                    android:layout_marginLeft="40dip"
+                    android:layout_width="26dip"
+                    android:layout_height="26dip"
+                    fresco:actualImageScaleType="fitXY"
+                    fresco:placeholderImage="@drawable/default_placeholder"/>
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/item_team_page_head4"
+                    android:layout_marginLeft="60dip"
+                    android:layout_width="26dip"
+                    android:layout_height="26dip"
+                    fresco:actualImageScaleType="fitXY"
+                    fresco:placeholderImage="@drawable/default_placeholder"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerInside"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="34dip"
+                    android:src="@mipmap/icon_my_team_liked"/>
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

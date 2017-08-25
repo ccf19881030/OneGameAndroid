@@ -5,7 +5,90 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include layout="@layout/toolbar_common"
+    <RelativeLayout
+        android:background="#262930"
         android:layout_width="match_parent"
-        android:layout_height="44dip"/>
+        android:layout_height="44dip">
+
+        <ImageButton
+            android:id="@+id/toolbar_back"
+            android:layout_width="50dip"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:scaleType="centerInside"
+            android:src="@mipmap/icon_arrow_back_white"/>
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@android:color/white"
+            android:text="我的一场信用"
+            android:textSize="18sp"/>
+
+    </RelativeLayout>
+    <FrameLayout
+        android:background="#262930"
+        android:layout_width="match_parent"
+        android:layout_height="300dip">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:scaleType="centerInside"
+            android:src="@mipmap/icon_credit_number_bg"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@android:color/white"
+            android:text="10.0"
+            android:textSize="60sp"/>
+    </FrameLayout>
+
+
+    <android.support.v4.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="26dip"
+        android:orientation="horizontal">
+
+        <android.support.v4.widget.Space
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/credit_value_rule_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="24dip"
+            android:text="解读规则"
+            android:drawableTop="@mipmap/icon_credit_bottom2"
+            android:textSize="14sp"
+            android:textColor="@color/app_textcolor"/>
+        <android.support.v4.widget.Space
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"/>
+        <TextView
+            android:id="@+id/credit_value_detail_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="24dip"
+            android:text="查看历史"
+            android:textSize="14sp"
+            android:drawableTop="@mipmap/icon_credit_bottom1"
+            android:textColor="@color/app_textcolor"/>
+        <android.support.v4.widget.Space
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+    </LinearLayout>
 </LinearLayout>

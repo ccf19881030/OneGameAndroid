@@ -2,8 +2,6 @@ package com.guohe.onegame.view.mine;
 
 import android.content.Context;
 import android.content.Intent;
-import android.widget.ImageButton;
-import android.widget.TextView;
 
 import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
@@ -12,20 +10,15 @@ import com.guohe.onegame.view.base.BaseActivity;
 import java.util.List;
 
 /**
- * Created by 水寒 on 2017/8/14.
- * 关于我们
+ * Created by 水寒 on 2017/8/25.
+ * 信用积分详情
  */
 
-public class AboutUsActivity extends BaseActivity {
+public class CreditDetailActivity extends BaseActivity{
 
     @Override
     public void initPresenter(List<MvpPresenter> presenters) {
 
-    }
-
-    @Override
-    protected void customeToolbar(TextView titleText, TextView toolbarMenu, ImageButton moreButton) {
-        titleText.setText("关于一场");
     }
 
     @Override
@@ -35,7 +28,7 @@ public class AboutUsActivity extends BaseActivity {
 
     @Override
     protected int getContentView() {
-        return R.layout.activity_aboutus;
+        return R.layout.activity_credit_detail;
     }
 
     @Override
@@ -49,7 +42,7 @@ public class AboutUsActivity extends BaseActivity {
     }
 
     public static void startActivity(Context context){
-        Intent intent = new Intent(context, AboutUsActivity.class);
+        Intent intent = new Intent(context, CreditDetailActivity.class);
         context.startActivity(intent);
     }
 }

@@ -2,8 +2,7 @@ package com.guohe.onegame.view.mine;
 
 import android.content.Context;
 import android.content.Intent;
-import android.widget.ImageButton;
-import android.widget.TextView;
+import android.view.View;
 
 import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
@@ -24,11 +23,6 @@ public class CreditValueActivtiy extends BaseActivity {
     }
 
     @Override
-    protected void customeToolbar(TextView titleText, TextView toolbarMenu, ImageButton moreButton) {
-        titleText.setText("信用积分");
-    }
-
-    @Override
     public void turnToOtherView() {
 
     }
@@ -40,7 +34,19 @@ public class CreditValueActivtiy extends BaseActivity {
 
     @Override
     protected void initView() {
+        getView(R.id.credit_value_detail_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CreditDetailActivity.startActivity(CreditValueActivtiy.this);
+            }
+        });
 
+        getView(R.id.credit_value_rule_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override

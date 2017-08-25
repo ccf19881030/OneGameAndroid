@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/app_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/toolbar_common"
+        android:layout_width="match_parent"
+        android:layout_height="44dip"/>
+
+    <RelativeLayout
+        android:id="@+id/team_settin_head"
+        android:layout_width="match_parent"
+        android:layout_height="72dip"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="队徽"
+            android:layout_marginLeft="19dip"
+            android:layout_centerVertical="true"
+            android:textSize="14sp"
+            android:textColor="@color/app_textcolor"/>
+
+        <ImageView
+            android:id="@+id/mine_head_back_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerInside"
+            android:layout_marginLeft="12dip"
+            android:layout_marginRight="15dip"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_arrow_next"/>
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_width="57dip"
+            android:layout_height="57dip"
+            app:actualImageScaleType="fitXY"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/mine_head_back_arrow"
+            app:placeholderImage="@mipmap/default_header"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_splite_line"
+            android:layout_marginLeft="14dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/team_setting_clothes_num"
+        android:layout_width="match_parent"
+        android:layout_height="44dip"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="球衣号码"
+            android:layout_marginLeft="19dip"
+            android:layout_centerVertical="true"
+            android:textSize="14sp"
+            android:textColor="@color/app_textcolor"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10"
+            android:textSize="12sp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="21dip"
+            android:layout_centerVertical="true"
+            android:textColor="@color/app_second_textcolor"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_splite_line"
+            android:layout_marginLeft="14dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/team_setting_clothes_color"
+        android:layout_width="match_parent"
+        android:layout_height="44dip"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="球衣颜色"
+            android:layout_marginLeft="19dip"
+            android:layout_centerVertical="true"
+            android:textSize="14sp"
+            android:textColor="@color/app_textcolor"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerInside"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="21dip"
+            android:src="@mipmap/icon_clothes_color1"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_splite_line"
+            android:layout_marginLeft="14dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/team_setting_nickname"
+        android:layout_width="match_parent"
+        android:layout_height="44dip"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我在本球队的昵称"
+            android:layout_marginLeft="19dip"
+            android:layout_centerVertical="true"
+            android:textSize="14sp"
+            android:textColor="@color/app_textcolor"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="梅西"
+            android:textSize="12sp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="21dip"
+            android:layout_centerVertical="true"
+            android:textColor="@color/app_second_textcolor"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_splite_line"
+            android:layout_marginLeft="14dp"/>
+    </RelativeLayout>
+</LinearLayout>

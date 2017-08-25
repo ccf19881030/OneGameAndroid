@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@color/app_background"
+    android:layout_height="60dip">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/item_team_ranking_head"
+        android:layout_width="35dip"
+        android:layout_height="35dip"
+        android:layout_marginLeft="18dip"
+        android:layout_centerVertical="true"
+        fresco:actualImageScaleType="fitXY"
+        fresco:placeholderImage="@drawable/default_placeholder"/>
+
+    <TextView
+        android:id="@+id/item_team_ranking_num"
+        android:layout_width="20dip"
+        android:layout_height="20dip"
+        android:gravity="center"
+        android:textSize="12sp"
+        android:textColor="@android:color/white"
+        android:layout_marginLeft="43dip"
+        android:layout_alignTop="@id/item_team_ranking_head"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/item_team_ranking_head"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dip"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/item_team_ranking_team"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/app_textcolor"
+            android:text="梅西"/>
+
+        <TextView
+            android:id="@+id/item_team_ranking_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dip"
+            android:textSize="10sp"
+            android:textColor="@color/app_second_textcolor"
+            android:text="球员"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/item_team_ranking_honer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="@color/app_textcolor"
+        android:text="8次"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="14dip"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_alignParentBottom="true"
+        android:background="@color/app_splite_line"/>
+</RelativeLayout>

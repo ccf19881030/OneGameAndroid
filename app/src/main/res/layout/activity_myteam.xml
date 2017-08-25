@@ -21,7 +21,7 @@
 
 
         <ImageButton
-            android:id="@+id/toolbar_more"
+            android:id="@+id/toolbar_setting"
             android:layout_width="50dip"
             android:layout_height="match_parent"
             android:background="@null"
@@ -36,28 +36,32 @@
         android:layout_height="100dip"
         android:background="#262930"/>
 
-    <ImageButton
-        android:id="@+id/myteam_addgame"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@null"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dip"
+        android:layout_marginLeft="30dip"
+        android:layout_marginRight="30dip"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="19dip"
-        android:layout_marginLeft="89dip"
-        android:scaleType="centerInside"
-        android:src="@mipmap/icon_my_team_creategame"/>
+        android:orientation="horizontal">
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="19dip"
-        android:layout_marginRight="89dip"
-        android:scaleType="centerInside"
-        android:src="@mipmap/icon_my_team_sort"/>
+        <ImageButton
+            android:id="@+id/myteam_addgame"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:scaleType="centerInside"
+            android:src="@mipmap/icon_my_team_creategame"/>
 
+        <ImageButton
+            android:id="@+id/myteam_ranking"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:scaleType="centerInside"
+            android:src="@mipmap/icon_my_team_sort"/>
+    </LinearLayout>
     <com.yarolegovich.discretescrollview.DiscreteScrollView
         android:id="@+id/team_picker"
         android:layout_marginTop="52dip"

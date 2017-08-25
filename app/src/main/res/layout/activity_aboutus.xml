@@ -8,4 +8,144 @@
     <include layout="@layout/toolbar_common"
         android:layout_width="match_parent"
         android:layout_height="44dip"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:paddingLeft="30dip"
+        android:paddingRight="30dip"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="160dip">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_marginTop="10dip"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:scaleType="centerInside"
+                android:src="@mipmap/icon_about_us"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/app_textcolor"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:text="一场" />
+        </RelativeLayout>
+
+        <android.support.v4.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="10"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:lineSpacingMultiplier="1.4"
+            android:text="@string/about_us_descript"
+            android:textColor="@color/app_textcolor"/>
+        <android.support.v4.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="6"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dip">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:layout_centerVertical="true"
+                android:textColor="@color/app_textcolor"
+                android:text="微信公众号"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/colorAccent"
+                android:layout_centerVertical="true"
+                android:text="一场APP"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_alignParentBottom="true"
+                android:background="@color/app_splite_line"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dip">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:layout_centerVertical="true"
+                android:textColor="@color/app_textcolor"
+                android:text="商务合作"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/colorAccent"
+                android:layout_centerVertical="true"
+                android:text="企业邮箱"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_alignParentBottom="true"
+                android:background="@color/app_splite_line"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dip">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:layout_centerVertical="true"
+                android:textColor="@color/app_textcolor"
+                android:text="官方网站"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/colorAccent"
+                android:layout_centerVertical="true"
+                android:text="www.yichangapp.com"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_alignParentBottom="true"
+                android:background="@color/app_splite_line"/>
+        </RelativeLayout>
+        <android.support.v4.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="10"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="西安果核网络科技有限公司"
+            android:textSize="11sp"
+            android:layout_marginBottom="5dip"
+            android:textColor="@color/app_second_textcolor"/>
+    </LinearLayout>
 </LinearLayout>

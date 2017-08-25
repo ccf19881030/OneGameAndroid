@@ -64,7 +64,9 @@ public class MyTeamActivity extends BaseActivity implements View.OnClickListener
                 .build());
 
         getView(R.id.toolbar_back).setOnClickListener(this);
+        getView(R.id.toolbar_setting).setOnClickListener(this);
         getView(R.id.myteam_addgame).setOnClickListener(this);
+        getView(R.id.myteam_ranking).setOnClickListener(this);
     }
 
     @Override
@@ -86,6 +88,12 @@ public class MyTeamActivity extends BaseActivity implements View.OnClickListener
                 break;
             case R.id.toolbar_back:
                 MyTeamActivity.this.finish();
+                break;
+            case R.id.toolbar_setting:
+                TeamSettingActivity.startActivity(MyTeamActivity.this);
+                break;
+            case R.id.myteam_ranking:
+                TeamRankingActivity.startActivity(MyTeamActivity.this);
                 break;
         }
     }

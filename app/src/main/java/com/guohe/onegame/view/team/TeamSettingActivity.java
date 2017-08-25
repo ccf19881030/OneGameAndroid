@@ -1,4 +1,4 @@
-package com.guohe.onegame.view.mine;
+package com.guohe.onegame.view.team;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,11 +12,11 @@ import com.guohe.onegame.view.base.BaseActivity;
 import java.util.List;
 
 /**
- * Created by 水寒 on 2017/8/14.
- * 关于我们
+ * Created by 水寒 on 2017/8/24.
+ * 球队设置
  */
 
-public class AboutUsActivity extends BaseActivity {
+public class TeamSettingActivity extends BaseActivity{
 
     @Override
     public void initPresenter(List<MvpPresenter> presenters) {
@@ -25,7 +25,7 @@ public class AboutUsActivity extends BaseActivity {
 
     @Override
     protected void customeToolbar(TextView titleText, TextView toolbarMenu, ImageButton moreButton) {
-        titleText.setText("关于一场");
+        titleText.setText("球队设置");
     }
 
     @Override
@@ -35,7 +35,7 @@ public class AboutUsActivity extends BaseActivity {
 
     @Override
     protected int getContentView() {
-        return R.layout.activity_aboutus;
+        return R.layout.activity_team_setting;
     }
 
     @Override
@@ -49,7 +49,7 @@ public class AboutUsActivity extends BaseActivity {
     }
 
     public static void startActivity(Context context){
-        Intent intent = new Intent(context, AboutUsActivity.class);
+        Intent intent = new Intent(context, TeamSettingActivity.class);
         context.startActivity(intent);
     }
 }

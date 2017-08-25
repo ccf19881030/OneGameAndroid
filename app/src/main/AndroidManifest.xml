@@ -161,6 +161,15 @@
         <activity android:name=".view.team.MatchSignupActivity"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".view.team.TeamSettingActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".view.team.TeamRankingActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".view.mine.CreditValueActivtiy"
+            android:screenOrientation="portrait"/>
+
         <activity android:name=".view.team.MyTeamActivity"
             android:theme="@style/FullScreenTheme"
             android:screenOrientation="portrait"/>

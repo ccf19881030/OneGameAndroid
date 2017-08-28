@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/app_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/login_guide_bg"/>
+
+    <Button
+        android:id="@+id/login_guide_button"
+        android:layout_width="match_parent"
+        android:layout_height="44dip"
+        android:background="@color/colorAccent"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:textSize="14sp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="60dip"
+        android:textColor="@android:color/white"
+        android:text="注册/登录"/>
+</RelativeLayout>

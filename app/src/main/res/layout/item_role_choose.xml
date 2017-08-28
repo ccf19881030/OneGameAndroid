@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/app_background"
+    android:layout_width="match_parent"
+    android:layout_height="44dip">
+
+    <TextView
+        android:id="@+id/role_choose_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:text="球员"
+        android:textColor="@color/app_textcolor"
+        android:layout_marginLeft="20dip"
+        android:textSize="14sp"/>
+
+    <RadioButton
+        android:id="@+id/role_choose_radiobutton"
+        android:layout_width="20dip"
+        android:layout_height="20dip"
+        android:checked="true"
+        android:button="@null"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="20dip"
+        android:background="@drawable/choose_payment_radio_bg"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:background="@color/app_splite_line"/>
+</RelativeLayout>

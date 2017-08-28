@@ -19,7 +19,7 @@ import com.guohe.onegame.util.LogUtil;
 import com.guohe.onegame.util.RefreshUtil;
 import com.guohe.onegame.util.TestImageUtil;
 import com.guohe.onegame.view.invitation.TeamInvatationActivity;
-import com.guohe.onegame.view.team.MyTeamActivity;
+import com.guohe.onegame.view.team.TeamDetailActivity;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 
@@ -172,57 +172,89 @@ public class HomeFragment extends BaseHomeFragment {
         }
     }
 
-    class YuezhanAdapter extends RecyclerView.Adapter<YuezhanViewHolder>{
+    class YuezhanAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+
+        private static final int TYPE_NOMAL = 0;
+        private static final int TYPE_TEAM = 1;
 
         @Override
-        public YuezhanViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new YuezhanViewHolder(LayoutInflater.from(HomeFragment.this.getContext())
-                    .inflate(R.layout.item_yuezhan_list, parent, false));
+        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            switch (viewType){
+                case TYPE_TEAM:
+                    return new TeamViewHolder(LayoutInflater.from(HomeFragment.this.getContext())
+                            .inflate(R.layout.item_yuezhan_team_list, parent, false));
+                default: TYPE_NOMAL:
+                    return new YuezhanViewHolder(LayoutInflater.from(HomeFragment.this.getContext())
+                            .inflate(R.layout.item_yuezhan_list, parent, false));
+            }
+
         }
 
         @Override
-        public void onBindViewHolder(YuezhanViewHolder holder, int position) {
-            switch (mHomeType){
-                case HOME_TYPE_YUEZHAN:
-
-                    break;
-                case HOME_TYPE_YUECAIPAN:
-                    holder.agreeButton.setText("应约");
-                    holder.hongbao.setText("执法有红包");
-                    break;
-                case HOME_TYPE_QUTIQIU:
-                    holder.agreeButton.setText("报名");
-                    holder.teamNum.setText("缺2人");
-                    break;
-                case HOME_TYPE_XUETIQIU:
-                    holder.teamName.setText("小红帽培训小班");
-                    holder.teamNum.setText("5/8人制");
-                    holder.agreeButton.setText("报名");
-                    break;
-            }
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(mHomeType == HOME_TYPE_XUETIQIU){
-
-                    }else {
-                        MyTeamActivity.startActivity(HomeFragment.this.getContext(), MyTeamActivity.TEAM_TYPE_NOMAL);
+        public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
+            if (getItemViewType(position) == TYPE_TEAM) {
+                TeamViewHolder holder = (TeamViewHolder) viewHolder;
+                FrescoUtils.setCircle(holder.head, getResources().getColor(R.color.app_background));
+                FrescoUtils.loadRes(holder.head, TestImageUtil.getHeadImgRes(), null, DimenUtil.dp2px(14), DimenUtil.dp2px(14), null);
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        TeamDetailActivity.startActivity(HomeFragment.this.getContext());
                     }
+                });
+            }else{
+                YuezhanViewHolder holder = (YuezhanViewHolder) viewHolder;
+                switch (mHomeType){
+                    case HOME_TYPE_YUEZHAN:
+                        holder.agreeButton.setText("PK");
+                        break;
+                    case HOME_TYPE_YUECAIPAN:
+                        holder.agreeButton.setText("应约");
+                        holder.hongbao.setText("执法有红包");
+                        break;
+                    case HOME_TYPE_QUTIQIU:
+                        holder.agreeButton.setText("报名");
+                        holder.teamNum.setText("缺2人");
+                        break;
+                    case HOME_TYPE_XUETIQIU:
+                        holder.teamName.setText("小红帽培训小班");
+                        holder.teamNum.setText("5/8人制");
+                        holder.agreeButton.setText("报名");
+                        break;
                 }
-            });
-            holder.agreeButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    TeamInvatationActivity.startActivity(HomeFragment.this.getContext(), mHomeType);
-                }
-            });
-            FrescoUtils.setCircle(holder.head, getResources().getColor(R.color.app_background));
-            FrescoUtils.loadRes(holder.head, TestImageUtil.getHeadImgRes(), null, DimenUtil.dp2px(14), DimenUtil.dp2px(14), null);
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(mHomeType == HOME_TYPE_XUETIQIU){
+
+                        }else {
+                            TeamDetailActivity.startActivity(HomeFragment.this.getContext());
+                        }
+                    }
+                });
+                holder.agreeButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        TeamInvatationActivity.startActivity(HomeFragment.this.getContext(), mHomeType);
+                    }
+                });
+                FrescoUtils.setCircle(holder.head, getResources().getColor(R.color.app_background));
+                FrescoUtils.loadRes(holder.head, TestImageUtil.getHeadImgRes(), null, DimenUtil.dp2px(14), DimenUtil.dp2px(14), null);
+            }
         }
 
         @Override
         public int getItemCount() {
             return 50;
+        }
+
+        @Override
+        public int getItemViewType(int position) {
+            if(mHomeType == HOME_TYPE_YUEZHAN && position > 2){
+                return TYPE_TEAM;
+            }else{
+                return TYPE_NOMAL;
+            }
         }
     }
 
@@ -241,6 +273,16 @@ public class HomeFragment extends BaseHomeFragment {
             this.teamName = (TextView) itemView.findViewById(R.id.item_yuezhan_team_name);
             this.teamNum = (TextView) itemView.findViewById(R.id.item_yuezhan_team_num);
             this.hongbao = (TextView) itemView.findViewById(R.id.item_yuezhan_hongbao);
+            this.head = (SimpleDraweeView) itemView.findViewById(R.id.item_yuezhan_head);
+        }
+    }
+
+    class TeamViewHolder extends RecyclerView.ViewHolder{
+        private SimpleDraweeView head;
+        private View itemView;
+        public TeamViewHolder(View itemView) {
+            super(itemView);
+            this.itemView = itemView;
             this.head = (SimpleDraweeView) itemView.findViewById(R.id.item_yuezhan_head);
         }
     }

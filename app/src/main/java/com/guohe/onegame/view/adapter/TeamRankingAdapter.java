@@ -12,6 +12,7 @@ import com.guohe.onegame.R;
 import com.guohe.onegame.util.DimenUtil;
 import com.guohe.onegame.util.FrescoUtils;
 import com.guohe.onegame.util.TestImageUtil;
+import com.guohe.onegame.view.mine.PersonalPageActivity;
 
 /**
  * Created by 水寒 on 2017/8/23.
@@ -47,6 +48,12 @@ public class TeamRankingAdapter extends RecyclerView.Adapter<TeamRankingAdapter.
             holder.mTeamNum.setBackgroundResource(R.mipmap.icon_team_ranking_num);
         }
         holder.mTeamNum.setText(String.valueOf(position + 1));
+        holder.mTeamHead.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PersonalPageActivity.startActivity(mContext);
+            }
+        });
     }
 
     @Override

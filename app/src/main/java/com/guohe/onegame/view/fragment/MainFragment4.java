@@ -229,7 +229,7 @@ public class MainFragment4 extends BaseMainFragment implements View.OnClickListe
                 MyWalletActivity.startActivity(MainFragment4.this.getContext());
                 break;
             case R.id.mine_progress:
-                MyTeamActivity.startActivity(MainFragment4.this.getContext(), MyTeamActivity.TEAM_TYPE_MINE);
+                MyTeamActivity.startActivity(MainFragment4.this.getContext());
                 break;
         }
     }

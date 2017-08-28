@@ -49,6 +49,9 @@
             android:textSize="60sp"/>
     </FrameLayout>
 
+    <include layout="@layout/item_credit_detail"
+        android:layout_width="match_parent"
+        android:layout_height="70dip"/>
 
     <android.support.v4.widget.Space
         android:layout_width="match_parent"

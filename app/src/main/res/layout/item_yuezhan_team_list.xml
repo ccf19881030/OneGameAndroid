@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:background="@color/app_background"
+    android:layout_width="match_parent"
+    android:paddingLeft="13dip"
+    android:paddingRight="13dip"
+    android:layout_height="60dip">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/item_yuezhan_head"
+        android:layout_width="20dip"
+        android:layout_height="20dip"
+        android:layout_centerVertical="true"
+        fresco:placeholderImage="@drawable/default_placeholder"
+        fresco:actualImageScaleType="centerInside"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/item_yuezhan_head"
+        android:textColor="@color/app_textcolor"
+        android:text="广州恒大淘宝队"
+        android:layout_marginLeft="13dip"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:textColor="@color/app_textcolor"
+        android:text="人数：30"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/app_splite_line"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

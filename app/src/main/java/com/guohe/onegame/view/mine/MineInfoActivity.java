@@ -105,7 +105,7 @@ public class MineInfoActivity extends BaseActivity implements View.OnClickListen
                 configCompress(mTakePhoto);
                 mTakePhoto.onPickFromDocumentsWithCrop(mImageUri, getCropOptions());
             case R.id.mine_info_role:
-
+                RoleSettingActivity.startActivity(this);
                 break;
             case R.id.mine_info_age:
                 new MaterialDialog.Builder(this)

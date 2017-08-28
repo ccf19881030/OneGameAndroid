@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.guohe.onegame.MvpPresenter;
@@ -14,6 +16,7 @@ import com.guohe.onegame.util.DimenUtil;
 import com.guohe.onegame.util.FrescoUtils;
 import com.guohe.onegame.util.TestImageUtil;
 import com.guohe.onegame.view.base.BaseActivity;
+import com.guohe.onegame.view.circle.MoreMenuActivity;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
 import com.yarolegovich.discretescrollview.Orientation;
 import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
@@ -27,13 +30,8 @@ import java.util.List;
 
 public class MyTeamActivity extends BaseActivity implements View.OnClickListener{
 
-    public static final int TEAM_TYPE_NOMAL = 0;
-    public static final int TEAM_TYPE_MINE = 1;
-
     private DiscreteScrollView mTeamPick;
     private TeamAdapter mAdapter;
-
-    private int mTeamType;
 
     @Override
     public void initPresenter(List<MvpPresenter> presenters) {
@@ -52,7 +50,6 @@ public class MyTeamActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     protected void initView() {
-        mTeamType = getIntent().getIntExtra("teamType", 0);
         mTeamPick = getView(R.id.team_picker);
         mTeamPick.setOrientation(Orientation.HORIZONTAL);
         //mTeamPick.addOnItemChangedListener(this);
@@ -74,9 +71,8 @@ public class MyTeamActivity extends BaseActivity implements View.OnClickListener
 
     }
 
-    public static void startActivity(Context context, int teamType){
+    public static void startActivity(Context context){
         Intent intent = new Intent(context, MyTeamActivity.class);
-        intent.putExtra("teamType", teamType);
         context.startActivity(intent);
     }
 
@@ -122,15 +118,23 @@ public class MyTeamActivity extends BaseActivity implements View.OnClickListener
                     null, DimenUtil.dp2px(26), DimenUtil.dp2px(6), null);
             FrescoUtils.loadRes(holder.mHead4, TestImageUtil.getHeadImgRes(),
                     null, DimenUtil.dp2px(26), DimenUtil.dp2px(6), null);
+            holder.mTeamNum.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    TeamMemberActivity.startActivity(MyTeamActivity.this);
+                }
+            });
+            holder.mMoreButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    MoreMenuActivity.startActivity(MyTeamActivity.this, MoreMenuActivity.TYPE_TEAM, 0, 0);
+                }
+            });
         }
 
         @Override
         public int getItemCount() {
-            if(mTeamType == TEAM_TYPE_MINE) {
-                return 10;
-            }else{
-                return 1;
-            }
+            return 5;
         }
     }
 
@@ -141,6 +145,8 @@ public class MyTeamActivity extends BaseActivity implements View.OnClickListener
         private SimpleDraweeView mHead2;
         private SimpleDraweeView mHead3;
         private SimpleDraweeView mHead4;
+        private TextView mTeamNum;
+        private ImageButton mMoreButton;
         public TeamViewHolder(View itemView) {
             super(itemView);
             mPicture = (SimpleDraweeView) itemView.findViewById(R.id.item_team_page_picture);
@@ -148,6 +154,8 @@ public class MyTeamActivity extends BaseActivity implements View.OnClickListener
             mHead2 = (SimpleDraweeView) itemView.findViewById(R.id.item_team_page_head2);
             mHead3 = (SimpleDraweeView) itemView.findViewById(R.id.item_team_page_head3);
             mHead4 = (SimpleDraweeView) itemView.findViewById(R.id.item_team_page_head4);
+            mTeamNum = (TextView) itemView.findViewById(R.id.item_team_number);
+            mMoreButton = (ImageButton) itemView.findViewById(R.id.item_team_more_button);
         }
     }
 }

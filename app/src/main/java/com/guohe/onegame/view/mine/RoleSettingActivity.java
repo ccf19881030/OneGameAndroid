@@ -17,14 +17,14 @@ import com.guohe.onegame.view.base.BaseActivity;
 import java.util.List;
 
 /**
- * Created by 水寒 on 2017/8/25.
- * 信用积分详情
+ * Created by 水寒 on 2017/8/26.
+ * 角色设置
  */
 
-public class CreditDetailActivity extends BaseActivity{
+public class RoleSettingActivity extends BaseActivity{
 
     private RecyclerView mRecyclerView;
-    private CreditDetailAdapter mAdapter;
+    private RoleViewAdapter mAdapter;
 
     @Override
     public void initPresenter(List<MvpPresenter> presenters) {
@@ -33,7 +33,15 @@ public class CreditDetailActivity extends BaseActivity{
 
     @Override
     protected void customeToolbar(TextView titleText, TextView toolbarMenu, ImageButton moreButton) {
-        titleText.setText("积分详情");
+        titleText.setText("身份设置");
+        toolbarMenu.setVisibility(View.VISIBLE);
+        toolbarMenu.setText("确认");
+        toolbarMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AuthenticationActivity.startActivity(RoleSettingActivity.this);
+            }
+        });
     }
 
     @Override
@@ -43,19 +51,19 @@ public class CreditDetailActivity extends BaseActivity{
 
     @Override
     protected int getContentView() {
-        return R.layout.activity_credit_detail;
+        return R.layout.activity_role_setting;
     }
 
     @Override
     protected void initView() {
-        mRecyclerView = getView(R.id.credit_recyclerview);
+        mRecyclerView = getView(R.id.role_recyclerview);
         bindRecyclerView();
     }
 
     private void bindRecyclerView(){
         mRecyclerView.setHasFixedSize(false);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mAdapter = new CreditDetailAdapter();
+        mAdapter = new RoleViewAdapter();
         mRecyclerView.setAdapter(mAdapter);
     }
 
@@ -65,32 +73,32 @@ public class CreditDetailActivity extends BaseActivity{
     }
 
     public static void startActivity(Context context){
-        Intent intent = new Intent(context, CreditDetailActivity.class);
+        Intent intent = new Intent(context, RoleSettingActivity.class);
         context.startActivity(intent);
     }
 
-    class CreditDetailAdapter extends RecyclerView.Adapter<CreditDetailViewHolder>{
+    class RoleViewAdapter extends RecyclerView.Adapter<RoleViewHolder>{
 
         @Override
-        public CreditDetailViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new CreditDetailViewHolder(LayoutInflater.from(CreditDetailActivity.this)
-                    .inflate(R.layout.item_credit_detail, parent, false));
+        public RoleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            return new RoleViewHolder(LayoutInflater.from(RoleSettingActivity.this)
+                .inflate(R.layout.item_role_choose, parent, false));
         }
 
         @Override
-        public void onBindViewHolder(CreditDetailViewHolder holder, int position) {
+        public void onBindViewHolder(RoleViewHolder holder, int position) {
 
         }
 
         @Override
         public int getItemCount() {
-            return 20;
+            return 3;
         }
     }
 
-    class CreditDetailViewHolder extends RecyclerView.ViewHolder{
+    class RoleViewHolder extends RecyclerView.ViewHolder{
 
-        public CreditDetailViewHolder(View itemView) {
+        public RoleViewHolder(View itemView) {
             super(itemView);
         }
     }

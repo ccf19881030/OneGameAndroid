@@ -20,9 +20,13 @@ import java.util.List;
 
 public class MoreMenuActivity extends BaseActivity implements View.OnClickListener {
 
-    private boolean mIsMine;
+    public static final int TYPE_PERSOANL = 1;   //个人
+    public static final int TYPE_DYNAMIC = 2;    //动态
+    public static final int TYPE_TEAM = 3;        //球队
+
+    private int mMoreId;
+    private int mMoreType;
     private int mUserId;
-    private int mDynamicId;
 
     private ImageButton mJubaoButton;
 
@@ -43,9 +47,10 @@ public class MoreMenuActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     protected void initView() {
+        mMoreType = getIntent().getIntExtra("type", -1);
+        mMoreId = getIntent().getIntExtra("id", -1);
         mUserId = getIntent().getIntExtra("userid", -1);
-        mDynamicId = getIntent().getIntExtra("dynamicid", -1);
-        mIsMine = mUserId == 1;
+
         getView(R.id.more_menu_close).setOnClickListener(this);
         getView(R.id.more_menu_wx_circle).setOnClickListener(this);
         getView(R.id.more_menu_wx_friend).setOnClickListener(this);
@@ -54,14 +59,18 @@ public class MoreMenuActivity extends BaseActivity implements View.OnClickListen
         mJubaoButton = getView(R.id.more_menu_jubao);
         mJubaoButton.setOnClickListener(this);
 
-        if(mIsMine){
-            if(mDynamicId == -1){
-                //mJubaoButton.setImageResource(R.m);
-            }else {
-                mJubaoButton.setImageResource(R.mipmap.icon_delete_img_black);
-            }
-        }else{
-            mJubaoButton.setImageResource(R.mipmap.icon_menu_more_jubao);
+        switch (mMoreType){
+            case TYPE_PERSOANL:
+                mJubaoButton.setImageResource(R.mipmap.icon_menu_more_jubao);
+                break;
+            case TYPE_DYNAMIC:
+               //if(mUserId == Mine id)
+                //TODO 如果是我的id则删除，否则则是举报
+                mJubaoButton.setImageResource(R.mipmap.icon_menu_more_delete);
+                break;
+            case TYPE_TEAM:
+                mJubaoButton.setImageResource(R.mipmap.icon_menu_more_jubao);
+                break;
         }
     }
 
@@ -70,10 +79,11 @@ public class MoreMenuActivity extends BaseActivity implements View.OnClickListen
 
     }
 
-    public static void startActivity(Context context, int userid, int dynamicid){
+    public static void startActivity(Context context, int userid, int type, int id){
         Intent intent = new Intent(context, MoreMenuActivity.class);
+        intent.putExtra("type", type);
+        intent.putExtra("id", id);
         intent.putExtra("userid", userid);
-        intent.putExtra("dynamicid", dynamicid);
         context.startActivity(intent);
     }
 
@@ -96,26 +106,8 @@ public class MoreMenuActivity extends BaseActivity implements View.OnClickListen
 
                 break;
             case R.id.more_menu_jubao:
-                if(mIsMine){
-                    if(mDynamicId == -1){
-
-                    }else{
-
-                    }
-                }else {
-                    if(mDynamicId == -1) {
-                        new MaterialDialog.Builder(this)
-                                .title("举报")
-                                .content("感谢您，请填写您对该用户的举报原因")
-                                .inputRangeRes(4, 50, R.color.app_error)
-                                .inputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL)
-                                .input("举报原因...", "", new MaterialDialog.InputCallback() {
-                                    @Override
-                                    public void onInput(MaterialDialog dialog, CharSequence input) {
-
-                                    }
-                                }).show();
-                    }else{
+                switch (mMoreType){
+                    case TYPE_PERSOANL:
                         new MaterialDialog.Builder(this)
                                 .title("举报")
                                 .items(R.array.report_dynamic_type)
@@ -128,9 +120,25 @@ public class MoreMenuActivity extends BaseActivity implements View.OnClickListen
                                 })
                                 .positiveText("提交")
                                 .show();
-                    }
+                        break;
+                    case TYPE_DYNAMIC:
+                        //TODO 如果不是我则举报，否则删除
+                        new MaterialDialog.Builder(this)
+                                .title("举报")
+                                .content("感谢您，请填写您对该用户的举报原因")
+                                .inputRangeRes(4, 50, R.color.app_error)
+                                .inputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL)
+                                .input("举报原因...", "", new MaterialDialog.InputCallback() {
+                                    @Override
+                                    public void onInput(MaterialDialog dialog, CharSequence input) {
+
+                                    }
+                                }).show();
+                        break;
+                    case TYPE_TEAM:
+
+                        break;
                 }
-                break;
         }
     }
 }

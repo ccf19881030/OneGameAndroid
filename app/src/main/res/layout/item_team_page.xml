@@ -29,6 +29,7 @@
                 android:layout_marginTop="20dip"
                 android:layout_marginLeft="21dip"
                 android:textColor="@color/app_textcolor"
+                android:textStyle="bold"
                 android:text="巴塞罗那足球队"/>
 
             <LinearLayout
@@ -48,7 +49,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="12sp"
                         android:textColor="@color/app_second_textcolor"
-                        android:text="成立:"/>
+                        android:text="成立："/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -65,7 +66,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="13sp"
                         android:textColor="@color/app_second_textcolor"
-                        android:text="地区:"/>
+                        android:text="地区："/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -91,7 +92,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="12sp"
                         android:textColor="@color/app_second_textcolor"
-                        android:text="队长:"/>
+                        android:text="队长："/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -108,7 +109,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="13sp"
                         android:textColor="@color/app_second_textcolor"
-                        android:text="球队人数:"/>
+                        android:text="球队人数："/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -130,7 +131,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="13sp"
                     android:textColor="@color/app_second_textcolor"
-                    android:text="主要荣誉:"/>
+                    android:text="主要荣誉："/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -152,7 +153,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="13sp"
                     android:textColor="@color/app_second_textcolor"
-                    android:text="赞助商:"/>
+                    android:text="赞助商："/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -167,6 +168,7 @@
                 android:background="@color/app_splite_line"/>
 
             <RelativeLayout
+
                 android:layout_width="match_parent"
                 android:layout_marginTop="15dip"
                 android:layout_marginBottom="15dip"
@@ -205,8 +207,11 @@
                     fresco:placeholderImage="@drawable/default_placeholder"/>
 
                 <TextView
+                    android:id="@+id/item_team_number"
                     android:layout_width="wrap_content"
                     android:layout_height="21dip"
+                    android:paddingLeft="6dip"
+                    android:paddingRight="6dip"
                     android:layout_marginLeft="80dip"
                     android:layout_centerVertical="true"
                     android:text="+35"
@@ -215,16 +220,27 @@
                     android:background="@drawable/tag_blue_bg"
                     android:textSize="12sp"/>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:scaleType="centerInside"
+                <ImageButton
+                    android:id="@+id/item_team_more_button"
+                    android:layout_width="60dip"
+                    android:layout_height="match_parent"
                     android:layout_alignParentRight="true"
-                    android:layout_marginRight="34dip"
-                    android:src="@mipmap/icon_my_team_liked"/>
+                    android:scaleType="centerInside"
+                    android:background="@null"
+                    android:src="@mipmap/icon_more"/>
             </RelativeLayout>
-
-
         </LinearLayout>
+        
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_width="52dip"
+            android:layout_height="52dip"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="274dip"
+            android:layout_marginRight="18dip"
+            fresco:actualImageScaleType="centerCrop"
+            fresco:roundedCornerRadius="21dp"
+            fresco:roundingBorderWidth="2dp"
+            fresco:roundingBorderColor="@android:color/white"
+            fresco:placeholderImage="@mipmap/default_team_logo"/>
     </RelativeLayout>
 </android.support.v7.widget.CardView>

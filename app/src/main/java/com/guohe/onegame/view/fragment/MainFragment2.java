@@ -30,6 +30,7 @@ import com.guohe.onegame.util.TestImageUtil;
 import com.guohe.onegame.util.ToastUtil;
 import com.guohe.onegame.view.circle.DynamicDetailActivity;
 import com.guohe.onegame.view.circle.MoreMenuActivity;
+import com.guohe.onegame.view.circle.SearchAttentionActivity;
 import com.guohe.onegame.view.mine.PersonalPageActivity;
 import com.jph.takephoto.app.TakePhoto;
 import com.jph.takephoto.app.TakePhotoImpl;
@@ -95,25 +96,6 @@ public class MainFragment2 extends BaseMainFragment implements TakePhoto.TakeRes
             public void onClick(View v) {
                 configCompress(mTakePhoto);
                 mTakePhoto.onPickFromDocuments();
-              /* new MaterialDialog.Builder(MainFragment2.this.getContext())
-                        .title("发布动态")
-                        .items(R.array.take_photo_type)
-                        .itemsCallback(new MaterialDialog.ListCallback() {
-                            @Override
-                            public void onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
-                                if(mImageUri == null) {
-                                    if (!mUploadFile.getParentFile().exists())mUploadFile.getParentFile().mkdirs();
-                                    mImageUri = Uri.fromFile(mUploadFile);
-                                }
-                                configCompress(mTakePhoto);
-                                if("拍照上传".equals(text)){
-                                    mTakePhoto.onPickFromCapture(mImageUri);
-                                }else{
-                                    mTakePhoto.onPickFromDocuments();
-                                }
-                            }
-                        })
-                        .show();*/
             }
         });
         mToolbar = getView(R.id.main_page2_toolbar);
@@ -144,6 +126,13 @@ public class MainFragment2 extends BaseMainFragment implements TakePhoto.TakeRes
             @Override
             public void refreshBegin(PtrFrameLayout frame) {
 
+            }
+        });
+
+        getView(R.id.search_add_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SearchAttentionActivity.startActivity(MainFragment2.this.getContext());
             }
         });
     }
@@ -201,7 +190,7 @@ public class MainFragment2 extends BaseMainFragment implements TakePhoto.TakeRes
             holder.mMoreButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    MoreMenuActivity.startActivity(MainFragment2.this.getContext(), 2, 1);
+                    MoreMenuActivity.startActivity(MainFragment2.this.getContext(), MoreMenuActivity.TYPE_PERSOANL, 2, 1);
                 }
             });
             holder.mFollowdButton.setOnClickListener(new View.OnClickListener() {

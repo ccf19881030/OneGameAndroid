@@ -57,8 +57,8 @@ public class MainFragment1 extends BaseMainFragment {
         bundle4.putInt("homeType", HomeFragment.HOME_TYPE_XUETIQIU);
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
                 getChildFragmentManager(), FragmentPagerItems.with(MainFragment1.this.getActivity())
-                .add("约战", HomeFragment.class, bundle1)
-                .add("约裁判", HomeFragment.class, bundle2)
+                .add("找球队", HomeFragment.class, bundle1)
+                .add("雇裁判", HomeFragment.class, bundle2)
                 .add("去踢球", HomeFragment.class, bundle3)
                 .add("学踢球", HomeFragment.class, bundle4)
                 .create());

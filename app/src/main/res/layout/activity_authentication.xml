@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/app_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/toolbar_common"
+        android:layout_width="match_parent"
+        android:layout_height="44dip"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dip"
+        android:layout_marginTop="15dip"
+        android:orientation="horizontal"
+        android:layout_marginLeft="9dip"
+        android:layout_marginRight="9dip"
+        android:gravity="center_vertical"
+        android:paddingLeft="11dip"
+        android:paddingRight="11dip"
+        android:background="@color/app_not_choosed_bg">
+        
+        <TextView
+            android:layout_width="60dip"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/app_textcolor"
+            android:text="真实姓名"/>
+
+        <EditText
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:textColorHint="@color/app_second_textcolor"
+            android:hint="请输入姓名"
+            android:textColor="@color/app_textcolor"
+            android:textSize="12sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dip"
+        android:layout_marginTop="12dip"
+        android:orientation="horizontal"
+        android:layout_marginLeft="9dip"
+        android:layout_marginRight="9dip"
+        android:gravity="center_vertical"
+        android:paddingLeft="11dip"
+        android:paddingRight="11dip"
+        android:background="@color/app_not_choosed_bg">
+
+        <TextView
+            android:layout_width="60dip"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/app_textcolor"
+            android:text="身份证号"/>
+
+        <EditText
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:textColorHint="@color/app_second_textcolor"
+            android:hint="请输入身份证号"
+            android:textColor="@color/app_textcolor"
+            android:textSize="12sp"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="@color/app_textcolor"
+        android:text="资料上传"
+        android:layout_marginLeft="20dip"
+        android:layout_marginTop="24dip"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dip"
+        android:layout_marginLeft="9dip"
+        android:layout_marginRight="9dip"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="100dip"
+            android:layout_height="83dip"
+            android:background="@drawable/no_choose_rectangle_line">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:layout_centerInParent="true"
+                android:textColor="@color/app_second_textcolor"
+                android:drawablePadding="10dip"
+                android:drawableTop="@mipmap/icon_authentication_camera"
+                android:text="身份证正面"/>
+        </RelativeLayout>
+        <android.support.v4.widget.Space
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <RelativeLayout
+            android:layout_width="100dip"
+            android:layout_height="83dip"
+            android:background="@drawable/no_choose_rectangle_line">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:layout_centerInParent="true"
+                android:textColor="@color/app_second_textcolor"
+                android:drawablePadding="10dip"
+                android:drawableTop="@mipmap/icon_authentication_camera"
+                android:text="资格证内页"/>
+        </RelativeLayout>
+        <android.support.v4.widget.Space
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <RelativeLayout
+            android:layout_width="100dip"
+            android:layout_height="83dip"
+            android:background="@drawable/no_choose_rectangle_line">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:layout_centerInParent="true"
+                android:textColor="@color/app_second_textcolor"
+                android:drawablePadding="10dip"
+                android:drawableTop="@mipmap/icon_authentication_camera"
+                android:text="资格证内页"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="44dip"
+        android:background="@color/colorAccent"
+        android:textColor="@android:color/white"
+        android:text="提交"
+        android:layout_marginTop="34dip"
+        android:layout_marginLeft="9dip"
+        android:layout_marginRight="9dip"/>
+</LinearLayout>

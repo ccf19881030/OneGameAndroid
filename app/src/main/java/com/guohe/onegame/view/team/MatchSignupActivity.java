@@ -7,6 +7,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.CountDownTimer;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -50,6 +51,7 @@ public class MatchSignupActivity extends BaseActivity {
     private MobikeView mobikeView;
     private SensorManager sensorManager;
     private Sensor defaultSensor;
+    private FrameLayout.LayoutParams mLayoutParams;
 
     @Override
     public void initPresenter(List<MvpPresenter> presenters) {
@@ -88,11 +90,10 @@ public class MatchSignupActivity extends BaseActivity {
         mSmartTabLayout.setViewPager(mViewPager);
 
         mobikeView = (MobikeView) findViewById(R.id.mobike_view);
-        mobikeView.getmMobike().setDensity(1.0f);
+        mobikeView.getmMobike().setDensity(1.5f);
         mobikeView.getmMobike().setFriction(0.1f);
         mobikeView.getmMobike().setRestitution(0.1f);
         mobikeView.getmMobike().setRatio(50f);
-        initMobikeTiezhi();
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         defaultSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
@@ -107,26 +108,38 @@ public class MatchSignupActivity extends BaseActivity {
     }
 
     private void initMobikeTiezhi() {
-        FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(DimenUtil.dp2px(40), DimenUtil.dp2px(40));
-        layoutParams.gravity = Gravity.CENTER;
-        for(int i = 0; i < 7  ; i ++){
-            SimpleDraweeView draweeView = new SimpleDraweeView(this);
-            draweeView.setLayoutParams(layoutParams);
-            GenericDraweeHierarchy hierarchy = draweeView.getHierarchy();
-            hierarchy.setPlaceholderImage(R.mipmap.default_header);
-            hierarchy.setActualImageScaleType(ScalingUtils.ScaleType.FIT_XY);
-            FrescoUtils.setCircle(draweeView, getResources().getColor(R.color.app_background));
-            FrescoUtils.loadRes(draweeView, TestImageUtil.getHeadImgRes(), null, DimenUtil.dp2px(40), DimenUtil.dp2px(40), null);
+        mLayoutParams = new FrameLayout.LayoutParams(DimenUtil.dp2px(40), DimenUtil.dp2px(40));
+        mLayoutParams.gravity = Gravity.TOP|Gravity.CENTER_HORIZONTAL;
+        new CountDownTimer(500 * 7, 500){
+            @Override
+            public void onTick(long millisUntilFinished) {
+                addMobiView();
+            }
+
+            @Override
+            public void onFinish() {
+                addMobiView();
+            }
+        }.start();
+    }
+
+    private void addMobiView(){
+        SimpleDraweeView draweeView = new SimpleDraweeView(this);
+        draweeView.setLayoutParams(mLayoutParams);
+        GenericDraweeHierarchy hierarchy = draweeView.getHierarchy();
+        hierarchy.setPlaceholderImage(R.mipmap.default_header);
+        hierarchy.setActualImageScaleType(ScalingUtils.ScaleType.FIT_XY);
+        FrescoUtils.setCircle(draweeView, getResources().getColor(R.color.app_background));
+        FrescoUtils.loadRes(draweeView, TestImageUtil.getHeadImgRes(), null, DimenUtil.dp2px(40), DimenUtil.dp2px(40), null);
             /*SimpleDraweeView imageView = new SimpleDraweeView(this);
             imageView.setImageResource(imgs[i]);
             imageView.setTag(R.id.mobike_view_circle_tag,true);*/
-            mobikeView.addView(draweeView, layoutParams);
-        }
+        mobikeView.addView(draweeView, mLayoutParams);
     }
 
     @Override
     protected void initData() {
-
+        initMobikeTiezhi();
     }
 
     public static void startActivity(Context context){

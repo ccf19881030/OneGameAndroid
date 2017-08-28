@@ -169,7 +169,7 @@ public class DynamicDetailActivity extends BaseActivity implements TakePhoto.Tak
         mMoreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MoreMenuActivity.startActivity(DynamicDetailActivity.this, 2, 1);
+                MoreMenuActivity.startActivity(DynamicDetailActivity.this, MoreMenuActivity.TYPE_DYNAMIC, 2, 1);
             }
         });
 

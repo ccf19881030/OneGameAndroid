@@ -149,4 +149,15 @@
             android:background="@color/app_splite_line"
             android:layout_marginLeft="14dp"/>
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/team_setting_signout"
+        android:layout_width="match_parent"
+        android:layout_height="44dip"
+        android:background="@color/colorAccent"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginTop="30dip"
+        android:textColor="@android:color/white"
+        android:text="退出球队"/>
 </LinearLayout>

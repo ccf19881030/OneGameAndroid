@@ -17,7 +17,6 @@ import com.guohe.onegame.R;
 import com.guohe.onegame.manage.config.GlobalConfigManage;
 import com.guohe.onegame.util.DimenUtil;
 import com.guohe.onegame.util.FrescoUtils;
-import com.guohe.onegame.util.TestImageUtil;
 import com.guohe.onegame.view.adapter.FollowAdapter;
 import com.guohe.onegame.view.base.BaseActivity;
 import com.jaeger.library.StatusBarUtil;
@@ -87,7 +86,7 @@ public class TeamDetailActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        FrescoUtils.loadRes(mTeamPicture, TestImageUtil.getDynamicImgRes(), null,
+        FrescoUtils.loadRes(mTeamPicture, R.mipmap.default_team_bg, null,
                 GlobalConfigManage.getInstance().getScreenWidth(), DimenUtil.dp2px(300), null);
     }
 

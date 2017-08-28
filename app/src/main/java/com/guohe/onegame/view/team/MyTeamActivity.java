@@ -104,7 +104,7 @@ public class MyTeamActivity extends BaseActivity implements View.OnClickListener
 
         @Override
         public void onBindViewHolder(TeamViewHolder holder, int position) {
-            FrescoUtils.loadRes(holder.mPicture, TestImageUtil.getDynamicImgRes(),
+            FrescoUtils.loadRes(holder.mPicture, R.mipmap.default_team_bg,
                     null, DimenUtil.dp2px(280), DimenUtil.dp2px(280), null);
             FrescoUtils.setCircle(holder.mHead1, 0);
             FrescoUtils.setCircle(holder.mHead2, 0);

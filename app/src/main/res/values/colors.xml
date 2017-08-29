@@ -10,6 +10,7 @@
     <color name="app_second_textcolor">#8f9296</color>
 
     <color name="app_not_choosed_bg">#f2f2f2</color>
+    <color name="app_button_notenable">#d9d9d9</color>
     <color name="app_error">#ff5c1c</color>
 
     <color name="background_tab_pressed">#6633B5E5</color>

@@ -1,17 +1,33 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/app_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.guohe.onegame.custome.ColorAnimationView
-        android:id="@+id/ColorAnimationView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
     <android.support.v4.view.ViewPager
-        android:id="@+id/viewPager"
-        android:padding="30dp"
+        android:id="@+id/guide_viewpager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+    </android.support.v4.view.ViewPager>
 
+    <Button
+        android:id="@+id/first_guide_button"
+        android:layout_width="165dip"
+        android:layout_height="39dip"
+        android:textSize="16sp"
+        android:textColor="#e3e3e3"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="23dip"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/guide_comein_button_bg"
+        android:text="立即体验"/>
 
-</FrameLayout>
+    <LinearLayout
+        android:id="@+id/first_guide_point"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:layout_marginBottom="91dip"></LinearLayout>
+</RelativeLayout>

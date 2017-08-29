@@ -76,6 +76,7 @@
             android:screenOrientation="portrait"/>
 
         <activity android:name=".view.GuideActivity"
+            android:theme="@style/FullScreenTheme"
             android:screenOrientation="portrait"/>
 
         <activity android:name=".view.mine.MyWalletActivity"
@@ -193,6 +194,10 @@
             android:screenOrientation="portrait"/>
 
         <activity android:name=".view.LoginActivity"
+            android:theme="@style/FullScreenTheme"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".view.team.PosterListActivity"
             android:screenOrientation="portrait"/>
 
         <activity android:name=".view.team.MyTeamActivity"

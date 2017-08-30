@@ -17,7 +17,6 @@ import com.guohe.onegame.util.DimenUtil;
 import com.guohe.onegame.util.FrescoUtils;
 import com.guohe.onegame.util.LogUtil;
 import com.guohe.onegame.util.RefreshUtil;
-import com.guohe.onegame.util.TestImageUtil;
 import com.guohe.onegame.view.invitation.TeamInvatationActivity;
 import com.guohe.onegame.view.team.TeamDetailActivity;
 import com.jude.rollviewpager.RollPagerView;
@@ -195,7 +194,7 @@ public class HomeFragment extends BaseHomeFragment {
             if (getItemViewType(position) == TYPE_TEAM) {
                 TeamViewHolder holder = (TeamViewHolder) viewHolder;
                 FrescoUtils.setCircle(holder.head, getResources().getColor(R.color.app_background));
-                FrescoUtils.loadRes(holder.head, TestImageUtil.getHeadImgRes(), null, DimenUtil.dp2px(14), DimenUtil.dp2px(14), null);
+                FrescoUtils.loadRes(holder.head, R.mipmap.default_team_logo, null, DimenUtil.dp2px(20), DimenUtil.dp2px(20), null);
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -239,7 +238,7 @@ public class HomeFragment extends BaseHomeFragment {
                     }
                 });
                 FrescoUtils.setCircle(holder.head, getResources().getColor(R.color.app_background));
-                FrescoUtils.loadRes(holder.head, TestImageUtil.getHeadImgRes(), null, DimenUtil.dp2px(14), DimenUtil.dp2px(14), null);
+                FrescoUtils.loadRes(holder.head, R.mipmap.default_team_logo, null, DimenUtil.dp2px(14), DimenUtil.dp2px(14), null);
             }
         }
 

@@ -12,7 +12,7 @@
         android:layout_marginLeft="18dip"
         android:layout_centerVertical="true"
         fresco:actualImageScaleType="fitXY"
-        fresco:placeholderImage="@drawable/default_placeholder"/>
+        fresco:placeholderImage="@mipmap/default_team_logo"/>
 
     <TextView
         android:id="@+id/item_team_ranking_num"

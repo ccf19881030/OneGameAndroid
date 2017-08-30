@@ -238,7 +238,7 @@
             android:layout_marginTop="274dip"
             android:layout_marginRight="18dip"
             fresco:actualImageScaleType="centerCrop"
-            fresco:roundedCornerRadius="21dp"
+            fresco:roundedCornerRadius="26dp"
             fresco:roundingBorderWidth="2dp"
             fresco:roundingBorderColor="@android:color/white"
             fresco:placeholderImage="@mipmap/default_team_logo"/>

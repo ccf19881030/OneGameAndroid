@@ -49,7 +49,7 @@ public class TeamRankingMVPFragment extends BaseFragment{
     private void bindRecyclerView(){
         mRecyclerView.setHasFixedSize(false);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        mAdapter = new TeamRankingAdapter(this.getContext());
+        mAdapter = new TeamRankingAdapter(this.getContext(), TeamRankingAdapter.TYPE_MVP_SORT);
         mRecyclerView.setAdapter(mAdapter);
     }
 }

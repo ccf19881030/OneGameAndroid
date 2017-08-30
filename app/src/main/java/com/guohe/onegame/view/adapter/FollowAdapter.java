@@ -12,6 +12,7 @@ import com.guohe.onegame.R;
 import com.guohe.onegame.util.DimenUtil;
 import com.guohe.onegame.util.FrescoUtils;
 import com.guohe.onegame.util.TestImageUtil;
+import com.guohe.onegame.view.mine.PersonalPageActivity;
 
 /**
  * Created by 水寒 on 2017/8/21.
@@ -43,6 +44,13 @@ public class FollowAdapter extends RecyclerView.Adapter<FollowAdapter.FollowView
         }else{
             holder.followButton.setText("取消");
         }
+
+        holder.followHead.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PersonalPageActivity.startActivity(mContext);
+            }
+        });
     }
 
     @Override

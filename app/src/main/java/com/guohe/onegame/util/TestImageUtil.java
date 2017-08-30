@@ -28,6 +28,10 @@ public class TestImageUtil {
         return testDynamicImgs[random.nextInt(testDynamicImgs.length)];
     }
 
+    public static int getImgByIndex(int index){
+        return testDynamicImgs[index % testDynamicImgs.length];
+    }
+
     public static int getHeadImgRes(){
         return testHeadImgs[random.nextInt(testHeadImgs.length)];
     }

@@ -42,7 +42,7 @@
             app:actualImageScaleType="fitXY"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@id/mine_head_back_arrow"
-            app:placeholderImage="@mipmap/default_header"/>
+            app:placeholderImage="@mipmap/default_team_logo"/>
 
         <View
             android:layout_width="match_parent"

@@ -2,11 +2,13 @@ package com.guohe.onegame.view.mine;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.View;
 
 import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
 import com.guohe.onegame.view.base.BaseActivity;
+import com.jaeger.library.StatusBarUtil;
 
 import java.util.List;
 
@@ -20,6 +22,11 @@ public class CreditValueActivtiy extends BaseActivity {
     @Override
     public void initPresenter(List<MvpPresenter> presenters) {
 
+    }
+
+    @Override
+    protected void setStatuBar() {
+        StatusBarUtil.setColor(this, Color.parseColor("#262930"));
     }
 
     @Override

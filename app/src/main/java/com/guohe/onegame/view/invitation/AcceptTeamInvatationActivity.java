@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
 import com.guohe.onegame.view.base.BaseActivity;
+import com.guohe.onegame.view.team.PosterListActivity;
 
 import java.util.List;
 
@@ -59,6 +60,7 @@ public class AcceptTeamInvatationActivity extends BaseActivity{
         getView(R.id.accept_team_invatation_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                PosterListActivity.startActivity(AcceptTeamInvatationActivity.this);
                 AcceptTeamInvatationActivity.this.finish();
             }
         });

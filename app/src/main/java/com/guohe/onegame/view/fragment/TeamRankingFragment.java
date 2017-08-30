@@ -50,7 +50,7 @@ public class TeamRankingFragment extends BaseFragment{
     private void bindRecyclerView(){
         mRecyclerView.setHasFixedSize(false);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        mAdapter = new TeamRankingAdapter(this.getContext());
+        mAdapter = new TeamRankingAdapter(this.getContext(), TeamRankingAdapter.TYPE_TEAM_SORT);
         mRecyclerView.setAdapter(mAdapter);
     }
 }

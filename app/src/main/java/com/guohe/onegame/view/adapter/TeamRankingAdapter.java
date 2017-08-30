@@ -7,11 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.facebook.drawee.generic.GenericDraweeHierarchy;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.guohe.onegame.R;
-import com.guohe.onegame.util.DimenUtil;
 import com.guohe.onegame.util.FrescoUtils;
-import com.guohe.onegame.util.TestImageUtil;
 import com.guohe.onegame.view.mine.PersonalPageActivity;
 
 /**
@@ -20,10 +19,15 @@ import com.guohe.onegame.view.mine.PersonalPageActivity;
 
 public class TeamRankingAdapter extends RecyclerView.Adapter<TeamRankingAdapter.TeamRankingViewHolder>{
 
-    private Context mContext;
+    public static final int TYPE_MVP_SORT = 0;
+    public static final int TYPE_TEAM_SORT = 1;
 
-    public TeamRankingAdapter(Context context){
+    private Context mContext;
+    private int mType;
+
+    public TeamRankingAdapter(Context context, int type){
         mContext = context;
+        mType = type;
     }
 
     @Override
@@ -35,8 +39,8 @@ public class TeamRankingAdapter extends RecyclerView.Adapter<TeamRankingAdapter.
     @Override
     public void onBindViewHolder(TeamRankingViewHolder holder, int position) {
         FrescoUtils.setCircle(holder.mTeamHead, mContext.getResources().getColor(R.color.app_background));
-        FrescoUtils.loadRes(holder.mTeamHead, TestImageUtil.getHeadImgRes(), null,
-                DimenUtil.dp2px(35), DimenUtil.dp2px(35), null);
+        //FrescoUtils.loadRes(holder.mTeamHead, R.mipmap.default_team_logo, null,
+        //        DimenUtil.dp2px(35), DimenUtil.dp2px(35), null);
 
         if(position == 0){
             holder.mTeamNum.setBackgroundResource(R.mipmap.icon_team_ranking_num1);
@@ -68,6 +72,13 @@ public class TeamRankingAdapter extends RecyclerView.Adapter<TeamRankingAdapter.
             super(itemView);
             mTeamHead = (SimpleDraweeView) itemView.findViewById(R.id.item_team_ranking_head);
             mTeamNum = (TextView) itemView.findViewById(R.id.item_team_ranking_num);
+            GenericDraweeHierarchy hierarchy = mTeamHead.getHierarchy();
+            if(mType == TYPE_MVP_SORT){
+                hierarchy.setPlaceholderImage(R.mipmap.default_header);
+            }else if(mType == TYPE_TEAM_SORT){
+                hierarchy.setPlaceholderImage(R.mipmap.default_team_logo);
+            }
+            mTeamHead.setHierarchy(hierarchy);
         }
     }
 }

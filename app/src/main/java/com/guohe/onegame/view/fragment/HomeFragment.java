@@ -84,6 +84,7 @@ public class HomeFragment extends BaseHomeFragment {
 
             }
         });
+        mPtrFrameLayout.disableWhenHorizontalMove(true);
         mAppBarLayout = getView(R.id.app_bar);
         mAppBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override

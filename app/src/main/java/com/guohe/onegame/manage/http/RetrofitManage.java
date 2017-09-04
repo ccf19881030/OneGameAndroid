@@ -14,12 +14,12 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 public class RetrofitManage {
 
     //默认服务器路径
-    public static final String DEFAULT_SERVER_HTTP = "http://localhost:8080/";
+    public static final String DEFAULT_SERVER_HTTP = "http://192.168.1.103:8080/";
 
-    //public static final String DEFAULT_SERVER_HTTP = "http://103.200.116.5:8080/";
+    //public static final String DEFAULT_SERVER_HTTP = "http://192.168.1.112:80/";
     //public static final String DEFAULT_SERVER_HTTP = "http://192.168.31.99:8080/";
 
-    public static final String SERVER_PATH = "laiqu/";
+    public static final String SERVER_PATH = "football/";
 
     private static Retrofit mRetrofit;
     private static OkHttpClient mOkHttpClient;

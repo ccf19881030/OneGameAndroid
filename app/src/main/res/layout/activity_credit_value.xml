@@ -34,11 +34,28 @@
         android:layout_height="300dip">
 
         <ImageView
+            android:id="@+id/round_rotate_anim_out"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:scaleType="centerInside"
-            android:src="@mipmap/icon_credit_number_bg"/>
+            android:src="@mipmap/icon_round_scroll_out"/>
+
+        <ImageView
+            android:id="@+id/round_rotate_anim_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:scaleType="centerInside"
+            android:src="@mipmap/icon_round_scroll_center"/>
+
+        <ImageView
+            android:id="@+id/round_rotate_anim_inner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:scaleType="centerInside"
+            android:src="@mipmap/icon_round_scroll_inner"/>
 
         <TextView
             android:layout_width="wrap_content"

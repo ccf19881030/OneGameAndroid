@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
 
 import com.guohe.onegame.MvpPresenter;
 import com.guohe.onegame.R;
@@ -54,6 +57,15 @@ public class CreditValueActivtiy extends BaseActivity {
 
             }
         });
+        Animation outAnim = AnimationUtils.loadAnimation(this, R.anim.anim_round_rotate_quick);
+        Animation centerAnim = AnimationUtils.loadAnimation(this, R.anim.anim_round_rotate_mind);
+        Animation innerAnim = AnimationUtils.loadAnimation(this, R.anim.anim_round_rotate_snow);
+        outAnim.setInterpolator(new LinearInterpolator());
+        centerAnim.setInterpolator(new LinearInterpolator());
+        innerAnim.setInterpolator(new LinearInterpolator());
+        getView(R.id.round_rotate_anim_out).startAnimation(outAnim);
+        getView(R.id.round_rotate_anim_center).startAnimation(centerAnim);
+        getView(R.id.round_rotate_anim_inner).startAnimation(innerAnim);
     }
 
     @Override

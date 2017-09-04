@@ -1,8 +1,15 @@
 package com.guohe.onegame.manage.http;
 
+import com.guohe.onegame.model.entry.UserInfo;
+import com.guohe.onegame.model.template.BaseResultObjectBean;
+
+import java.util.Map;
+
+import retrofit2.http.FieldMap;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.POST;
 import rx.Observable;
 import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
@@ -34,7 +41,7 @@ public class ModelApiManage {
 
     public static <T> Observable requestApiOnResult(Observable<T> observable, Subscriber<? super T> subscriber){
         observable.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                //.observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
         return observable;
     }
@@ -43,6 +50,16 @@ public class ModelApiManage {
      * 服务器相关的接口定义
      */
     public interface ApiService{
+
+
+        /**
+         * 登录接口
+         * @param params
+         * @return
+         */
+        @FormUrlEncoded
+        @POST("user/login")
+        Observable<BaseResultObjectBean<UserInfo>> postLoginService(@FieldMap Map<String, Object> params);
 
     }
 }

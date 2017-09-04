@@ -41,7 +41,6 @@ public class TeamRankingAdapter extends RecyclerView.Adapter<TeamRankingAdapter.
         FrescoUtils.setCircle(holder.mTeamHead, mContext.getResources().getColor(R.color.app_background));
         //FrescoUtils.loadRes(holder.mTeamHead, R.mipmap.default_team_logo, null,
         //        DimenUtil.dp2px(35), DimenUtil.dp2px(35), null);
-
         if(position == 0){
             holder.mTeamNum.setBackgroundResource(R.mipmap.icon_team_ranking_num1);
         }else if(position == 1){

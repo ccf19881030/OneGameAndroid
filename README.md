@@ -1,6 +1,7 @@
 ## 项目简介
 
-![一场ICON](app/src/main/res/mipmap-xxxhdpi/ic_launcher.png)
+
+<img src="app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" width=150 style="margin:0 auto;"/>
 
 《一场》app是我在2017年的时候自己做的一个足球约球App,初期需求由我的朋友“红建”提供并设计整个界面，这里不得不提及一下我的这位朋友，设计思维感觉很前卫，没有他就没有这个项目，感谢他的付出。
 
@@ -10,6 +11,7 @@
 
 ## 项目相关界面截图
 
+由于界面太多，下面截图部分界面
 
 <img src="image/image2.png" width=500>
 

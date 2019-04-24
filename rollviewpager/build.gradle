@@ -2,12 +2,12 @@ apply plugin: 'com.android.library'
 
 version = "1.4.6"  // 项目的版本名
 android {
-    compileSdkVersion 25
-    buildToolsVersion '25.0.2'
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 22
+        minSdkVersion 16
+        targetSdkVersion 26
         versionCode 1
         versionName version
     }
@@ -28,5 +28,5 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.android.support:support-v4:26.0.1'
 }

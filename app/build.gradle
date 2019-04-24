@@ -5,14 +5,15 @@ def releaseTime() {
 }
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
     defaultConfig {
         applicationId "com.guohe.onegame"
-        minSdkVersion 15
-        targetSdkVersion 22
+        minSdkVersion 16
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0.0"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = false
     }
@@ -35,7 +36,7 @@ android {
         debug {
             buildConfigField "boolean", "LOG_DEBUG", "true"
             signingConfig signingConfigs.debug
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         release {
@@ -62,73 +63,102 @@ android {
         // but continue the build even when errors are found:
         abortOnError false
     }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
 }
+
+configurations.all{ resolutionStrategy{
+    exclude group: 'com.android.support', module: 'design'
+    exclude group: 'com.android.support', module: 'support-v13'
+}}
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:design:25.3.1'
-    compile 'com.android.support:palette-v7:25.3.1'
-    compile 'com.android.support:support-vector-drawable:25.3.1'
+    compile 'com.android.support:appcompat-v7:26.0.1'
+    compile 'com.android.support:palette-v7:26.0.1'
+    compile 'com.android.support:support-vector-drawable:26.0.1'
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:cardview-v7:25.3.1'
+    compile 'com.android.support:cardview-v7:26.0.1'
     compile 'com.android.support:multidex:1.0.0'
+
     //okhttp
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.2.0'
     compile 'com.facebook.fresco:imagepipeline-okhttp3:0.14.1'
+
     //rxjava
     compile 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
     compile 'io.reactivex:rxandroid:1.2.0'
     compile 'io.reactivex:rxjava:1.1.5'
+
     //retrofit
     compile 'com.squareup.retrofit2:retrofit:2.0.2'
     compile 'com.squareup.retrofit2:converter-gson:2.0.2'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
+
     //fresco
     compile 'com.facebook.fresco:fresco:0.14.1'
     compile 'com.facebook.fresco:animated-gif:0.14.1'
+
     //图片裁剪上传
     compile project(':takephoto_library')
+
     //headAndroidFooterRecyclerView
     compile project(path: ':HeaderAndFooterRecyclerView')
+
     //commentUtil
     compile project(path: ':commonutils')
+
     //沉浸式状态栏
     compile 'com.jaeger.statusbarutil:library:1.4.0'
+
     //下拉刷新
     compile project(':ptr-lib')
+
     //图片轮播器
+
     //compile 'com.jude:rollviewpager:1.4.5'
     compile project(':rollviewpager')
+
     //滑动返回
     compile 'com.r0adkll:slidableactivity:2.0.5'
+
     //对话框
     compile 'com.afollestad.material-dialogs:core:0.9.4.5'
+
     //图片滤镜
     compile files('libs/nineoldandroids-2.4.0.jar')
-    //可拖拽的图片
-    compile project(':ImageViewTouch')
+
     //渲染图片
     compile project(':Gpu-Image')
+
     //水平滑动list
     compile 'it.sephiroth.android.library.horizontallistview:hlistview:1.2.2'
+
     //高德地图
     compile files('libs/AMap3DMap_5.3.0_AMapSearch_5.3.1_AMapLocation_3.5.0_20170817.jar')
+
     //友盟统计
     compile 'com.umeng.analytics:analytics:latest.integration'
+
     //SmartTabLayout
     compile 'com.ogaclejapan.smarttablayout:library:1.6.1@aar'
     compile 'com.ogaclejapan.smarttablayout:utils-v4:1.6.1@aar'
+
     //膜拜贴纸
-    compile project(':MobikeLibrary')
+    compile 'com.itkimi.group:MobikeTags:1.0.1'
+
     //日期时间选择控件
-    compile project(':sublimepickerlibrary')
+    compile 'com.appeaser.sublimepickerlibrary:sublimepickerlibrary:2.1.2'
+
     //阿里云oss
     compile files('libs/aliyun-oss-sdk-android-2.3.0.jar')
+
     //一种好看的切页，在我的球队里面用到
     compile 'com.yarolegovich:discrete-scrollview:1.2.0'
 }
